@@ -1,7 +1,7 @@
 class SignUpPage extends React.Component {
     constructor(props) {
         super(props)
-        this.signIn = this.signIn.bind(this)
+        this.signUp = this.signUp.bind(this)
         this.valueChanged = this.valueChanged.bind(this)
         document.onkeypress = (e) => {
             if(e.keyCode == 13){
@@ -18,7 +18,7 @@ class SignUpPage extends React.Component {
         this.state[e.target.name] = e.target.value
         this.setState(this.state)
     }
-    signIn(){
+    signUp(){
     //     networkRequest("login", "POST", {
     //         username: this.state.username,
     //         password: this.state.password
@@ -141,6 +141,7 @@ class SignUpPage extends React.Component {
                     <input style={inputStyle} type="text" placeholder="Email" name="email" value={this.state.email} onChange={this.valueChanged}/>
                     <input style={inputStyle} type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.valueChanged}/>
                     <button style={buttonStyle} onClick={this.signIn}>Sign Up</button>
+                    <button style={buttonStyle} onClick={() => this.props.changePage(1)}>Back</button>
                 </div>
                 
             </div>

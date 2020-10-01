@@ -86,7 +86,7 @@ class LoginPage extends React.Component {
             margin: 0,
             fontSize: "20px",
             color: "blue",
-            style: "text-decoration: underline dotted red"
+            textDecoration: "underline"
         }
         let inputStyle = {
             borderRadius: "27px",
@@ -150,7 +150,7 @@ class LoginPage extends React.Component {
                     <input style={inputStyle} type="text" placeholder="Username" name="username" value={this.state.username} onChange={this.valueChanged}/>
                     <input style={inputStyle} type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.valueChanged}/>
                     <button style={buttonStyle} onClick={this.signIn}>Sign In</button>
-                    <text style={titleStyle2}>Sign Up</text>
+                    <p style={titleStyle2} onClick={() => this.props.changePage(2)}>Don't have an account?</p>
                 </div>
                 
             </div>
