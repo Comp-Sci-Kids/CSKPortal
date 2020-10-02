@@ -3,6 +3,7 @@ class LoginPage extends React.Component {
         super(props)
         this.signIn = this.signIn.bind(this)
         this.valueChanged = this.valueChanged.bind(this)
+        this.updateState = this.updateState.bind(this)
         document.onkeypress = (e) => {
             if(e.keyCode == 13){
                 this.signIn()
@@ -16,41 +17,45 @@ class LoginPage extends React.Component {
         }
     }
     valueChanged(e){
-        this.state[e.target.name] = e.target.value
+        this.updateState(e.target.name, e.target.value);
+    }
+    updateState(key, val) {
+        this.state[key] = val;
         this.setState(this.state)
     }
     signIn(){
         if(this.state.username == ""){
-            alert("i")
-            //errorBox = <div style={errorBoxStyle}>"Missing Field: Username"</div>
+            this.updateState("error", "Missing Field: Email")
+            return;
         }
-    //     networkRequest("login", "POST", {
-    //         username: this.state.username,
-    //         password: this.state.password
-    //     }, d => {
-    //         if(!d.success){
-    //             this.setState({
-    //                 username: this.state.username,
-    //                 password: this.state.password,
-    //                 error: d.message
-    //             })
-    //         }else{
-    //             let token = d.token
-    //             var base64Url = token.split('.')[1];
-    //             var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    //             var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-    //                 return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    //             }).join(''));
 
-    //             let payload = JSON.parse(jsonPayload);
-    //             sessionStorage.setItem("token", token)
-    //             sessionStorage.setItem("name", payload.name)
-    //             sessionStorage.setItem("type", payload.type)
-    //             sessionStorage.setItem("perms", payload.perms)
-    //             sessionStorage.setItem("fetchTime", new Date().getTime())
-    //             this.props.callback()
-    //         }
-    //     })
+        networkRequest("parent/login", "POST", {
+            username: this.state.username,
+            password: this.state.password
+        }, d => {
+            if(!d.success){
+                this.setState({
+                    username: this.state.username,
+                    password: this.state.password,
+                    error: d.message
+                })
+            }else{
+                let token = d.token
+                var base64Url = token.split('.')[1];
+                var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                }).join(''));
+
+                let payload = JSON.parse(jsonPayload);
+                sessionStorage.setItem("token", token)
+                sessionStorage.setItem("name", payload.name)
+                sessionStorage.setItem("type", payload.type)
+                sessionStorage.setItem("perms", payload.perms)
+                sessionStorage.setItem("fetchTime", new Date().getTime())
+                this.props.callback()
+            }
+        })
     }
     render() {
         let divStyle = {
@@ -115,7 +120,7 @@ class LoginPage extends React.Component {
             position: "fixed",
             width: "90%",
             margin: "auto",
-            backgroundColor: "red",
+            backgroundColor: "rgba(8,58,194,1)",
             color: "white",
             fontSize: "20px",
             textAlign: "center",
@@ -126,7 +131,6 @@ class LoginPage extends React.Component {
         }
         let errorBox = null
         if(this.state.error != ""){
-            
             errorBox = <div style={errorBoxStyle}>{this.state.error}</div>
         }
         
@@ -146,10 +150,10 @@ class LoginPage extends React.Component {
                 </ul>
                 {errorBox}
                 <div style={boxStyle}>
-                    <h1 style={titleStyle1}>CompSci Kids Parent Sign In</h1>
-                    <input style={inputStyle} type="text" placeholder="Username" name="username" value={this.state.username} onChange={this.valueChanged}/>
+                    <h1 style={titleStyle1}>CompSci Kids Parent Login</h1>
+                    <input style={inputStyle} type="email" placeholder="Email" name="username" value={this.state.username} onChange={this.valueChanged}/>
                     <input style={inputStyle} type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.valueChanged}/>
-                    <button style={buttonStyle} onClick={this.signIn}>Sign In</button>
+                    <button style={buttonStyle} onClick={this.signIn}>Login</button>
                     <p style={titleStyle2} onClick={() => this.props.changePage(2)}>Don't have an account?</p>
                 </div>
                 

@@ -35,13 +35,13 @@ class Page extends React.Component {
     render() {
 
         var content = null;
-
-        if(this.state.view == 1){
+        console.log(this.state.view);
+        if (this.state.view == 1){
             content = <LoginPage changePage = {this.changePage} callback = {this.loggedIn} />
         } else if (this.state.view == 2) {
             content = <SignUpPage changePage = {this.changePage}/>
         } else {
-            content = null;
+            content = <Dashboard/>;
         }
         // }else {
         //     let body = <PageBody key={selectedSession} page={this.state.page} ref={this.pageBody} />
