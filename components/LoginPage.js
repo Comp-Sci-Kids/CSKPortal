@@ -49,9 +49,9 @@ class LoginPage extends React.Component {
 
                 let payload = JSON.parse(jsonPayload);
                 sessionStorage.setItem("token", token)
-                sessionStorage.setItem("name", payload.name)
-                sessionStorage.setItem("type", payload.type)
-                sessionStorage.setItem("perms", payload.perms)
+                sessionStorage.setItem("email", payload.email)
+                sessionStorage.setItem("firstName", payload.firstName)
+                sessionStorage.setItem("lastName", payload.lastName)
                 sessionStorage.setItem("fetchTime", new Date().getTime())
                 this.props.callback()
             }

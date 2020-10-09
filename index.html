@@ -14,6 +14,7 @@
     <title>CompSci Kids Parent Portal</title>
     <script>
       const appRed = "#CC0000"
+      const appBlue = "rgba(0,93,255,1)"
       let selectedSession = null
       function networkRequest(handler, method, body, callback) {
           const http = new XMLHttpRequest()
@@ -55,11 +56,20 @@
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-    
+
+    <script type="text/babel" src="components/AccountPage.js"></script>
+    <script type="text/babel" src="components/ChildPage.js"></script>
+    <script type="text/babel" src="components/PageBody.js"></script>
+
+    <script type="text/babel" src="components/Tab.js"></script>
+    <script type="text/babel" src="components/TabBar.js"></script>
+    <script type="text/babel" src="components/Header.js"></script>
+    <script type="text/babel" src="components/User.js"></script>
     <script type="text/babel" src="components/Dashboard.js"></script>
     <script type="text/babel" src="components/LoginPage.js"></script>
     <script type="text/babel" src="components/Page.js"></script>
     <script type="text/babel" src="components/SignUpPage.js"></script>
+    
     <style>
 
       #root {

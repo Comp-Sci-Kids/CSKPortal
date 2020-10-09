@@ -1,37 +1,34 @@
 class Dashboard extends React.Component {
     constructor(props) {
         super(props)
-        this.logout = this.logout.bind(this)
-        this.delete = this.delete.bind(this)
+        this.changePage = this.changePage.bind(this)
+        this.refresh = this.refresh.bind(this)
+        this.pageBody = React.createRef()
 
         this.state = {
-           
+            page: 1,
+            refresh: false
         }
     }
 
-    delete() {
-        networkRequest("parent/delete", "DELETE", {
-
-        }, d => {
-            if(!d.success){
-                alert("error")
-                alert(d.message)
-            }else{
-                this.logout();
-            }
+    refresh(){
+        this.setState({
+            page: this.state.page,
+            refresh: !this.state.refresh
         })
     }
-
-    logout() {
-        sessionStorage.clear()
-        location.reload()
+    changePage(index) {
+        this.setState({
+            refresh: this.state.refresh,
+            page: index
+        })
     }
 
     render() {        
         return (
             <div>
-                <button onClick={this.delete}>Delete Account</button>
-                <button onClick={this.logout}>Logout</button>
+                <Header defaultPage={this.state.page} changePage={this.changePage} refreshCallback={this.refresh}/>
+                <PageBody page={this.state.page} ref={this.pageBody}/>
             </div>
         )
 
