@@ -2,30 +2,13 @@ class User extends React.Component {
     constructor(props) {
         super(props)
         this.logOut = this.logOut.bind(this)
-        this.delete = this.delete.bind(this)
         this.state = { hidden: true }
     }
     logOut(){
         sessionStorage.clear()
         location.reload()
     }
-    delete() {
-
-        if(confirm("Are you sure you want to delete this account?")){
-            // console.log("deleting")
-            networkRequest("parent/delete", "DELETE", {
-
-            }, d => {
-                if(!d.success){
-                    alert("error")
-                    alert(d.message)
-                }else{
-                    this.logOut();
-                }
-            })
-        }
-
-    }
+    
     render() {
         let divStyle = {
             position: "relative",
@@ -65,7 +48,6 @@ class User extends React.Component {
             <button style={buttonStyle} onClick={() => { this.setState({ hidden: !this.state.hidden }) }}>{this.props.name} {this.state.hidden ? String.fromCharCode("9660") : String.fromCharCode("9650")}</button>
             <div style={dropdownStyle}>
                 <a href="" style={linkStyle} onClick={this.logOut}>Log Out</a>
-                <a href="" style={linkStyle} onClick={this.delete}>Delete Account</a>
             </div>
         </div>)
     }

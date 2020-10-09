@@ -57,6 +57,7 @@ class LoginPage extends React.Component {
             }
         })
     }
+
     render() {
         let divStyle = {
             width: "100%",
@@ -154,7 +155,9 @@ class LoginPage extends React.Component {
                     <input style={inputStyle} type="email" placeholder="Email" name="username" value={this.state.username} onChange={this.valueChanged}/>
                     <input style={inputStyle} type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.valueChanged}/>
                     <button style={buttonStyle} onClick={this.signIn}>Login</button>
+                    <br></br>
                     <p style={titleStyle2} onClick={() => this.props.changePage(2)}>Don't have an account?</p>
+                    <p style={titleStyle2} onClick={() => this.props.changePage(3)}>Forgot your password?</p>
                 </div>
                 
             </div>

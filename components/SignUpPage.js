@@ -6,7 +6,7 @@ class SignUpPage extends React.Component {
         this.updateState = this.updateState.bind(this)
         document.onkeypress = (e) => {
             if(e.keyCode == 13){
-                this.signIn()
+                this.signUp()
             }
         }
         this.state = {
@@ -138,7 +138,7 @@ class SignUpPage extends React.Component {
             borderRadius: "27px",
             border: "2px solid rgba(8,58,174,1)",
             padding: "10px 20px", 
-            // width: "70%",
+            // width: "40%",
             // height: "30px",
             outline: "none",
             fontSize: "20px",
