@@ -13,7 +13,8 @@ class LoginPage extends React.Component {
             username: "",
             password: "",
             error: "",
-            missingInfo: false
+            missingInfo: false,
+            incorrect: 0
         }
     }
     valueChanged(e){
@@ -31,13 +32,16 @@ class LoginPage extends React.Component {
 
         networkRequest("parent/login", "POST", {
             username: this.state.username,
-            password: this.state.password
+            password: this.state.password,
+            incorrect: this.state.incorrect
         }, d => {
             if(!d.success){
                 this.setState({
                     username: this.state.username,
                     password: this.state.password,
-                    error: d.message
+                    error: d.message,
+                    missingInfo: this.state.missingInfo,
+                    incorrect: this.state.incorrect + 1
                 })
             }else{
                 let token = d.token
