@@ -13,7 +13,8 @@ class LoginPage extends React.Component {
             username: "",
             password: "",
             error: "",
-            missingInfo: false
+            missingInfo: false,
+            incorrect: 0
         }
     }
     valueChanged(e){
@@ -31,13 +32,16 @@ class LoginPage extends React.Component {
 
         networkRequest("parent/login", "POST", {
             username: this.state.username,
-            password: this.state.password
+            password: this.state.password,
+            incorrect: this.state.incorrect
         }, d => {
             if(!d.success){
                 this.setState({
                     username: this.state.username,
                     password: this.state.password,
-                    error: d.message
+                    error: d.message,
+                    missingInfo: this.state.missingInfo,
+                    incorrect: this.state.incorrect + 1
                 })
             }else{
                 let token = d.token
@@ -49,14 +53,15 @@ class LoginPage extends React.Component {
 
                 let payload = JSON.parse(jsonPayload);
                 sessionStorage.setItem("token", token)
-                sessionStorage.setItem("name", payload.name)
-                sessionStorage.setItem("type", payload.type)
-                sessionStorage.setItem("perms", payload.perms)
+                sessionStorage.setItem("email", payload.email)
+                sessionStorage.setItem("firstName", payload.firstName)
+                sessionStorage.setItem("lastName", payload.lastName)
                 sessionStorage.setItem("fetchTime", new Date().getTime())
                 this.props.callback()
             }
         })
     }
+
     render() {
         let divStyle = {
             width: "100%",
@@ -154,7 +159,9 @@ class LoginPage extends React.Component {
                     <input style={inputStyle} type="email" placeholder="Email" name="username" value={this.state.username} onChange={this.valueChanged}/>
                     <input style={inputStyle} type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.valueChanged}/>
                     <button style={buttonStyle} onClick={this.signIn}>Login</button>
+                    <br></br>
                     <p style={titleStyle2} onClick={() => this.props.changePage(2)}>Don't have an account?</p>
+                    <p style={titleStyle2} onClick={() => this.props.changePage(3)}>Forgot your password?</p>
                 </div>
                 
             </div>

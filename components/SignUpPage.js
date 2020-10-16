@@ -6,7 +6,7 @@ class SignUpPage extends React.Component {
         this.updateState = this.updateState.bind(this)
         document.onkeypress = (e) => {
             if(e.keyCode == 13){
-                this.signIn()
+                this.signUp()
             }
         }
         this.state = {
@@ -16,6 +16,7 @@ class SignUpPage extends React.Component {
             email: "",
             prefix: "Prefix",
             password: "",
+            password2: "",
             error: "",
             success: false
         }
@@ -35,10 +36,19 @@ class SignUpPage extends React.Component {
         console.log(vals)
         for(var i = 0; i < vals.length; i++) {
             if (vals[i] == "") {
-                alert(i)
                 this.updateState("error", "Please Fill All Fields");
                 return;
             }
+        }
+
+        if(this.state.prefix == "Prefix") {
+            this.updateState("error", "Please Fill All Fields");
+            return;
+        }
+
+        if(this.state.password != this.state.password2) {
+            this.updateState("error", "Your passwords do not match");
+            return;
         }
 
         //continue to signup
@@ -76,21 +86,6 @@ class SignUpPage extends React.Component {
                     success: true
                 })
 
-
-                // let token = d.token
-                // var base64Url = token.split('.')[1];
-                // var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-                // var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-                //     return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-                // }).join(''));
-
-                // let payload = JSON.parse(jsonPayload);
-                // sessionStorage.setItem("token", token)
-                // sessionStorage.setItem("name", payload.name)
-                // sessionStorage.setItem("type", payload.type)
-                // sessionStorage.setItem("perms", payload.perms)
-                // sessionStorage.setItem("fetchTime", new Date().getTime())
-                // this.props.callback()
             }
         })
     }
@@ -138,7 +133,7 @@ class SignUpPage extends React.Component {
             borderRadius: "27px",
             border: "2px solid rgba(8,58,174,1)",
             padding: "10px 20px", 
-            // width: "70%",
+            // width: "40%",
             // height: "30px",
             outline: "none",
             fontSize: "20px",
@@ -214,6 +209,8 @@ class SignUpPage extends React.Component {
                     <input style={inputStyle} type="tel" placeholder="Phone" name="phone" value={this.state.phone} onChange={this.valueChanged}/>
                     <input style={inputStyle} type="email" placeholder="Email" name="email" value={this.state.email} onChange={this.valueChanged}/>
                     <input style={inputStyle} type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.valueChanged}/>
+                    <input style={inputStyle} type="password" placeholder="Confirm Password" name="password2" value={this.state.password2} onChange={this.valueChanged}/>
+
                     <button style={buttonStyle} onClick={this.signUp}>Sign Up</button>
                     <button style={buttonStyle} onClick={() => this.props.changePage(1)}>Back</button>
                 </div>

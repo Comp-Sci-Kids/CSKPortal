@@ -13,7 +13,7 @@ class Page extends React.Component {
     //user is logged in
     loggedIn() {
         this.setState({
-            view: 3,
+            view: 4,
             refresh: this.state.refresh 
         })
     }
@@ -35,12 +35,13 @@ class Page extends React.Component {
     render() {
 
         var content = null;
-        console.log(this.state.view);
         if (this.state.view == 1){
             content = <LoginPage changePage = {this.changePage} callback = {this.loggedIn} />
         } else if (this.state.view == 2) {
             content = <SignUpPage changePage = {this.changePage}/>
-        } else {
+        } else if (this.state.view == 3) {
+            content = <ResetPasswordPage changePage = {this.changePage}/>
+        } else if (this.state.view == 4) {
             content = <Dashboard/>;
         }
         // }else {
