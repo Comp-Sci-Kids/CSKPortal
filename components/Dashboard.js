@@ -6,7 +6,7 @@ class Dashboard extends React.Component {
         this.pageBody = React.createRef()
 
         this.state = {
-            page: 1,
+            page: 0,
             refresh: false
         }
     }

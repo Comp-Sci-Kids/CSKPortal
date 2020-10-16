@@ -35,7 +35,6 @@ class Page extends React.Component {
     render() {
 
         var content = null;
-        console.log(this.state.view);
         if (this.state.view == 1){
             content = <LoginPage changePage = {this.changePage} callback = {this.loggedIn} />
         } else if (this.state.view == 2) {
