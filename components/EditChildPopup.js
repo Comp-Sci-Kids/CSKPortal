@@ -2,33 +2,104 @@ class EditChildPopup extends React.Component {
     constructor(props) {
         super(props)
         this.valueChanged = this.valueChanged.bind(this)
+        this.updateState = this.updateState.bind(this)
         this.deleteAccount = this.deleteAccount.bind(this)
-        this.updatePassword = this.updatePassword.bind(this)
+        this.updateChild = this.updateChild.bind(this)
+        console.log(this.props.sampleKid.birthday)
         this.state = {
-            name: this.props.name,
-            username: this.props.username,
-            oldpassword: "",
-            newpassword: "",
-            message: ""
-        }
-    }
-    updateChild(){
+            id: this.props.sampleKid._id,
+            firstName: this.props.sampleKid.firstName,
+            lastName: this.props.sampleKid.lastName,
+            gender: this.props.sampleKid.gender,
+            dob: this.props.sampleKid.birthday,
+            grade: this.props.sampleKid.grade,
+            shirtSize: this.props.sampleKid.shirtSize,
+            emergencyName: this.props.sampleKid.emergencyName,
+            emergencyPrefix: this.props.sampleKid.emergencyPrefix,
+            emergencyRelationship: this.props.sampleKid.emergencyRelationship,
+            emergencyPhone: this.props.sampleKid.emergencyPhone,
+            error: ""
         
+        }
+
+
+        this.refreshPage();
     }
-    valueChanged(field, val){
-        this.state[field] = val
+    valueChanged(e){
+        this.updateState(e.target.name, e.target.value);
+    }
+    updateState(key, val) {
+        this.state[key] = val;
         this.setState(this.state)
     }
+
+    refreshPage() {
+        networkRequest("parent/getKids", "POST", {
+
+        }, d => {
+            if(!d.success){
+                alert("Error! Please refresh the page and try again.")
+            }else{
+                console.log(d.kids);
+                this.setState({
+                    popup: false,
+                    kids: d.kids
+                });
+            }
+        })
+    }
+
+    updateChild(){
+        
+        if (
+            this.state.emergencyPrefix == "" ||
+            this.state.emergencyName == "" ||
+            this.state.emergencyRelationship == "" ||
+            this.state.emergencyPhone == "" ||
+            this.state.firstName == "" ||
+            this.state.lastName == "" ||
+            this.state.gender == "" ||
+            this.state.dob == "" ||
+            this.state.grade == "" ||
+            this.state.shirtSize == ""
+        ) {
+            this.updateState("error", "You are missing some information.")
+            return;
+        }
+
+        
+        networkRequest("parent/updateKid", "POST", {
+            id: this.state.id,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            gender: this.state.gender,
+            birthday: this.state.dob,
+            grade: this.state.grade,
+            shirtSize: this.state.shirtSize,
+            emergencyName: this.state.emergencyName,
+            emergencyPrefix: this.state.emergencyPrefix,
+            emergencyRelationship: this.state.emergencyRelationship,
+            emergencyPhone: this.state.emergencyPhone,
+        }, d => {
+            if(!d.success){
+                this.updateState("error", d.message)
+            }else{
+                this.props.closeCallback()
+            }
+        })
+
+    }
+
+
     deleteAccount(){
+        
         if(confirm("Are you sure you want to delete this account?")){
             console.log("deleting")
-            // console.log(this.state.name)
-            networkRequest("parent/deleteKid", "DELETE", {
+            networkRequest("parent/deleteKid", "POST", {
                 id: this.state.id
             }, d => {
-                
                 if(!d.success) {
-                    this.valueChanged["message", d.message]
+                    this.updateState("error", d.message)
                 } else {
                     this.props.closeCallback()
                     this.props.refreshCallback()
@@ -36,6 +107,7 @@ class EditChildPopup extends React.Component {
             })
         }
     }
+
     render() {
         let popupStyle = {
             position: "fixed",
@@ -51,7 +123,7 @@ class EditChildPopup extends React.Component {
         }
         let boxStyle = {
             width: "600px",
-            height: "400px",
+            height: "700px",
             backgroundColor: "white",
             borderRadius: "25px",
             display: "flex",
@@ -71,6 +143,25 @@ class EditChildPopup extends React.Component {
             boxSizing: "border-box",
             paddingBottom: "10px",
             paddingRight: "10px"
+        }
+        let divStlye = {
+            boxSizing: "border-box",
+            width: "100%",
+            padding: "5px 0px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-end"
+        }
+        let labelStyle = {
+            margin: 0,
+            marginRight: "40px",
+            fontSize: "25px",
+            fontWeight: "bold"
+        }
+        let inputStyle = {
+            height: "20px",
+            fontSize: "18px",
+            width: "200px"
         }
 
         //error message
@@ -92,16 +183,28 @@ class EditChildPopup extends React.Component {
                     <div style={contentDiv}>
                         <h1>Edit Account</h1>
                         <hr></hr>
-                        <LabelField title="Name" field="name" value={this.state.name} editing={false} valueChanged={this.valueChanged} />
-                        <LabelField title="Username" field="username" value={this.state.username} editing={false} valueChanged={this.valueChanged} />
-                        <LabelField title="Old Password" field="oldpassword"  secure={true} value={this.state.oldpassword} editing={true} valueChanged={this.valueChanged} />
-                        <LabelField title="New Password" field="newpassword" secure={true} value={this.state.newpassword} editing={true} valueChanged={this.valueChanged} />
+                        <LabelField title="First Name" field="firstName" value={this.state.firstName} editing={true} valueChanged={this.updateState} />
+                        <LabelField title="Last Name" field="lastName" value={this.state.lastName} editing={true} valueChanged={this.updateState} />
+                        <SelectField title="Gender" field="gender" value={this.state.gender} editing={true} valueChanged={this.updateState} options={[{value: "male", display: "Male"}, {value: "female", display: "Female"}, {value: "other", display: "Other"}]}/>
+
+                        <div style={divStlye}>
+                            <label style={labelStyle}>Birthday (MM/DD/YYYY):</label>
+                            <input style={inputStyle} type="text" value={this.state.dob} pattern="\d{2}/\d{2}/\d{4}" placeholder="Birthday" name="dob" onChange={this.valueChanged} />
+                        </div>
+
+                        <SelectField title="Grade" field="grade" value={this.state.grade} editing={true} valueChanged={this.updateState} options={[{value: 1, display: "1st"}, {value: 2, display: "2nd"}, {value: 3, display: "3rd"}, {value: 4, display: "4th"}, {value: 5, display: "5th"}, {value: 6, display: "6th"}, {value: 7, display: "7th"}, {value: 8, display: "8th"}]}/>
+                        <SelectField title="Shirt Size" field="shirtSize" value={this.state.shirtSize} editing={true} valueChanged={this.updateState} options={[{value: "ys", display: "Youth Small"}, {value: "ym", display: "Youth Medium"}, {value: "yl", display: "Youth Large"}, {value: "as", display: "Adult Small"}, {value: "am", display: "Adult Medium"}, {value: "al", display: "Adult Large"}, {value: "ax", display: "Adult X-Large"}]}/>
+                        <hr></hr>
+                        <LabelField title="Emergency Contact Name" field="emergencyName" value={this.state.emergencyName} editing={true} valueChanged={this.updateState} />
+                        <SelectField title="Emergency Contact Prefix" field="emergencyPrefix" value={this.state.emergencyPrefix} editing={true} valueChanged={this.updateState} options={[{value: "Mr", display: "Mr"}, {value: "Ms", display: "Ms"}, {value: "Mrs", display: "Mrs"}]}/>
+                        <LabelField title="Emergency Contact Relationship" field="emergencyRelationship" value={this.state.emergencyRelationship} editing={true} valueChanged={this.updateState} />
+                        <LabelField title="Emergency Contact Phone Number" field="emergencyPhone" value={this.state.emergencyPhone} editing={true} valueChanged={this.updateState} />
                         {errorMessage}
                     </div>
                     <div style={buttonDivStyle}>
                         <IconButton src="images/close.png" onClick={this.props.closeCallback}/>
                         <IconButton src="images/trash.png" onClick={this.deleteAccount}/>
-                        <IconButton src="images/done.png" onClick={this.updatePassword}/>
+                        <IconButton src="images/done.png" onClick={this.updateChild}/>
                     </div>
                 </div>
 
