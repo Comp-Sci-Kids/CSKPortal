@@ -2,22 +2,28 @@ class ChildTable extends React.Component {
     constructor(props){
         super(props)
         this.closePopup = this.closePopup.bind(this)
+        this.editChild = this.editChild.bind(this)
         this.state = {
             kid: {},
             popupOpen: false
         }
     }
+    
     closePopup(){
         this.setState({
             kid: {},
             popupOpen: false
         })
+        
+        this.props.refreshCallback();
+        
     }
     editChild(kid) {
         this.setState({
             kid: kid,
             popupOpen: true
         })
+        
     }
     render(){
         let tableStyle = {
@@ -41,7 +47,8 @@ class ChildTable extends React.Component {
         //this is a popup for editing an account info - it only renders when a button gets clicked on
         let popup = null
         if(this.state.popupOpen){
-            popup = <EditChildPopup refreshCallback = {this.props.refreshCallback} name={this.state.name} username={this.state.username} closeCallback={this.closePopup}/>
+
+            popup = <EditChildPopup sampleKid = {this.state.kid} refreshCallback = {this.props.refreshCallback} name={this.state.name} username={this.state.username} closeCallback={this.closePopup}/>
         }
 
         return (

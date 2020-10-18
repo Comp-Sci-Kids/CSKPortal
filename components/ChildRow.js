@@ -1,8 +1,13 @@
 class ChildRow extends React.Component {
     constructor(props) {
         super(props)
+        this.openChildRowPopup = this.openChildRowPopup.bind(this)
         this.sessionSelect = React.createRef()
         this.sectionSelect = React.createRef()
+
+    }
+    openChildRowPopup() {
+        this.updateState("popup", true)
     }
 
     render() {
@@ -27,6 +32,8 @@ class ChildRow extends React.Component {
                 break;
             }
         }
+
+        
 
         return (
             <tr>
