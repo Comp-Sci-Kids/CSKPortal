@@ -135,6 +135,13 @@ class AddChildPopup extends React.Component {
             errorMessage = <p style={errorStyle}>{this.state.error}</p>
         }
 
+        let hrStyle = {
+            border: '5px dotted ' + appBlue,
+            borderStyle: 'none none dotted',
+            color: '#fff',
+            backgroundColor: '#fff' 
+        }
+
         return (
             <div style={popupStyle}>
                 <div style={boxStyle}>
@@ -152,7 +159,7 @@ class AddChildPopup extends React.Component {
 
                         <SelectField title="Grade" field="grade" value={this.state.grade} editing={true} valueChanged={this.updateState} options={[{value: 1, display: "1st"}, {value: 2, display: "2nd"}, {value: 3, display: "3rd"}, {value: 4, display: "4th"}, {value: 5, display: "5th"}, {value: 6, display: "6th"}, {value: 7, display: "7th"}, {value: 8, display: "8th"}]}/>
                         <SelectField title="Shirt Size" field="shirtSize" value={this.state.shirtSize} editing={true} valueChanged={this.updateState} options={[{value: "ys", display: "Youth Small"}, {value: "ym", display: "Youth Medium"}, {value: "yl", display: "Youth Large"}, {value: "as", display: "Adult Small"}, {value: "am", display: "Adult Medium"}, {value: "al", display: "Adult Large"}, {value: "ax", display: "Adult X-Large"}]}/>
-                        <hr></hr>
+                        <hr style = {hrStyle}></hr>
                         <LabelField title="Emergency Contact Name" field="emergencyName" value={this.state.emergencyName} editing={true} valueChanged={this.updateState} />
                         <SelectField title="Emergency Contact Prefix" field="emergencyPrefix" value={this.state.emergencyPrefix} editing={true} valueChanged={this.updateState} options={[{value: "Mr", display: "Mr"}, {value: "Ms", display: "Ms"}, {value: "Mrs", display: "Mrs"}]}/>
                         <LabelField title="Emergency Contact Relationship" field="emergencyRelationship" value={this.state.emergencyRelationship} editing={true} valueChanged={this.updateState} />

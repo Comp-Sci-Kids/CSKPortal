@@ -86,6 +86,11 @@ class ChildPage extends React.Component {
             popup = <AddChildPopup sampleKid = {sampleKid} closeCallback={this.closePopup}/>
         }
 
+        let infoStyle = {
+            fontStyle: 'italic',
+            fontSize: '25px'
+        }
+
         return (
             <div style={divStyle}>
 
@@ -95,7 +100,13 @@ class ChildPage extends React.Component {
                         <IconButton src="images/add.png" onClick={this.openPopup}/>  
                     </div>
                     <hr />
-                    <ChildTable kids={this.state.kids} refreshCallback={this.refreshPage}/>
+                    {this.state.kids.length > 0
+                        ?
+                        <ChildTable kids={this.state.kids} refreshCallback={this.refreshPage}/>
+                        :
+                        <p style = {infoStyle}>Please click the button in the top right of the screen to add a child.</p>
+                    }
+                    
                 </div>                
                 {popup} 
             </div>
