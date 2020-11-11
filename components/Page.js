@@ -43,7 +43,9 @@ class Page extends React.Component {
             content = <ResetPasswordPage changePage = {this.changePage}/>
         } else if (this.state.view == 4) {
             content = <Dashboard/>;
-        }
+        } else if (this.state.view == 5) {
+            content = <ResendConfirmation changePage = {this.changePage}/>
+        } 
         // }else {
         //     let body = <PageBody key={selectedSession} page={this.state.page} ref={this.pageBody} />
         //     if(selectedSession == null){

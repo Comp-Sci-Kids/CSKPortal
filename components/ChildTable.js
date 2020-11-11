@@ -59,7 +59,10 @@ class ChildTable extends React.Component {
                             <td style={{...headStyle, width: "200px"}}>First Name</td>
                             <td style={{...headStyle, width: "200px"}}>Last Name</td>
                             <td style={{...headStyle, width: "200px"}}>Grade</td>
+                            <td style={{...headStyle, width: "200px"}}>Birthday</td>
                             <td style={{...headStyle, width: "200px"}}>T-Shirt Size</td>
+                            <td style={{...headStyle, width: "300px"}}>Current Sessions</td>
+                            <td style={{...headStyle, width: "300px"}}>Past Sessions</td>
                             <td style={{width: "45px"}}></td>
                         </tr>
                     </thead>

@@ -30,7 +30,7 @@ class ChildPage extends React.Component {
         }, d => {
             if(!d.success){
                 alert("Error! Please refresh the page and try again.")
-            }else{
+            } else {
                 console.log(d.kids);
                 this.setState({
                     popup: false,

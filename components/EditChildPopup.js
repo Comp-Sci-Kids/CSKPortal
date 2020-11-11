@@ -14,6 +14,7 @@ class EditChildPopup extends React.Component {
             dob: this.props.sampleKid.birthday,
             grade: this.props.sampleKid.grade,
             shirtSize: this.props.sampleKid.shirtSize,
+            school: this.props.sampleKid.school,
             emergencyName: this.props.sampleKid.emergencyName,
             emergencyPrefix: this.props.sampleKid.emergencyPrefix,
             emergencyRelationship: this.props.sampleKid.emergencyRelationship,
@@ -60,6 +61,7 @@ class EditChildPopup extends React.Component {
             this.state.lastName == "" ||
             this.state.gender == "" ||
             this.state.dob == "" ||
+            this.state.school == "" ||
             this.state.grade == "" ||
             this.state.shirtSize == ""
         ) {
@@ -67,22 +69,39 @@ class EditChildPopup extends React.Component {
             return;
         }
 
-        
+        let dob = this.state.dob;
+
+        if(dob.length != 10) {
+            this.updateState("error", "Please enter the birthday in MM/DD/YYYY format.")
+            return;
+        } else if(dob[2] != "/" || dob[5] != "/") {
+            this.updateState("error", "Please enter the birthday in MM/DD/YYYY format.")
+            return;
+        }
+
+        const capitalize = (s) => {
+            if (typeof s !== 'string') return ''
+            return s.charAt(0).toUpperCase() + s.slice(1)
+        } 
+
         networkRequest("parent/updateKid", "POST", {
             id: this.state.id,
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
+            firstName: capitalize(this.state.firstName.toLowerCase()),
+            lastName: capitalize(this.state.lastName.toLowerCase()),
             gender: this.state.gender,
             birthday: this.state.dob,
             grade: this.state.grade,
+            school: this.state.school,
             shirtSize: this.state.shirtSize,
             emergencyName: this.state.emergencyName,
             emergencyPrefix: this.state.emergencyPrefix,
             emergencyRelationship: this.state.emergencyRelationship,
             emergencyPhone: this.state.emergencyPhone,
+            sessionName: this.props.sampleKid.sessionName
         }, d => {
+            console.log(d);
             if(!d.success){
-                this.updateState("error", d.message)
+                this.updateState("error", d.message);
             }else{
                 this.props.closeCallback()
             }
@@ -122,8 +141,8 @@ class EditChildPopup extends React.Component {
             zIndex: 1
         }
         let boxStyle = {
-            width: "600px",
-            height: "700px",
+            width: "fit-content",
+            height: "fit-content",
             backgroundColor: "white",
             borderRadius: "25px",
             display: "flex",
@@ -166,14 +185,14 @@ class EditChildPopup extends React.Component {
 
         //error message
         let errorMessage = null
-        if(this.state.message != ""){
+        if(this.state.error != ""){
             let errorStyle = {
                 color: this.state.error ? "red" : "green",
                 fontSize: "18px",
                 textAlign: "center",
                 fontWeight: "bold"
             }
-            errorMessage = <p style={errorStyle}>{this.state.message}</p>
+            errorMessage = <p style={errorStyle}>{this.state.error}</p>
         }
 
         let hrStyle = {
@@ -190,16 +209,15 @@ class EditChildPopup extends React.Component {
                     <div style={contentDiv}>
                         <h1>Edit Account</h1>
                         <hr></hr>
-                        <LabelField title="First Name" field="firstName" value={this.state.firstName} editing={true} valueChanged={this.updateState} />
-                        <LabelField title="Last Name" field="lastName" value={this.state.lastName} editing={true} valueChanged={this.updateState} />
+                        <LabelField title="First Name" field="firstName" value={this.state.firstName} editing={false} valueChanged={this.updateState} />
+                        <LabelField title="Last Name" field="lastName" value={this.state.lastName} editing={false} valueChanged={this.updateState} />
                         <SelectField title="Gender" field="gender" value={this.state.gender} editing={true} valueChanged={this.updateState} options={[{value: "male", display: "Male"}, {value: "female", display: "Female"}, {value: "other", display: "Other"}]}/>
 
-                        <div style={divStlye}>
-                            <label style={labelStyle}>Birthday (MM/DD/YYYY):</label>
-                            <input style={inputStyle} type="text" value={this.state.dob} pattern="\d{2}/\d{2}/\d{4}" placeholder="Birthday" name="dob" onChange={this.valueChanged} />
-                        </div>
+                        <LabelField title="Birthday (MM/DD/YYYY)" field="dob" value={this.state.dob} editing={false} valueChanged={this.updateState} />
 
                         <SelectField title="Grade" field="grade" value={this.state.grade} editing={true} valueChanged={this.updateState} options={[{value: 1, display: "1st"}, {value: 2, display: "2nd"}, {value: 3, display: "3rd"}, {value: 4, display: "4th"}, {value: 5, display: "5th"}, {value: 6, display: "6th"}, {value: 7, display: "7th"}, {value: 8, display: "8th"}]}/>
+                        <LabelField title="School" field="school" value={this.state.school} editing={true} valueChanged={this.updateState} />
+
                         <SelectField title="Shirt Size" field="shirtSize" value={this.state.shirtSize} editing={true} valueChanged={this.updateState} options={[{value: "ys", display: "Youth Small"}, {value: "ym", display: "Youth Medium"}, {value: "yl", display: "Youth Large"}, {value: "as", display: "Adult Small"}, {value: "am", display: "Adult Medium"}, {value: "al", display: "Adult Large"}, {value: "ax", display: "Adult X-Large"}]}/>
                         <hr style = {hrStyle}></hr>
                         <LabelField title="Emergency Contact Name" field="emergencyName" value={this.state.emergencyName} editing={true} valueChanged={this.updateState} />

@@ -12,6 +12,7 @@ class AddChildPopup extends React.Component {
             dob: "",
             grade: "",
             shirtSize: "",
+            school: "",
             emergencyName: this.props.sampleKid.emergencyName,
             emergencyPrefix: this.props.sampleKid.emergencyPrefix,
             emergencyRelationship: this.props.sampleKid.emergencyRelationship,
@@ -32,21 +33,38 @@ class AddChildPopup extends React.Component {
             this.state.gender == "" ||
             this.state.dob == "" ||
             this.state.grade == "" ||
+            this.state.school == "" ||
             this.state.shirtSize == ""
           ) {
             this.updateState("error", "You are missing some information.")
             return;
           }
 
+        let dob = this.state.dob;
+
+        if(dob.length != 10) {
+            this.updateState("error", "Please enter the birthday in MM/DD/YYYY format.")
+            return;
+        } else if(dob[2] != "/" || dob[5] != "/") {
+            this.updateState("error", "Please enter the birthday in MM/DD/YYYY format.")
+            return;
+        }
+
+        const capitalize = (s) => {
+            if (typeof s !== 'string') return ''
+            return s.charAt(0).toUpperCase() + s.slice(1)
+        } 
+
 
 
         networkRequest("parent/createKid", "POST", {
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
+            firstName: capitalize(this.state.firstName.toLowerCase()),
+            lastName: capitalize(this.state.lastName.toLowerCase()),
             gender: this.state.gender,
             birthday: this.state.dob,
             grade: this.state.grade,
             shirtSize: this.state.shirtSize,
+            school: this.state.school,
             emergencyName: this.state.emergencyName,
             emergencyPrefix: this.state.emergencyPrefix,
             emergencyRelationship: this.state.emergencyRelationship,
@@ -158,6 +176,8 @@ class AddChildPopup extends React.Component {
                         </div>
 
                         <SelectField title="Grade" field="grade" value={this.state.grade} editing={true} valueChanged={this.updateState} options={[{value: 1, display: "1st"}, {value: 2, display: "2nd"}, {value: 3, display: "3rd"}, {value: 4, display: "4th"}, {value: 5, display: "5th"}, {value: 6, display: "6th"}, {value: 7, display: "7th"}, {value: 8, display: "8th"}]}/>
+                        <LabelField title="School" field="school" value={this.state.school} editing={true} valueChanged={this.updateState} />
+
                         <SelectField title="Shirt Size" field="shirtSize" value={this.state.shirtSize} editing={true} valueChanged={this.updateState} options={[{value: "ys", display: "Youth Small"}, {value: "ym", display: "Youth Medium"}, {value: "yl", display: "Youth Large"}, {value: "as", display: "Adult Small"}, {value: "am", display: "Adult Medium"}, {value: "al", display: "Adult Large"}, {value: "ax", display: "Adult X-Large"}]}/>
                         <hr style = {hrStyle}></hr>
                         <LabelField title="Emergency Contact Name" field="emergencyName" value={this.state.emergencyName} editing={true} valueChanged={this.updateState} />

@@ -1,10 +1,10 @@
-class ResetPasswordPage extends React.Component {
+class ResendConfirmation extends React.Component {
     constructor(props) {
         super(props)
         
         this.valueChanged = this.valueChanged.bind(this)
         this.updateState = this.updateState.bind(this)
-        this.resetPassword = this.resetPassword.bind(this)
+        this.confirmationEmail = this.confirmationEmail.bind(this)
 
         document.onkeypress = (e) => {
             if(e.keyCode == 13){
@@ -24,12 +24,15 @@ class ResetPasswordPage extends React.Component {
         this.state[key] = val;
         this.setState(this.state)
     }
-    resetPassword() {
 
-        if(confirm("Are you sure you want to reset your password?")){
-            networkRequest("parent/resetPassword", "POST", {
+
+    confirmationEmail() {
+
+        if(confirm("Are you sure you want to send a new confirmation email?")) {
+            networkRequest("parent/sendConfirmation", "POST", {
                 email: this.state.email
             }, d => {
+                console.log(d)
                 this.state["error"] = d.message;
                 this.state["success"] = d.success;
                 this.setState(this.state)
@@ -133,10 +136,10 @@ class ResetPasswordPage extends React.Component {
                 </ul>
                 {errorBox}
                 <div style={boxStyle}>
-                    <h1 style={titleStyle}>Reset Password</h1>
+                    <h1 style={titleStyle}>Resend Confirmation Email</h1>
                     
                     <input style={inputStyle} type="email" placeholder="Email" name="email" value={this.state.email} onChange={this.valueChanged}/>
-                    <button style={buttonStyle} onClick={this.resetPassword}>Reset Password</button>
+                    <button style={buttonStyle} onClick={this.confirmationEmail}>Send</button>
                     <button style={buttonStyle} onClick={() => this.props.changePage(1)}>Back</button>
                 </div>
                 

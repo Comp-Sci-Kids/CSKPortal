@@ -5,6 +5,11 @@ class ChildRow extends React.Component {
         this.sessionSelect = React.createRef()
         this.sectionSelect = React.createRef()
 
+        this.state = {
+            latestSession: "",
+            latestSessionState: ""
+        }
+
     }
     openChildRowPopup() {
         this.updateState("popup", true)
@@ -33,14 +38,62 @@ class ChildRow extends React.Component {
             }
         }
 
-        
+        var pastSessions = []
+
+        for(var i = 0; i < this.props.kid.sessions.old.length; i++) {
+            var sessionData = this.props.kid.sessions.old[i];
+
+            var text = ""
+
+            text += sessionData.sessionName + ", " + sessionData.section
+            if(sessionData.waitlist) {
+                text += " Waitlist"
+            } else if(sessionData.advanced) {
+                text += " Advanced"
+            } else {
+                text += " Regular"
+            }
+            console.log(text)
+
+            pastSessions.push(<li key = {i}>{text}</li>)
+        }
+
+        if(pastSessions.length == 0) {
+            pastSessions.push(<p key = {i}>None</p>)
+        }
+
+        var currentSessions = []
+
+        for(var i = 0; i < this.props.kid.sessions.current.length; i++) {
+            var sessionData = this.props.kid.sessions.current[i];
+
+            var text = ""
+
+            text += sessionData.sessionName + ", " + sessionData.section
+            if(sessionData.waitlist) {
+                text += " Waitlist"
+            } else if(sessionData.advanced) {
+                text += " Advanced"
+            } else {
+                text += " Regular"
+            }
+
+            currentSessions.push(<li key = {i}>{text}</li>)
+        }
+
+        if(currentSessions.length == 0) {
+            currentSessions.push(<p key = {i}>None</p>)
+        }
 
         return (
             <tr>
                 <td>{this.props.kid.firstName}</td>
                 <td>{this.props.kid.lastName}</td>
                 <td>{grade}</td>
+                <td>{this.props.kid.birthday}</td>
                 <td>{shirtSize}</td>
+                <td>{currentSessions}</td>
+                <td>{pastSessions}</td>
                 {/* for editing a user account */}
                 <td><IconButton src="images/edit.png" small={true} onClick={() => {this.props.popup(this.props.kid)}}/></td>
             </tr>

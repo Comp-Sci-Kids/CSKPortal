@@ -8,9 +8,12 @@ class PageBody extends React.Component {
             //these are all of the different types of bodies
             //a student only has access to the attendance page
             case 0:
-                page = <ChildPage />
+                page = <RegisterPage />
                 break
             case 1:
+                page = <ChildPage />
+                break
+            case 2:
                 page = <AccountPage />
                 break
             default:

@@ -96,7 +96,8 @@ class LoginPage extends React.Component {
             margin: 0,
             fontSize: "20px",
             color: "blue",
-            textDecoration: "underline"
+            textDecoration: "underline",
+            marginTop: '7.5px'
         }
         let inputStyle = {
             borderRadius: "27px",
@@ -162,6 +163,7 @@ class LoginPage extends React.Component {
                     <br></br>
                     <p style={titleStyle2} onClick={() => this.props.changePage(2)}>Don't have an account?</p>
                     <p style={titleStyle2} onClick={() => this.props.changePage(3)}>Forgot your password?</p>
+                    <p style={titleStyle2} onClick={() => this.props.changePage(5)}>Resend confirmation email</p>
                 </div>
                 
             </div>

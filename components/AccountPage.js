@@ -14,6 +14,7 @@ class AccountPage extends React.Component {
             lastname: "",
             phone: "",
             email: "",
+            relationship: "",
             prefix: "Prefix",
             oldPassword: "",
             newPassword1: "",
@@ -65,6 +66,7 @@ class AccountPage extends React.Component {
                 this.state["firstname"] = d.parent.firstName;
                 this.state["lastname"] = d.parent.lastName;
                 this.state["prefix"] = d.parent.prefix;
+                this.state["relationship"] = d.parent.relationship;
                 this.state["phone"] = d.parent.phone;
                 this.state["email"] = d.parent.email;
                 this.setState(this.state)
@@ -76,13 +78,23 @@ class AccountPage extends React.Component {
     }
 
     updateInformation() {
+
+        const capitalize = (s) => {
+            if (typeof s !== 'string') return ''
+            return s.charAt(0).toUpperCase() + s.slice(1)
+        }
+
         networkRequest("parent/updateParent", "POST", {
-            firstName: this.state.firstname,
-            lastName: this.state.lastname,
+            firstName: capitalize(this.state.firstname.toLowerCase()),
+            lastName: capitalize(this.state.lastname.toLowerCase()),
             prefix: this.state.prefix,
             phone: this.state.phone,
+            relationship: this.state.relationship,
             email: this.state.email,
         }, d => {
+
+            this.getInformation();
+
             this.state["error"] = d.message;
             this.state["success"] = d.success;
             this.setState(this.state)
@@ -229,6 +241,8 @@ class AccountPage extends React.Component {
                         <h1 style={titleStyle}>Information</h1>
                     </div>
                     <hr />
+
+                    
                     <input style={inputStyle} type="text" placeholder="First Name" name="firstname" value={this.state.firstname} onChange={this.valueChanged}/>
                     <br></br>
                     <input style={inputStyle} type="text" placeholder="Last Name" name="lastname" value={this.state.lastname} onChange={this.valueChanged}/>
@@ -238,6 +252,13 @@ class AccountPage extends React.Component {
                         <option value="Mr">Mr</option>
                         <option value="Ms">Mrs</option>
                         <option value="Mrs">Ms</option>
+                    </select>
+                    <br></br>
+                    <select style={selectStyle} name="relationship" value = {this.state.relationship} onChange={this.valueChanged}>
+                        <option value="" defaultValue hidden>Relationship</option>
+                        <option value="Father">Father</option>
+                        <option value="Mother">Mother</option>
+                        <option value="Other">Other</option>
                     </select>
                                     
                     <br></br>
@@ -254,11 +275,11 @@ class AccountPage extends React.Component {
                     </div>
                     <hr />
 
-                    <input style={inputStyle} type="password" placeholder="Password" name="oldPassword" value={this.state.oldPassword} onChange={this.valueChanged}/>
+                    <input style={inputStyle} type="password" placeholder="Old Password" name="oldPassword" value={this.state.oldPassword} onChange={this.valueChanged}/>
                     <br></br>
-                    <input style={inputStyle} type="password" placeholder="Password" name="newPassword1" value={this.state.newPassword1} onChange={this.valueChanged}/>
+                    <input style={inputStyle} type="password" placeholder="New Password" name="newPassword1" value={this.state.newPassword1} onChange={this.valueChanged}/>
                     <br></br>
-                    <input style={inputStyle} type="password" placeholder="Password" name="newPassword2" value={this.state.newPassword2} onChange={this.valueChanged}/>
+                    <input style={inputStyle} type="password" placeholder="Re-enter New Password" name="newPassword2" value={this.state.newPassword2} onChange={this.valueChanged}/>
                     <br></br>
                     <button style={buttonStyle} onClick = {this.changePassword}>Update</button>
                     <br></br>

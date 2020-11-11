@@ -13,6 +13,7 @@ class SignUpPage extends React.Component {
             firstname: "",
             lastname: "",
             phone: "",
+            relationship: "",
             email: "",
             prefix: "Prefix",
             password: "",
@@ -28,11 +29,13 @@ class SignUpPage extends React.Component {
         this.state[key] = val;
         this.setState(this.state)
     }
+
+
     signUp(){
 
         //make sure all fields are filled
 
-        var vals = [this.state.firstname, this.state.lastname, this.state.phone, this.state.email, this.state.prefix, this.state.password];
+        var vals = [this.state.firstname, this.state.lastname, this.state.relationship, this.state.phone, this.state.email, this.state.prefix, this.state.password];
         console.log(vals)
         for(var i = 0; i < vals.length; i++) {
             if (vals[i] == "") {
@@ -53,22 +56,29 @@ class SignUpPage extends React.Component {
 
         //continue to signup
 
+        const capitalize = (s) => {
+            if (typeof s !== 'string') return ''
+            return s.charAt(0).toUpperCase() + s.slice(1)
+        }
+
         networkRequest("parent/signup", "POST", {
-            firstName: this.state.firstname,
-            lastName: this.state.lastname,
+            firstName: capitalize(this.state.firstname.toLowerCase()),
+            lastName: capitalize(this.state.lastname.toLowerCase()),
             prefix: this.state.prefix,
             phone: this.state.phone,
             email: this.state.email,
             password: this.state.password,
+            relationship: this.state.relationship
         }, d => {
             if(!d.success){
                 this.setState({
-                    firstName: this.state.firstname,
-                    lastName: this.state.lastname,
+                    firstName: capitalize(this.state.firstname.toLowerCase()),
+                    lastName: capitalize(this.state.lastname.toLowerCase()),
                     prefix: this.state.prefix,
                     phone: this.state.phone,
                     email: this.state.email,
                     password: this.state.password,
+                    relationship: this.state.relationship,
                     error: d.message,
                     success: false
                 })
@@ -82,6 +92,7 @@ class SignUpPage extends React.Component {
                     phone: "",
                     email: "",
                     password: "",
+                    relationship: "",
                     error: d.message,
                     success: true
                 })
@@ -193,6 +204,8 @@ class SignUpPage extends React.Component {
                 {errorBox}
                 <div style={boxStyle}>
                     <h1 style={titleStyle}>CompSci Kids Parent Sign Up</h1>
+
+
                     <input style={inputStyle} type="text" placeholder="First Name" name="firstname" value={this.state.firstname} onChange={this.valueChanged}/>
                     <input style={inputStyle} type="text" placeholder="Last Name" name="lastname" value={this.state.lastname} onChange={this.valueChanged}/>
                     
@@ -201,6 +214,13 @@ class SignUpPage extends React.Component {
                         <option value="Mr">Mr</option>
                         <option value="Ms">Mrs</option>
                         <option value="Mrs">Ms</option>
+                    </select>
+
+                    <select style={selectStyle} name="relationship" value = {this.state.relationship} onChange={this.valueChanged}>
+                        <option value="" defaultValue hidden>Relationship</option>
+                        <option value="Father">Father</option>
+                        <option value="Mother">Mother</option>
+                        <option value="Other">Other</option>
                     </select>
                     
                     {/* <input style={inputStyle} type="text" placeholder="Prefix" name="prefix" value={this.state.prefix} onChange={this.valueChanged}/> */}
