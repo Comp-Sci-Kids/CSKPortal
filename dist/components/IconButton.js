@@ -22,95 +22,45 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var Page = /*#__PURE__*/function (_React$Component) {
-  _inherits(Page, _React$Component);
+var IconButton = /*#__PURE__*/function (_React$Component) {
+  _inherits(IconButton, _React$Component);
 
-  var _super = _createSuper(Page);
+  var _super = _createSuper(IconButton);
 
-  function Page(props) {
-    var _this;
+  function IconButton(props) {
+    _classCallCheck(this, IconButton);
 
-    _classCallCheck(this, Page);
+    return _super.call(this, props);
+  }
 
-    _this = _super.call(this, props);
-    _this.pageBody = React.createRef();
-    _this.changePage = _this.changePage.bind(_assertThisInitialized(_this));
-    _this.loggedIn = _this.loggedIn.bind(_assertThisInitialized(_this));
-    _this.state = {
-      view: 1,
-      //0 is login, 1 is signup, 2 is dashboard...
-      refresh: false
-    };
-    return _this;
-  } //user is logged in
-
-
-  _createClass(Page, [{
-    key: "loggedIn",
-    value: function loggedIn() {
-      this.setState({
-        view: 4,
-        refresh: this.state.refresh
-      });
-    } //refresh the page
-
-  }, {
-    key: "refresh",
-    value: function refresh() {
-      this.setState({
-        view: this.state.view,
-        refresh: !this.state.refresh //binary operator changes the value
-
-      });
-    }
-  }, {
-    key: "changePage",
-    value: function changePage(view) {
-      this.setState({
-        view: view
-      });
-    }
-  }, {
+  _createClass(IconButton, [{
     key: "render",
     value: function render() {
-      var content = null;
-
-      if (this.state.view == 1) {
-        content = /*#__PURE__*/React.createElement(LoginPage, {
-          changePage: this.changePage,
-          callback: this.loggedIn
-        });
-      } else if (this.state.view == 2) {
-        content = /*#__PURE__*/React.createElement(SignUpPage, {
-          changePage: this.changePage
-        });
-      } else if (this.state.view == 3) {
-        content = /*#__PURE__*/React.createElement(ResetPasswordPage, {
-          changePage: this.changePage
-        });
-      } else if (this.state.view == 4) {
-        content = /*#__PURE__*/React.createElement(Dashboard, null);
-      } else if (this.state.view == 5) {
-        content = /*#__PURE__*/React.createElement(ResendConfirmation, {
-          changePage: this.changePage
-        });
-      } // }else {
-      //     let body = <PageBody key={selectedSession} page={this.state.page} ref={this.pageBody} />
-      //     if(selectedSession == null){
-      //         body = null
-      //     }
-      //     content = (
-      //         <div>
-      //             <Header defaultPage={this.state.page} changePage={this.changePage} refreshCallback={this.refresh}/>
-      //             {body}
-      //         </div>
-      //     )
-      // }
-
-
-      return content;
+      var imageButtonStyle = {
+        width: this.props.small ? "30px" : "50px",
+        height: this.props.small ? "30px" : "50px",
+        backgroundColor: this.props.disabled ? "#DDDDDD" : appBlue,
+        padding: this.props.small ? "4px" : "8px",
+        boxSizing: "border-box",
+        borderRadius: this.props.small ? "4px" : "10px",
+        display: "inline-block",
+        marginLeft: this.props.small ? "5px" : "10px",
+        cursor: "pointer"
+      };
+      var imageStyle = {
+        maxWidth: "100%",
+        filter: "invert(100%)",
+        userSelect: "none"
+      };
+      return /*#__PURE__*/React.createElement("div", {
+        style: imageButtonStyle,
+        onClick: this.props.disabled ? null : this.props.onClick
+      }, /*#__PURE__*/React.createElement("img", {
+        style: imageStyle,
+        src: this.props.src
+      }));
     }
   }]);
 
-  return Page;
+  return IconButton;
 }(React.Component);

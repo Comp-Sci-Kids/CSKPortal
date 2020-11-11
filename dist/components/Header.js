@@ -22,95 +22,59 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var Page = /*#__PURE__*/function (_React$Component) {
-  _inherits(Page, _React$Component);
+var Header = /*#__PURE__*/function (_React$Component) {
+  _inherits(Header, _React$Component);
 
-  var _super = _createSuper(Page);
+  var _super = _createSuper(Header);
 
-  function Page(props) {
+  function Header(props) {
     var _this;
 
-    _classCallCheck(this, Page);
+    _classCallCheck(this, Header);
 
     _this = _super.call(this, props);
-    _this.pageBody = React.createRef();
-    _this.changePage = _this.changePage.bind(_assertThisInitialized(_this));
-    _this.loggedIn = _this.loggedIn.bind(_assertThisInitialized(_this));
-    _this.state = {
-      view: 1,
-      //0 is login, 1 is signup, 2 is dashboard...
-      refresh: false
-    };
+    _this.tabChanged = _this.tabChanged.bind(_assertThisInitialized(_this));
     return _this;
-  } //user is logged in
+  }
 
-
-  _createClass(Page, [{
-    key: "loggedIn",
-    value: function loggedIn() {
-      this.setState({
-        view: 4,
-        refresh: this.state.refresh
-      });
-    } //refresh the page
-
-  }, {
-    key: "refresh",
-    value: function refresh() {
-      this.setState({
-        view: this.state.view,
-        refresh: !this.state.refresh //binary operator changes the value
-
-      });
-    }
-  }, {
-    key: "changePage",
-    value: function changePage(view) {
-      this.setState({
-        view: view
-      });
+  _createClass(Header, [{
+    key: "tabChanged",
+    value: function tabChanged(index) {
+      this.props.changePage(index);
     }
   }, {
     key: "render",
     value: function render() {
-      var content = null;
+      var outerDivStyle = {
+        backgroundColor: "white" // height: "200px"
 
-      if (this.state.view == 1) {
-        content = /*#__PURE__*/React.createElement(LoginPage, {
-          changePage: this.changePage,
-          callback: this.loggedIn
-        });
-      } else if (this.state.view == 2) {
-        content = /*#__PURE__*/React.createElement(SignUpPage, {
-          changePage: this.changePage
-        });
-      } else if (this.state.view == 3) {
-        content = /*#__PURE__*/React.createElement(ResetPasswordPage, {
-          changePage: this.changePage
-        });
-      } else if (this.state.view == 4) {
-        content = /*#__PURE__*/React.createElement(Dashboard, null);
-      } else if (this.state.view == 5) {
-        content = /*#__PURE__*/React.createElement(ResendConfirmation, {
-          changePage: this.changePage
-        });
-      } // }else {
-      //     let body = <PageBody key={selectedSession} page={this.state.page} ref={this.pageBody} />
-      //     if(selectedSession == null){
-      //         body = null
-      //     }
-      //     content = (
-      //         <div>
-      //             <Header defaultPage={this.state.page} changePage={this.changePage} refreshCallback={this.refresh}/>
-      //             {body}
-      //         </div>
-      //     )
-      // }
-
-
-      return content;
+      };
+      var innerDivStyle = {
+        width: "100%",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center"
+      };
+      var titleStyle = {
+        margin: "20px",
+        color: appBlue,
+        fontFamily: "brandFont",
+        fontSize: "50px"
+      };
+      return /*#__PURE__*/React.createElement("div", {
+        style: outerDivStyle
+      }, /*#__PURE__*/React.createElement("div", {
+        style: innerDivStyle
+      }, /*#__PURE__*/React.createElement("h1", {
+        style: titleStyle
+      }, "CompSci Kids Portal"), /*#__PURE__*/React.createElement(User, {
+        name: sessionStorage.getItem("firstName") + " " + sessionStorage.getItem("lastName")
+      })), /*#__PURE__*/React.createElement(TabBar, {
+        defaultPage: this.props.defaultPage,
+        tabChanged: this.tabChanged
+      }));
     }
   }]);
 
-  return Page;
+  return Header;
 }(React.Component);

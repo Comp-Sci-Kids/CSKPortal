@@ -22,95 +22,89 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var Page = /*#__PURE__*/function (_React$Component) {
-  _inherits(Page, _React$Component);
+var User = /*#__PURE__*/function (_React$Component) {
+  _inherits(User, _React$Component);
 
-  var _super = _createSuper(Page);
+  var _super = _createSuper(User);
 
-  function Page(props) {
+  function User(props) {
     var _this;
 
-    _classCallCheck(this, Page);
+    _classCallCheck(this, User);
 
     _this = _super.call(this, props);
-    _this.pageBody = React.createRef();
-    _this.changePage = _this.changePage.bind(_assertThisInitialized(_this));
-    _this.loggedIn = _this.loggedIn.bind(_assertThisInitialized(_this));
+    _this.logOut = _this.logOut.bind(_assertThisInitialized(_this));
     _this.state = {
-      view: 1,
-      //0 is login, 1 is signup, 2 is dashboard...
-      refresh: false
+      hidden: true
     };
     return _this;
-  } //user is logged in
+  }
 
-
-  _createClass(Page, [{
-    key: "loggedIn",
-    value: function loggedIn() {
-      this.setState({
-        view: 4,
-        refresh: this.state.refresh
-      });
-    } //refresh the page
-
-  }, {
-    key: "refresh",
-    value: function refresh() {
-      this.setState({
-        view: this.state.view,
-        refresh: !this.state.refresh //binary operator changes the value
-
-      });
-    }
-  }, {
-    key: "changePage",
-    value: function changePage(view) {
-      this.setState({
-        view: view
-      });
+  _createClass(User, [{
+    key: "logOut",
+    value: function logOut() {
+      sessionStorage.clear();
+      location.reload();
     }
   }, {
     key: "render",
     value: function render() {
-      var content = null;
+      var _this2 = this;
 
-      if (this.state.view == 1) {
-        content = /*#__PURE__*/React.createElement(LoginPage, {
-          changePage: this.changePage,
-          callback: this.loggedIn
-        });
-      } else if (this.state.view == 2) {
-        content = /*#__PURE__*/React.createElement(SignUpPage, {
-          changePage: this.changePage
-        });
-      } else if (this.state.view == 3) {
-        content = /*#__PURE__*/React.createElement(ResetPasswordPage, {
-          changePage: this.changePage
-        });
-      } else if (this.state.view == 4) {
-        content = /*#__PURE__*/React.createElement(Dashboard, null);
-      } else if (this.state.view == 5) {
-        content = /*#__PURE__*/React.createElement(ResendConfirmation, {
-          changePage: this.changePage
-        });
-      } // }else {
-      //     let body = <PageBody key={selectedSession} page={this.state.page} ref={this.pageBody} />
-      //     if(selectedSession == null){
-      //         body = null
-      //     }
-      //     content = (
-      //         <div>
-      //             <Header defaultPage={this.state.page} changePage={this.changePage} refreshCallback={this.refresh}/>
-      //             {body}
-      //         </div>
-      //     )
-      // }
+      var divStyle = {
+        position: "relative",
+        display: "inline-block",
+        marginRight: "20px"
+      };
+      var buttonStyle = {
+        backgroundColor: "transparent",
+        color: appBlue,
+        padding: "16px",
+        fontSize: "16px",
+        border: "none",
+        outline: "none",
+        cursor: "pointer"
+      };
+      var dropdownStyle = {
+        display: "none",
+        position: "absolute",
+        backgroundColor: "#f1f1f1",
+        boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
+        zIndex: 1,
+        right: "5px",
+        borderRadius: "10px",
+        border: "0.5px solid"
+      };
+      var linkStyle = {
+        color: "black",
+        padding: "12px 16px",
+        textDecoration: "none",
+        display: "block",
+        textAlign: "center"
+      };
 
+      if (!this.state.hidden) {
+        dropdownStyle.display = "block";
+      }
 
-      return content;
+      return /*#__PURE__*/React.createElement("div", {
+        style: divStyle
+      }, /*#__PURE__*/React.createElement("button", {
+        style: buttonStyle,
+        onClick: function onClick() {
+          _this2.setState({
+            hidden: !_this2.state.hidden
+          });
+        }
+      }, this.props.name, " ", this.state.hidden ? String.fromCharCode("9660") : String.fromCharCode("9650")), /*#__PURE__*/React.createElement("div", {
+        style: dropdownStyle
+      }, /*#__PURE__*/React.createElement("a", {
+        href: "",
+        style: linkStyle,
+        onClick: this.logOut
+      }, "Log Out")));
     }
   }]);
 
-  return Page;
+  return User;
 }(React.Component);

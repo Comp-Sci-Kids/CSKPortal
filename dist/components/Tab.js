@@ -22,95 +22,47 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var Page = /*#__PURE__*/function (_React$Component) {
-  _inherits(Page, _React$Component);
+var Tab = /*#__PURE__*/function (_React$Component) {
+  _inherits(Tab, _React$Component);
 
-  var _super = _createSuper(Page);
+  var _super = _createSuper(Tab);
 
-  function Page(props) {
-    var _this;
+  function Tab(props) {
+    _classCallCheck(this, Tab);
 
-    _classCallCheck(this, Page);
+    return _super.call(this, props);
+  }
 
-    _this = _super.call(this, props);
-    _this.pageBody = React.createRef();
-    _this.changePage = _this.changePage.bind(_assertThisInitialized(_this));
-    _this.loggedIn = _this.loggedIn.bind(_assertThisInitialized(_this));
-    _this.state = {
-      view: 1,
-      //0 is login, 1 is signup, 2 is dashboard...
-      refresh: false
-    };
-    return _this;
-  } //user is logged in
-
-
-  _createClass(Page, [{
-    key: "loggedIn",
-    value: function loggedIn() {
-      this.setState({
-        view: 4,
-        refresh: this.state.refresh
-      });
-    } //refresh the page
-
-  }, {
-    key: "refresh",
-    value: function refresh() {
-      this.setState({
-        view: this.state.view,
-        refresh: !this.state.refresh //binary operator changes the value
-
-      });
-    }
-  }, {
-    key: "changePage",
-    value: function changePage(view) {
-      this.setState({
-        view: view
-      });
-    }
-  }, {
+  _createClass(Tab, [{
     key: "render",
     value: function render() {
-      var content = null;
+      var _this = this;
 
-      if (this.state.view == 1) {
-        content = /*#__PURE__*/React.createElement(LoginPage, {
-          changePage: this.changePage,
-          callback: this.loggedIn
-        });
-      } else if (this.state.view == 2) {
-        content = /*#__PURE__*/React.createElement(SignUpPage, {
-          changePage: this.changePage
-        });
-      } else if (this.state.view == 3) {
-        content = /*#__PURE__*/React.createElement(ResetPasswordPage, {
-          changePage: this.changePage
-        });
-      } else if (this.state.view == 4) {
-        content = /*#__PURE__*/React.createElement(Dashboard, null);
-      } else if (this.state.view == 5) {
-        content = /*#__PURE__*/React.createElement(ResendConfirmation, {
-          changePage: this.changePage
-        });
-      } // }else {
-      //     let body = <PageBody key={selectedSession} page={this.state.page} ref={this.pageBody} />
-      //     if(selectedSession == null){
-      //         body = null
-      //     }
-      //     content = (
-      //         <div>
-      //             <Header defaultPage={this.state.page} changePage={this.changePage} refreshCallback={this.refresh}/>
-      //             {body}
-      //         </div>
-      //     )
-      // }
+      var tabStyle = {
+        width: "150px",
+        height: "30px",
+        fontSize: "20px",
+        outline: "none",
+        borderStyle: "solid",
+        borderWidth: "1px 1px 0 1px",
+        borderColor: "black",
+        color: "black",
+        borderRadius: "15px 15px 0px 0px"
+      };
 
+      if (this.props.selected) {
+        tabStyle.backgroundColor = appBlue;
+        tabStyle.color = "white";
+      }
 
-      return content;
+      return /*#__PURE__*/React.createElement("button", {
+        style: tabStyle,
+        onClick: function onClick() {
+          _this.props.callback(_this.props.index);
+        }
+      }, this.props.title);
     }
   }]);
 
-  return Page;
+  return Tab;
 }(React.Component);

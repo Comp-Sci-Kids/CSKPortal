@@ -22,95 +22,61 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var Page = /*#__PURE__*/function (_React$Component) {
-  _inherits(Page, _React$Component);
+var TabBar = /*#__PURE__*/function (_React$Component) {
+  _inherits(TabBar, _React$Component);
 
-  var _super = _createSuper(Page);
+  var _super = _createSuper(TabBar);
 
-  function Page(props) {
+  function TabBar(props) {
     var _this;
 
-    _classCallCheck(this, Page);
+    _classCallCheck(this, TabBar);
 
     _this = _super.call(this, props);
-    _this.pageBody = React.createRef();
-    _this.changePage = _this.changePage.bind(_assertThisInitialized(_this));
-    _this.loggedIn = _this.loggedIn.bind(_assertThisInitialized(_this));
+    _this.changeTab = _this.changeTab.bind(_assertThisInitialized(_this));
     _this.state = {
-      view: 1,
-      //0 is login, 1 is signup, 2 is dashboard...
-      refresh: false
+      selectedTab: _this.props.defaultPage
     };
     return _this;
-  } //user is logged in
+  }
 
-
-  _createClass(Page, [{
-    key: "loggedIn",
-    value: function loggedIn() {
+  _createClass(TabBar, [{
+    key: "changeTab",
+    value: function changeTab(index) {
       this.setState({
-        view: 4,
-        refresh: this.state.refresh
+        selectedTab: index
       });
-    } //refresh the page
-
-  }, {
-    key: "refresh",
-    value: function refresh() {
-      this.setState({
-        view: this.state.view,
-        refresh: !this.state.refresh //binary operator changes the value
-
-      });
-    }
-  }, {
-    key: "changePage",
-    value: function changePage(view) {
-      this.setState({
-        view: view
-      });
+      this.props.tabChanged(index);
     }
   }, {
     key: "render",
     value: function render() {
-      var content = null;
+      var tabNames = ["Register", "Children", "Account"];
+      var tabs = [];
 
-      if (this.state.view == 1) {
-        content = /*#__PURE__*/React.createElement(LoginPage, {
-          changePage: this.changePage,
-          callback: this.loggedIn
-        });
-      } else if (this.state.view == 2) {
-        content = /*#__PURE__*/React.createElement(SignUpPage, {
-          changePage: this.changePage
-        });
-      } else if (this.state.view == 3) {
-        content = /*#__PURE__*/React.createElement(ResetPasswordPage, {
-          changePage: this.changePage
-        });
-      } else if (this.state.view == 4) {
-        content = /*#__PURE__*/React.createElement(Dashboard, null);
-      } else if (this.state.view == 5) {
-        content = /*#__PURE__*/React.createElement(ResendConfirmation, {
-          changePage: this.changePage
-        });
-      } // }else {
-      //     let body = <PageBody key={selectedSession} page={this.state.page} ref={this.pageBody} />
-      //     if(selectedSession == null){
-      //         body = null
-      //     }
-      //     content = (
-      //         <div>
-      //             <Header defaultPage={this.state.page} changePage={this.changePage} refreshCallback={this.refresh}/>
-      //             {body}
-      //         </div>
-      //     )
-      // }
+      for (var i = 0; i < tabNames.length; i++) {
+        tabs.push( /*#__PURE__*/React.createElement(Tab, {
+          key: i,
+          index: i,
+          title: tabNames[i],
+          selected: i == this.state.selectedTab,
+          callback: this.changeTab,
+          left: i == 0,
+          right: i == tabNames.length - 1
+        }));
+      }
 
-
-      return content;
+      var barStyle = {
+        borderBottom: "solid 1px",
+        width: "100%",
+        paddingLeft: "50px",
+        boxSizing: "border-box"
+      };
+      return /*#__PURE__*/React.createElement("div", {
+        style: barStyle
+      }, tabs);
     }
   }]);
 
-  return Page;
+  return TabBar;
 }(React.Component);

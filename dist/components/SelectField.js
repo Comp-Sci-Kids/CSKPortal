@@ -22,95 +22,95 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var Page = /*#__PURE__*/function (_React$Component) {
-  _inherits(Page, _React$Component);
+var SelectField = /*#__PURE__*/function (_React$Component) {
+  _inherits(SelectField, _React$Component);
 
-  var _super = _createSuper(Page);
+  var _super = _createSuper(SelectField);
 
-  function Page(props) {
+  function SelectField(props) {
     var _this;
 
-    _classCallCheck(this, Page);
+    _classCallCheck(this, SelectField);
 
     _this = _super.call(this, props);
-    _this.pageBody = React.createRef();
-    _this.changePage = _this.changePage.bind(_assertThisInitialized(_this));
-    _this.loggedIn = _this.loggedIn.bind(_assertThisInitialized(_this));
-    _this.state = {
-      view: 1,
-      //0 is login, 1 is signup, 2 is dashboard...
-      refresh: false
-    };
+    _this.onChange = _this.onChange.bind(_assertThisInitialized(_this));
+    _this.getValue = _this.getValue.bind(_assertThisInitialized(_this));
+    _this.input = React.createRef();
     return _this;
-  } //user is logged in
+  }
 
-
-  _createClass(Page, [{
-    key: "loggedIn",
-    value: function loggedIn() {
-      this.setState({
-        view: 4,
-        refresh: this.state.refresh
-      });
-    } //refresh the page
-
-  }, {
-    key: "refresh",
-    value: function refresh() {
-      this.setState({
-        view: this.state.view,
-        refresh: !this.state.refresh //binary operator changes the value
-
-      });
+  _createClass(SelectField, [{
+    key: "getValue",
+    value: function getValue() {
+      return this.input.current.value;
     }
   }, {
-    key: "changePage",
-    value: function changePage(view) {
-      this.setState({
-        view: view
-      });
+    key: "onChange",
+    value: function onChange(e) {
+      this.props.valueChanged(this.props.field, e.target.value);
     }
   }, {
     key: "render",
     value: function render() {
-      var content = null;
+      var divStlye = {
+        boxSizing: "border-box",
+        width: "100%",
+        padding: "5px 0px",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "flex-end"
+      };
+      var labelStyle = {
+        margin: 0,
+        marginRight: "40px",
+        fontSize: "25px",
+        fontWeight: "bold"
+      };
+      var pStyle = {
+        margin: 0,
+        fontSize: "20px"
+      };
+      var selectStyle = {
+        width: "206px",
+        fontSize: "18px"
+      };
 
-      if (this.state.view == 1) {
-        content = /*#__PURE__*/React.createElement(LoginPage, {
-          changePage: this.changePage,
-          callback: this.loggedIn
-        });
-      } else if (this.state.view == 2) {
-        content = /*#__PURE__*/React.createElement(SignUpPage, {
-          changePage: this.changePage
-        });
-      } else if (this.state.view == 3) {
-        content = /*#__PURE__*/React.createElement(ResetPasswordPage, {
-          changePage: this.changePage
-        });
-      } else if (this.state.view == 4) {
-        content = /*#__PURE__*/React.createElement(Dashboard, null);
-      } else if (this.state.view == 5) {
-        content = /*#__PURE__*/React.createElement(ResendConfirmation, {
-          changePage: this.changePage
-        });
-      } // }else {
-      //     let body = <PageBody key={selectedSession} page={this.state.page} ref={this.pageBody} />
-      //     if(selectedSession == null){
-      //         body = null
-      //     }
-      //     content = (
-      //         <div>
-      //             <Header defaultPage={this.state.page} changePage={this.changePage} refreshCallback={this.refresh}/>
-      //             {body}
-      //         </div>
-      //     )
-      // }
+      if (this.props.disabled) {
+        labelStyle.fontStyle = "italic", labelStyle.color = "gray", pStyle.fontStyle = "italic", pStyle.color = "gray";
+      }
 
+      var element = null;
 
-      return content;
+      if (this.props.editing) {
+        var options = [];
+        this.props.options.forEach(function (o) {
+          options.push( /*#__PURE__*/React.createElement("option", {
+            key: o.value,
+            value: o.value
+          }, o.display));
+        });
+        element = /*#__PURE__*/React.createElement("select", {
+          style: selectStyle,
+          value: this.props.value,
+          onChange: this.onChange
+        }, /*#__PURE__*/React.createElement("option", {
+          value: "",
+          defaultValue: true,
+          hidden: true
+        }, this.props.title), options);
+      } else {
+        element = /*#__PURE__*/React.createElement("p", {
+          style: pStyle
+        }, this.props.value);
+      }
+
+      return /*#__PURE__*/React.createElement("div", {
+        style: divStlye
+      }, /*#__PURE__*/React.createElement("label", {
+        style: labelStyle
+      }, this.props.title, ":"), element);
     }
   }]);
 
-  return Page;
+  return SelectField;
 }(React.Component);

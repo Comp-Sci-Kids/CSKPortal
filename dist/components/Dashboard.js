@@ -22,95 +22,56 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var Page = /*#__PURE__*/function (_React$Component) {
-  _inherits(Page, _React$Component);
+var Dashboard = /*#__PURE__*/function (_React$Component) {
+  _inherits(Dashboard, _React$Component);
 
-  var _super = _createSuper(Page);
+  var _super = _createSuper(Dashboard);
 
-  function Page(props) {
+  function Dashboard(props) {
     var _this;
 
-    _classCallCheck(this, Page);
+    _classCallCheck(this, Dashboard);
 
     _this = _super.call(this, props);
-    _this.pageBody = React.createRef();
     _this.changePage = _this.changePage.bind(_assertThisInitialized(_this));
-    _this.loggedIn = _this.loggedIn.bind(_assertThisInitialized(_this));
+    _this.refresh = _this.refresh.bind(_assertThisInitialized(_this));
+    _this.pageBody = React.createRef();
     _this.state = {
-      view: 1,
-      //0 is login, 1 is signup, 2 is dashboard...
+      page: 0,
       refresh: false
     };
     return _this;
-  } //user is logged in
+  }
 
-
-  _createClass(Page, [{
-    key: "loggedIn",
-    value: function loggedIn() {
-      this.setState({
-        view: 4,
-        refresh: this.state.refresh
-      });
-    } //refresh the page
-
-  }, {
+  _createClass(Dashboard, [{
     key: "refresh",
     value: function refresh() {
       this.setState({
-        view: this.state.view,
-        refresh: !this.state.refresh //binary operator changes the value
-
+        page: this.state.page,
+        refresh: !this.state.refresh
       });
     }
   }, {
     key: "changePage",
-    value: function changePage(view) {
+    value: function changePage(index) {
       this.setState({
-        view: view
+        refresh: this.state.refresh,
+        page: index
       });
     }
   }, {
     key: "render",
     value: function render() {
-      var content = null;
-
-      if (this.state.view == 1) {
-        content = /*#__PURE__*/React.createElement(LoginPage, {
-          changePage: this.changePage,
-          callback: this.loggedIn
-        });
-      } else if (this.state.view == 2) {
-        content = /*#__PURE__*/React.createElement(SignUpPage, {
-          changePage: this.changePage
-        });
-      } else if (this.state.view == 3) {
-        content = /*#__PURE__*/React.createElement(ResetPasswordPage, {
-          changePage: this.changePage
-        });
-      } else if (this.state.view == 4) {
-        content = /*#__PURE__*/React.createElement(Dashboard, null);
-      } else if (this.state.view == 5) {
-        content = /*#__PURE__*/React.createElement(ResendConfirmation, {
-          changePage: this.changePage
-        });
-      } // }else {
-      //     let body = <PageBody key={selectedSession} page={this.state.page} ref={this.pageBody} />
-      //     if(selectedSession == null){
-      //         body = null
-      //     }
-      //     content = (
-      //         <div>
-      //             <Header defaultPage={this.state.page} changePage={this.changePage} refreshCallback={this.refresh}/>
-      //             {body}
-      //         </div>
-      //     )
-      // }
-
-
-      return content;
+      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Header, {
+        defaultPage: this.state.page,
+        changePage: this.changePage,
+        refreshCallback: this.refresh
+      }), /*#__PURE__*/React.createElement(PageBody, {
+        page: this.state.page,
+        ref: this.pageBody
+      }));
     }
   }]);
 
-  return Page;
+  return Dashboard;
 }(React.Component);
