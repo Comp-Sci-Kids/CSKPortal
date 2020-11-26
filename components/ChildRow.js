@@ -102,8 +102,8 @@ class ChildRow extends React.Component {
         } else {
             return (
                 <tr>
-                    <td>{this.props.kid.firstName}</td>
-                    <td>{this.props.kid.lastName}</td>
+                    <td>{this.props.kid.firstName} {this.props.kid.lastName}</td>
+                    <td>{currentSessions}</td>
                     <td><IconButton src="images/edit.png" small={true} onClick={() => {this.props.popup(this.props.kid)}}/></td>
                 </tr>
             )

@@ -8,6 +8,15 @@ class Page extends React.Component {
             view: 1, //0 is login, 1 is signup, 2 is dashboard...
             refresh: false
         }
+
+    }
+
+    componentDidMount() {
+        if(sessionStorage.getItem("account")){
+            if(sessionStorage.getItem("account") == "parent"){
+                this.loggedIn();
+            }
+        }
     }
 
     //user is logged in
@@ -33,7 +42,6 @@ class Page extends React.Component {
     }
 
     render() {
-
         var content = null;
         if (this.state.view == 1){
             content = <LoginPage changePage = {this.changePage} callback = {this.loggedIn} />

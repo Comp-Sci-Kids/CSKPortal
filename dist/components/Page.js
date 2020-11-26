@@ -42,10 +42,19 @@ var Page = /*#__PURE__*/function (_React$Component) {
       refresh: false
     };
     return _this;
-  } //user is logged in
-
+  }
 
   _createClass(Page, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (sessionStorage.getItem("account")) {
+        if (sessionStorage.getItem("account") == "parent") {
+          this.loggedIn();
+        }
+      }
+    } //user is logged in
+
+  }, {
     key: "loggedIn",
     value: function loggedIn() {
       this.setState({

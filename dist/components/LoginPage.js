@@ -96,6 +96,7 @@ var LoginPage = /*#__PURE__*/function (_React$Component) {
           }).join(''));
           var payload = JSON.parse(jsonPayload);
           sessionStorage.setItem("token", token);
+          sessionStorage.setItem("account", "parent");
           sessionStorage.setItem("email", payload.email);
           sessionStorage.setItem("firstName", payload.firstName);
           sessionStorage.setItem("lastName", payload.lastName);

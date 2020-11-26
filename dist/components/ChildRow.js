@@ -179,7 +179,7 @@ var ChildRow = /*#__PURE__*/function (_React$Component) {
           }
         })));
       } else {
-        return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.kid.firstName), /*#__PURE__*/React.createElement("td", null, this.props.kid.lastName), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement(IconButton, {
+        return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.kid.firstName, " ", this.props.kid.lastName), /*#__PURE__*/React.createElement("td", null, currentSessions), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement(IconButton, {
           src: "images/edit.png",
           small: true,
           onClick: function onClick() {

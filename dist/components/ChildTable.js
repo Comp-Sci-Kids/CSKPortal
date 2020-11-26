@@ -139,13 +139,13 @@ var ChildTable = /*#__PURE__*/function (_React$Component) {
         }
       })) : /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", {
         style: _objectSpread(_objectSpread({}, headStyle), {}, {
-          width: "200px"
+          width: "100px"
         })
-      }, "First Name"), /*#__PURE__*/React.createElement("td", {
+      }, "Name"), /*#__PURE__*/React.createElement("td", {
         style: _objectSpread(_objectSpread({}, headStyle), {}, {
-          width: "200px"
+          width: "100px"
         })
-      }, "Last Name"), /*#__PURE__*/React.createElement("td", {
+      }, "Current Sessions"), /*#__PURE__*/React.createElement("td", {
         style: {
           width: "45px"
         }

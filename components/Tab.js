@@ -17,7 +17,7 @@ class Tab extends React.Component {
 
         if(window.screen.width < mobileThreshold) {
             tabStyle = {
-                width: "20vw",
+                width: "25vw",
                 height: "30px",
                 fontSize: "12px",
                 outline: "none",

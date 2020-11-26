@@ -53,6 +53,7 @@ class LoginPage extends React.Component {
 
                 let payload = JSON.parse(jsonPayload);
                 sessionStorage.setItem("token", token)
+                sessionStorage.setItem("account", "parent")
                 sessionStorage.setItem("email", payload.email)
                 sessionStorage.setItem("firstName", payload.firstName)
                 sessionStorage.setItem("lastName", payload.lastName)
