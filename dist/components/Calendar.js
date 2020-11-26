@@ -112,8 +112,8 @@ var Calendar = /*#__PURE__*/function (_React$Component) {
 
           colChild = e("button", {
             style: {
-              width: "30px",
-              height: "30px",
+              width: "10px",
+              height: "10px",
               borderRadius: "5px",
               border: "solid 0px",
               backgroundColor: backGroundColor,
@@ -126,6 +126,8 @@ var Calendar = /*#__PURE__*/function (_React$Component) {
         }
 
         var cHeadCol = e("td", {
+          style: {// fontSize: "15px"
+          },
           key: keyCount
         }, colChild);
         keyCount += 1;
@@ -148,7 +150,8 @@ var Calendar = /*#__PURE__*/function (_React$Component) {
         dayCols.push(e("td", {
           style: {
             textAlign: "center",
-            padding: 0
+            padding: 0 // fontSize: "15px"
+
           },
           key: _c
         }, weekDays[_c]));
@@ -222,12 +225,14 @@ var Calendar = /*#__PURE__*/function (_React$Component) {
       }, tBodyRows);
       keyCount += 1;
       var tableChild = [cHead, cBody];
+      var widthStyle = window.screen.width >= 760 && "400px" || "200px";
+      var sizeStyle = window.screen.width >= 760 && "25px" || "12px";
       var cTable = e("table", {
         style: {
           tableLayout: "fixed",
-          width: '400px',
+          width: widthStyle,
           margin: '0 auto',
-          fontSize: '25px'
+          fontSize: sizeStyle
         }
       }, tableChild);
       return cTable;

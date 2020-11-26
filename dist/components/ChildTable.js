@@ -105,7 +105,7 @@ var ChildTable = /*#__PURE__*/function (_React$Component) {
 
       return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("table", {
         style: tableStyle
-      }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", {
+      }, /*#__PURE__*/React.createElement("thead", null, window.screen.width >= 760 ? /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", {
         style: _objectSpread(_objectSpread({}, headStyle), {}, {
           width: "200px"
         })
@@ -134,6 +134,18 @@ var ChildTable = /*#__PURE__*/function (_React$Component) {
           width: "300px"
         })
       }, "Past Sessions"), /*#__PURE__*/React.createElement("td", {
+        style: {
+          width: "45px"
+        }
+      })) : /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", {
+        style: _objectSpread(_objectSpread({}, headStyle), {}, {
+          width: "200px"
+        })
+      }, "First Name"), /*#__PURE__*/React.createElement("td", {
+        style: _objectSpread(_objectSpread({}, headStyle), {}, {
+          width: "200px"
+        })
+      }, "Last Name"), /*#__PURE__*/React.createElement("td", {
         style: {
           width: "45px"
         }

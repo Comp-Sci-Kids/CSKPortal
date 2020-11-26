@@ -75,6 +75,31 @@ var SelectField = /*#__PURE__*/function (_React$Component) {
         fontSize: "18px"
       };
 
+      if (window.screen.width < 1280) {
+        divStlye = {
+          boxSizing: "border-box",
+          width: "100%",
+          padding: "5px 0px",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "flex-end"
+        };
+        labelStyle = {
+          margin: 0,
+          marginRight: "40px",
+          fontSize: "15px",
+          fontWeight: "bold"
+        };
+        pStyle = {
+          margin: 0,
+          fontSize: "15px"
+        };
+        selectStyle = {
+          width: "106px",
+          fontSize: "10px"
+        };
+      }
+
       if (this.props.disabled) {
         labelStyle.fontStyle = "italic", labelStyle.color = "gray", pStyle.fontStyle = "italic", pStyle.color = "gray";
       }

@@ -197,6 +197,36 @@ var Session = /*#__PURE__*/function (_React$Component) {
         marginTop: "15px",
         cursor: "pointer"
       };
+
+      if (window.screen.width < 1280) {
+        var buttonStyle = {
+          borderRadius: "27px",
+          border: "2px solid rgba(8,58,174,1)",
+          padding: "5px 5px",
+          width: "50vw",
+          height: "30px",
+          outline: "none",
+          fontSize: "15px",
+          backgroundColor: "#083ab9",
+          color: "white",
+          marginTop: "15px",
+          cursor: "pointer"
+        };
+        var buttonStyle2 = {
+          borderRadius: "27px",
+          border: "2px solid #D3D3D3",
+          padding: "5px 5px",
+          width: "50vw",
+          height: "30px",
+          outline: "none",
+          fontSize: "15px",
+          backgroundColor: "#D3D3D3",
+          color: "white",
+          marginTop: "15px",
+          cursor: "pointer"
+        };
+      }
+
       var registerButton = null;
 
       if (this.state.buttonState == 1) {

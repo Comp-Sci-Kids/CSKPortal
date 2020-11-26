@@ -144,7 +144,7 @@ var ChildPage = /*#__PURE__*/function (_React$Component) {
         style: headerStyle
       }, /*#__PURE__*/React.createElement("h1", {
         style: titleStyle
-      }, "Child Account"), /*#__PURE__*/React.createElement(IconButton, {
+      }, "Child Information"), /*#__PURE__*/React.createElement(IconButton, {
         src: "images/add.png",
         onClick: this.openPopup
       })), /*#__PURE__*/React.createElement("hr", null), this.state.kids.length > 0 ? /*#__PURE__*/React.createElement(ChildTable, {

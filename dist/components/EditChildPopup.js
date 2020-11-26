@@ -207,7 +207,71 @@ var EditChildPopup = /*#__PURE__*/function (_React$Component) {
         height: "20px",
         fontSize: "18px",
         width: "200px"
-      }; //error message
+      };
+      var headerStyle = {
+        fontSize: "35px"
+      };
+
+      if (window.screen.width < 1280) {
+        popupStyle = {
+          position: "fixed",
+          width: "100vw",
+          height: "100vh",
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          top: 0,
+          left: 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center"
+        };
+        boxStyle = {
+          width: "fit-content",
+          height: "fit-content",
+          backgroundColor: "white",
+          borderRadius: "25px",
+          display: "flex",
+          justifyContent: "space-between",
+          flexDirection: "column",
+          alignItems: "center",
+          position: "relative",
+          overflowY: "auto"
+        };
+        contentDiv = {
+          width: "95vw"
+        };
+        buttonDivStyle = {
+          width: "100%",
+          display: "flex",
+          justifyContent: "flex-end",
+          alignItems: "center",
+          boxSizing: "border-box",
+          paddingBottom: "10px",
+          paddingRight: "10px"
+        };
+        divStlye = {
+          boxSizing: "border-box",
+          width: "100%",
+          padding: "5px 0px",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "flex-end"
+        };
+        labelStyle = {
+          margin: 0,
+          marginRight: "20px",
+          fontSize: "15px",
+          fontWeight: "bold"
+        };
+        inputStyle = {
+          height: "15px",
+          fontSize: "10px",
+          width: "100px"
+        };
+        headerStyle = {
+          fontSize: "22px"
+        };
+      } //error message
+
 
       var errorMessage = null;
 
@@ -235,7 +299,9 @@ var EditChildPopup = /*#__PURE__*/function (_React$Component) {
         style: boxStyle
       }, /*#__PURE__*/React.createElement("div", {
         style: contentDiv
-      }, /*#__PURE__*/React.createElement("h1", null, "Edit Account"), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement(LabelField, {
+      }, /*#__PURE__*/React.createElement("h1", {
+        style: headerStyle
+      }, "Edit Account"), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement(LabelField, {
         title: "First Name",
         field: "firstName",
         value: this.state.firstName,

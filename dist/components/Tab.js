@@ -39,7 +39,7 @@ var Tab = /*#__PURE__*/function (_React$Component) {
       var _this = this;
 
       var tabStyle = {
-        width: "150px",
+        width: "30vw",
         height: "30px",
         fontSize: "20px",
         outline: "none",
@@ -49,6 +49,20 @@ var Tab = /*#__PURE__*/function (_React$Component) {
         color: "black",
         borderRadius: "15px 15px 0px 0px"
       };
+
+      if (window.screen.width < 1280) {
+        tabStyle = {
+          width: "20vw",
+          height: "30px",
+          fontSize: "15px",
+          outline: "none",
+          borderStyle: "solid",
+          borderWidth: "1px 1px 0 1px",
+          borderColor: "black",
+          color: "black",
+          borderRadius: "15px 15px 0px 0px"
+        };
+      }
 
       if (this.props.selected) {
         tabStyle.backgroundColor = appBlue;

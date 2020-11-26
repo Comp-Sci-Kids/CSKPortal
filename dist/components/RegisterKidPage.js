@@ -181,31 +181,6 @@ var RegisterKidPage = /*#__PURE__*/function (_React$Component) {
       var titleStyle = {
         margin: "10px"
       };
-      var inputStyle = {
-        borderRadius: "27px",
-        border: "2px solid rgba(8,58,174,1)",
-        padding: "10px 20px",
-        width: "20%",
-        height: "20px",
-        outline: "none",
-        fontSize: "18px",
-        marginTop: "10px"
-      };
-      var labelStyle = {
-        margin: 0,
-        marginRight: "40px",
-        fontSize: "20px"
-      };
-      var selectStyle = {
-        borderRadius: "27px",
-        border: "2px solid rgba(8,58,174,1)",
-        padding: "10px 20px",
-        // width: "144px",
-        // height: "30px",
-        outline: "none",
-        fontSize: "20px",
-        marginTop: "20px"
-      };
       var buttonStyle = {
         borderRadius: "27px",
         border: "2px solid rgba(8,58,174,1)",
@@ -232,6 +207,56 @@ var RegisterKidPage = /*#__PURE__*/function (_React$Component) {
         marginTop: "15px",
         cursor: "pointer"
       };
+
+      if (window.screen.width < 1280) {
+        divStyle = {
+          height: "100%",
+          width: "100%",
+          textAlign: "center"
+        };
+        contentDivStyle = {
+          width: "90%",
+          margin: "auto",
+          textAlign: "center"
+        };
+        headerStyle = {
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: "30px",
+          flexDirection: "column"
+        };
+        titleStyle = {
+          margin: "10px"
+        };
+        buttonStyle = {
+          borderRadius: "15px",
+          border: "2px solid rgba(8,58,174,1)",
+          padding: "5px 5px",
+          width: "35vw",
+          height: "30px",
+          outline: "none",
+          fontSize: "15px",
+          backgroundColor: "#083ab9",
+          color: "white",
+          marginTop: "15px",
+          cursor: "pointer"
+        };
+        buttonStyle2 = {
+          borderRadius: "15px",
+          border: "2px solid #CC0000",
+          padding: "5px 5px",
+          width: "35vw",
+          height: "30px",
+          outline: "none",
+          fontSize: "15px",
+          backgroundColor: appRed,
+          color: "white",
+          marginTop: "15px",
+          cursor: "pointer"
+        };
+      }
+
       var errorBox = null;
       var color = "red";
 

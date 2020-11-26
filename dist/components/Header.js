@@ -53,13 +53,15 @@ var Header = /*#__PURE__*/function (_React$Component) {
         width: "100%",
         display: "flex",
         justifyContent: "space-between",
-        alignItems: "center"
+        alignItems: "center",
+        textAlign: "center"
       };
       var titleStyle = {
         margin: "20px",
         color: appBlue,
         fontFamily: "brandFont",
-        fontSize: "50px"
+        fontSize: "50px",
+        textAlign: "left"
       };
       return /*#__PURE__*/React.createElement("div", {
         style: outerDivStyle

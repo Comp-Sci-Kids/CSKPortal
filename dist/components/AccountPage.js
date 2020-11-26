@@ -71,7 +71,7 @@ var AccountPage = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       if (confirm("Are you sure you want to delete this account?")) {
-        // console.log("deleting")
+        // console.log("devaring")
         networkRequest("parent/delete", "DELETE", {}, function (d) {
           if (!d.success) {
             alert("error");
@@ -247,6 +247,74 @@ var AccountPage = /*#__PURE__*/function (_React$Component) {
         marginTop: "15px",
         cursor: "pointer"
       };
+
+      if (window.screen.width < 1280) {
+        divStyle = {
+          height: "100%",
+          width: "100%",
+          textAlign: "center"
+        };
+        contentDivStyle = {
+          width: "90%",
+          margin: "auto"
+        };
+        headerStyle = {
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: "30px"
+        };
+        titleStyle = {
+          margin: "10px"
+        };
+        inputStyle = {
+          borderRadius: "17px",
+          border: "2px solid rgba(8,58,174,1)",
+          padding: "10px 10px",
+          width: "70%",
+          height: "15px",
+          outline: "none",
+          fontSize: "12px",
+          marginTop: "20px"
+        };
+        selectStyle = {
+          borderRadius: "17px",
+          border: "2px solid rgba(8,58,174,1)",
+          padding: "10px 10px",
+          // width: "20%",
+          // height: "30px",
+          outline: "none",
+          fontSize: "15px",
+          marginTop: "20px"
+        };
+        buttonStyle = {
+          borderRadius: "17px",
+          border: "2px solid rgba(8,58,174,1)",
+          padding: "5px 5px",
+          width: "70%",
+          height: "30px",
+          outline: "none",
+          fontSize: "15px",
+          backgroundColor: "#083ab9",
+          color: "white",
+          marginTop: "15px",
+          cursor: "pointer"
+        };
+        buttonStyle2 = {
+          borderRadius: "17px",
+          border: "2px solid #CC0000",
+          padding: "5px 5px",
+          width: "70%",
+          height: "30px",
+          outline: "none",
+          fontSize: "15px",
+          backgroundColor: appRed,
+          color: "white",
+          marginTop: "15px",
+          cursor: "pointer"
+        };
+      }
+
       var errorBox = null;
       var color = "red";
 

@@ -170,13 +170,23 @@ var ChildRow = /*#__PURE__*/function (_React$Component) {
         }, "None"));
       }
 
-      return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.kid.firstName), /*#__PURE__*/React.createElement("td", null, this.props.kid.lastName), /*#__PURE__*/React.createElement("td", null, grade), /*#__PURE__*/React.createElement("td", null, this.props.kid.birthday), /*#__PURE__*/React.createElement("td", null, shirtSize), /*#__PURE__*/React.createElement("td", null, currentSessions), /*#__PURE__*/React.createElement("td", null, pastSessions), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement(IconButton, {
-        src: "images/edit.png",
-        small: true,
-        onClick: function onClick() {
-          _this2.props.popup(_this2.props.kid);
-        }
-      })));
+      if (window.screen.width >= 760) {
+        return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.kid.firstName), /*#__PURE__*/React.createElement("td", null, this.props.kid.lastName), /*#__PURE__*/React.createElement("td", null, grade), /*#__PURE__*/React.createElement("td", null, this.props.kid.birthday), /*#__PURE__*/React.createElement("td", null, shirtSize), /*#__PURE__*/React.createElement("td", null, currentSessions), /*#__PURE__*/React.createElement("td", null, pastSessions), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement(IconButton, {
+          src: "images/edit.png",
+          small: true,
+          onClick: function onClick() {
+            _this2.props.popup(_this2.props.kid);
+          }
+        })));
+      } else {
+        return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.kid.firstName), /*#__PURE__*/React.createElement("td", null, this.props.kid.lastName), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement(IconButton, {
+          src: "images/edit.png",
+          small: true,
+          onClick: function onClick() {
+            _this2.props.popup(_this2.props.kid);
+          }
+        })));
+      }
     }
   }]);
 

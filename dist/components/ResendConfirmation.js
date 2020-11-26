@@ -135,6 +135,63 @@ var ResendConfirmation = /*#__PURE__*/function (_React$Component) {
         marginTop: "15px",
         cursor: "pointer"
       };
+
+      if (window.screen.width < 1280) {
+        divStyle = {
+          width: "100%",
+          height: "100%",
+          background: "linear-gradient(90deg, rgba(8,58,134,1) 0%, rgba(8,58,194,1) 100%)",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          margin: 0,
+          padding: 0
+        };
+        boxStyle = {
+          width: "95vw",
+          backgroundColor: "white",
+          borderRadius: "30px",
+          boxShadow: "10px 10px 18px rgba(0, 0, 0, 0.5)",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-start",
+          alignItems: "center",
+          boxSizing: "border-box",
+          padding: "20px 0",
+          zIndex: "10"
+        };
+        titleStyle = {
+          margin: 0,
+          fontFamily: "brandFont",
+          fontSize: "40px",
+          color: appRed,
+          textAlign: "center"
+        };
+        inputStyle = {
+          borderRadius: "17px",
+          border: "2px solid rgba(8,58,174,1)",
+          padding: "10px 20px",
+          width: "70%",
+          height: "15px",
+          outline: "none",
+          fontSize: "12px",
+          marginTop: "20px"
+        };
+        buttonStyle = {
+          borderRadius: "17px",
+          border: "2px solid rgba(8,58,174,1)",
+          padding: "5px 5px",
+          width: "45%",
+          height: "44px",
+          outline: "none",
+          fontSize: "15px",
+          backgroundColor: "#083ab9",
+          color: "white",
+          marginTop: "15px",
+          cursor: "pointer"
+        };
+      }
+
       var errorBox = null;
       var color = "red";
 
