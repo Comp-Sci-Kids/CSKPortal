@@ -36,17 +36,21 @@ class AddChildPopup extends React.Component {
             this.state.school == "" ||
             this.state.shirtSize == ""
           ) {
-            this.updateState("error", "You are missing some information.")
+            alert("You are missing some information.");
+
+            // this.updateState("error", "You are missing some information.")
             return;
           }
 
         var dob = this.state.dob;
 
         if(dob.length != 10) {
-            this.updateState("error", "Please enter the birthday in MM/DD/YYYY format.")
+            alert("Please enter the birthday in MM/DD/YYYY format.");
+            // this.updateState("error", "Please enter the birthday in MM/DD/YYYY format.")
             return;
         } else if(dob[2] != "/" || dob[5] != "/") {
-            this.updateState("error", "Please enter the birthday in MM/DD/YYYY format.")
+            alert("Please enter the birthday in MM/DD/YYYY format.");
+            // this.updateState("error", "Please enter the birthday in MM/DD/YYYY format.")
             return;
         }
 
@@ -71,7 +75,8 @@ class AddChildPopup extends React.Component {
             emergencyPhone: this.state.emergencyPhone,
         }, d => {
             if(!d.success){
-                this.updateState("error", d.message)
+                alert(d.message);
+                // this.updateState("error", d.message)
             }else{
                 this.props.closeCallback()
             }
@@ -158,7 +163,7 @@ class AddChildPopup extends React.Component {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                overflowY: 'scroll',
+                // overflowY: 'scroll',
             }
 
              boxStyle = {
@@ -171,10 +176,11 @@ class AddChildPopup extends React.Component {
                 flexDirection: "column",
                 alignItems: "center",
                 position: "relative",
-                overflowY: 'scroll',
+                // overflowY: 'auto',
+                // overflowX : 'auto'
             }
              contentDiv = {
-                width: "95vw"
+                width: "95vw",
             }
              buttonDivStyle = {
                 width: "100%",

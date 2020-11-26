@@ -91,17 +91,20 @@ var EditChildPopup = /*#__PURE__*/function (_React$Component) {
       var _this3 = this;
 
       if (this.state.emergencyPrefix == "" || this.state.emergencyName == "" || this.state.emergencyRelationship == "" || this.state.emergencyPhone == "" || this.state.firstName == "" || this.state.lastName == "" || this.state.gender == "" || this.state.dob == "" || this.state.school == "" || this.state.grade == "" || this.state.shirtSize == "") {
-        this.updateState("error", "You are missing some information.");
+        alert("You are missing some information."); // this.updateState("error", "You are missing some information.")
+
         return;
       }
 
       var dob = this.state.dob;
 
       if (dob.length != 10) {
-        this.updateState("error", "Please enter the birthday in MM/DD/YYYY format.");
+        alert("Please enter the birthday in MM/DD/YYYY format."); // this.updateState("error", "Please enter the birthday in MM/DD/YYYY format.")
+
         return;
       } else if (dob[2] != "/" || dob[5] != "/") {
-        this.updateState("error", "Please enter the birthday in MM/DD/YYYY format.");
+        alert("Please enter the birthday in MM/DD/YYYY format."); // this.updateState("error", "Please enter the birthday in MM/DD/YYYY format.")
+
         return;
       }
 
@@ -126,7 +129,7 @@ var EditChildPopup = /*#__PURE__*/function (_React$Component) {
         sessionName: this.props.sampleKid.sessionName
       }, function (d) {
         if (!d.success) {
-          _this3.updateState("error", d.message);
+          alert(d.message); // this.updateState("error", d.message);
         } else {
           _this3.props.closeCallback();
         }
@@ -142,7 +145,7 @@ var EditChildPopup = /*#__PURE__*/function (_React$Component) {
           id: this.state.id
         }, function (d) {
           if (!d.success) {
-            _this4.updateState("error", d.message);
+            alert(d.message); // this.updateState("error", d.message)
           } else {
             _this4.props.closeCallback();
 
@@ -222,8 +225,8 @@ var EditChildPopup = /*#__PURE__*/function (_React$Component) {
           left: 0,
           display: "flex",
           alignItems: "center",
-          justifyContent: "center",
-          overflowY: 'scroll'
+          justifyContent: "center" //    overflowY: 'scroll',
+
         };
         boxStyle = {
           width: "fit-content",
@@ -234,8 +237,8 @@ var EditChildPopup = /*#__PURE__*/function (_React$Component) {
           justifyContent: "space-between",
           flexDirection: "column",
           alignItems: "center",
-          position: "relative",
-          overflowY: 'scroll'
+          position: "relative" //    overflowY: 'scroll',
+
         };
         contentDiv = {
           width: "95vw"
