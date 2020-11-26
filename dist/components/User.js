@@ -44,6 +44,7 @@ var User = /*#__PURE__*/function (_React$Component) {
     key: "logOut",
     value: function logOut() {
       sessionStorage.clear();
+      localStorage.clear();
       location.reload();
     }
   }, {

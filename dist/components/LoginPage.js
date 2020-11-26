@@ -95,12 +95,12 @@ var LoginPage = /*#__PURE__*/function (_React$Component) {
             return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
           }).join(''));
           var payload = JSON.parse(jsonPayload);
-          sessionStorage.setItem("token", token);
-          sessionStorage.setItem("account", "parent");
-          sessionStorage.setItem("email", payload.email);
-          sessionStorage.setItem("firstName", payload.firstName);
-          sessionStorage.setItem("lastName", payload.lastName);
-          sessionStorage.setItem("fetchTime", new Date().getTime());
+          localStorage.setItem("token", token);
+          localStorage.setItem("account", "parent");
+          localStorage.setItem("email", payload.email);
+          localStorage.setItem("firstName", payload.firstName);
+          localStorage.setItem("lastName", payload.lastName);
+          localStorage.setItem("fetchTime", new Date().getTime());
 
           _this2.props.callback();
         }

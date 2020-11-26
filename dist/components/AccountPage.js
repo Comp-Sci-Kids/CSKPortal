@@ -62,6 +62,7 @@ var AccountPage = /*#__PURE__*/function (_React$Component) {
   _createClass(AccountPage, [{
     key: "logOut",
     value: function logOut() {
+      localStorage.clear();
       sessionStorage.clear();
       location.reload();
     }

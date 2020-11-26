@@ -81,7 +81,7 @@ var Header = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/React.createElement("h1", {
         style: titleStyle
       }, "CompSci Kids Portal"), /*#__PURE__*/React.createElement(User, {
-        name: sessionStorage.getItem("firstName") + " " + sessionStorage.getItem("lastName")
+        name: localStorage.getItem("firstName") + " " + localStorage.getItem("lastName")
       })), /*#__PURE__*/React.createElement(TabBar, {
         defaultPage: this.props.defaultPage,
         tabChanged: this.tabChanged
