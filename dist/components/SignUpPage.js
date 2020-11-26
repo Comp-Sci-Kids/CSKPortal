@@ -323,17 +323,17 @@ var SignUpPage = /*#__PURE__*/function (_React$Component) {
         style: boxStyle
       }, /*#__PURE__*/React.createElement("h1", {
         style: titleStyle
-      }, "CompSci Kids Parent Sign Up"), /*#__PURE__*/React.createElement("input", {
+      }, "Parent Sign Up"), /*#__PURE__*/React.createElement("input", {
         style: inputStyle,
         type: "text",
-        placeholder: "First Name",
+        placeholder: "Parent First Name",
         name: "firstname",
         value: this.state.firstname,
         onChange: this.valueChanged
       }), /*#__PURE__*/React.createElement("input", {
         style: inputStyle,
         type: "text",
-        placeholder: "Last Name",
+        placeholder: "Parent Last Name",
         name: "lastname",
         value: this.state.lastname,
         onChange: this.valueChanged

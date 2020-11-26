@@ -262,7 +262,8 @@ class EditChildPopup extends React.Component {
                 textAlign: "center",
                 fontWeight: "bold"
             }
-            errorMessage = <p style={errorStyle}>{this.state.error}</p>
+            alert(this.state.error)
+            // errorMessage = <p style={errorStyle}>{this.state.error}</p>
         }
 
         var hrStyle = {

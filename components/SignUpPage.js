@@ -292,11 +292,11 @@ class SignUpPage extends React.Component {
                 </ul>
                 {errorBox}
                 <div style={boxStyle}>
-                    <h1 style={titleStyle}>CompSci Kids Parent Sign Up</h1>
+                    <h1 style={titleStyle}>Parent Sign Up</h1>
 
 
-                    <input style={inputStyle} type="text" placeholder="First Name" name="firstname" value={this.state.firstname} onChange={this.valueChanged}/>
-                    <input style={inputStyle} type="text" placeholder="Last Name" name="lastname" value={this.state.lastname} onChange={this.valueChanged}/>
+                    <input style={inputStyle} type="text" placeholder="Parent First Name" name="firstname" value={this.state.firstname} onChange={this.valueChanged}/>
+                    <input style={inputStyle} type="text" placeholder="Parent Last Name" name="lastname" value={this.state.lastname} onChange={this.valueChanged}/>
                     
                     <select style={selectStyle} name="prefix" value = {this.state.prefix} onChange={this.valueChanged}>
                         <option value="" defaultValue hidden>Prefix</option>

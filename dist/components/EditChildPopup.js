@@ -282,9 +282,7 @@ var EditChildPopup = /*#__PURE__*/function (_React$Component) {
           textAlign: "center",
           fontWeight: "bold"
         };
-        errorMessage = /*#__PURE__*/React.createElement("p", {
-          style: errorStyle
-        }, this.state.error);
+        alert(this.state.error); // errorMessage = <p style={errorStyle}>{this.state.error}</p>
       }
 
       var hrStyle = {

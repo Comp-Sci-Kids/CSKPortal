@@ -222,7 +222,10 @@ class AddChildPopup extends React.Component {
                 textAlign: "center",
                 fontWeight: "bold"
             }
-            errorMessage = <p style={errorStyle}>{this.state.error}</p>
+
+            alert(this.state.error)
+
+            // errorMessage = <p style={errorStyle}>{this.state.error}</p>
         }
 
         var hrStyle = {
@@ -238,8 +241,8 @@ class AddChildPopup extends React.Component {
                     <div style={contentDiv}>
                         <h1 style = {headerStyle}>Add Child</h1>
                         <hr></hr>
-                        <LabelField title="First Name" field="firstName" value={this.state.firstName} editing={true} valueChanged={this.updateState} />
-                        <LabelField title="Last Name" field="lastName" value={this.state.lastName} editing={true} valueChanged={this.updateState} />
+                        <LabelField title="Child First Name" field="firstName" value={this.state.firstName} editing={true} valueChanged={this.updateState} />
+                        <LabelField title="Child Last Name" field="lastName" value={this.state.lastName} editing={true} valueChanged={this.updateState} />
                         <SelectField title="Gender" field="gender" value={this.state.gender} editing={true} valueChanged={this.updateState} options={[{value: "male", display: "Male"}, {value: "female", display: "Female"}, {value: "other", display: "Other"}]}/>
 
                         <div style={divStlye}>

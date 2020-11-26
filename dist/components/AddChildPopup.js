@@ -240,9 +240,7 @@ var AddChildPopup = /*#__PURE__*/function (_React$Component) {
           textAlign: "center",
           fontWeight: "bold"
         };
-        errorMessage = /*#__PURE__*/React.createElement("p", {
-          style: errorStyle
-        }, this.state.error);
+        alert(this.state.error); // errorMessage = <p style={errorStyle}>{this.state.error}</p>
       }
 
       var hrStyle = {
@@ -260,13 +258,13 @@ var AddChildPopup = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/React.createElement("h1", {
         style: headerStyle
       }, "Add Child"), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement(LabelField, {
-        title: "First Name",
+        title: "Child First Name",
         field: "firstName",
         value: this.state.firstName,
         editing: true,
         valueChanged: this.updateState
       }), /*#__PURE__*/React.createElement(LabelField, {
-        title: "Last Name",
+        title: "Child Last Name",
         field: "lastName",
         value: this.state.lastName,
         editing: true,
