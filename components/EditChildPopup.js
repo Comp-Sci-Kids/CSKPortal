@@ -254,7 +254,8 @@ class EditChildPopup extends React.Component {
            }
 
            headerStyle = {
-               fontSize: "22px"
+               fontSize: "22px",
+               marginLeft: "7px"
            }
 
        }

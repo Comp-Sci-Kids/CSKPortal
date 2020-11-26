@@ -176,7 +176,7 @@ var RegisterPage = /*#__PURE__*/function (_React$Component) {
         style: headerStyle
       }, /*#__PURE__*/React.createElement("h1", {
         style: titleStyle
-      }, "Register")), /*#__PURE__*/React.createElement("hr", null), sessions.length > 0 ? sessions : /*#__PURE__*/React.createElement("p", {
+      }, "Register Children")), /*#__PURE__*/React.createElement("hr", null), sessions.length > 0 ? sessions : /*#__PURE__*/React.createElement("p", {
         style: infoStyle
       }, "There are no open sessions.")) : /*#__PURE__*/React.createElement(RegisterKidPage, {
         back: this.back,

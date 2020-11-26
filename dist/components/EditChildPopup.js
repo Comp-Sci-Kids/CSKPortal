@@ -272,7 +272,8 @@ var EditChildPopup = /*#__PURE__*/function (_React$Component) {
           width: "100px"
         };
         headerStyle = {
-          fontSize: "22px"
+          fontSize: "22px",
+          marginLeft: "7px"
         };
       } //error message
 

@@ -78,6 +78,7 @@ class AddChildPopup extends React.Component {
                 alert(d.message);
                 // this.updateState("error", d.message)
             }else{
+                alert(capitalize(this.state.firstName.toLowerCase()) + " has been added. If you wish to register this child, click on the Register tab on the top of the page.")
                 this.props.closeCallback()
             }
         })
@@ -149,7 +150,7 @@ class AddChildPopup extends React.Component {
         }
 
         var headerStyle = {
-            fontSize: "35px"
+            fontSize: "35px",
         }
 
         if(window.screen.width < 1280) {
@@ -217,7 +218,8 @@ class AddChildPopup extends React.Component {
             }
 
             headerStyle = {
-                fontSize: "22px"
+                fontSize: "22px",
+                marginLeft: "7px"
             }
 
         }

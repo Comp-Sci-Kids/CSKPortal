@@ -97,6 +97,8 @@ var AddChildPopup = /*#__PURE__*/function (_React$Component) {
         if (!d.success) {
           alert(d.message); // this.updateState("error", d.message)
         } else {
+          alert(capitalize(_this2.state.firstName.toLowerCase()) + " has been added. If you wish to register this child, click on the Register tab on the top of the page.");
+
           _this2.props.closeCallback();
         }
       });
@@ -233,7 +235,8 @@ var AddChildPopup = /*#__PURE__*/function (_React$Component) {
           marginRight: "7px"
         };
         headerStyle = {
-          fontSize: "22px"
+          fontSize: "22px",
+          marginLeft: "7px"
         };
       }
 

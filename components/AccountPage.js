@@ -27,7 +27,7 @@ class AccountPage extends React.Component {
     }
 
     logOut(){
-        localStorage.clear()
+        window.localStorage.clear()
         sessionStorage.clear();
         location.reload()
     }
@@ -310,7 +310,7 @@ class AccountPage extends React.Component {
                 {errorBox}
                 <div style={contentDivStyle}>
                     <div style={headerStyle}>
-                        <h1 style={titleStyle}>Information</h1>
+                        <h1 style={titleStyle}>Parent Account</h1>
                     </div>
                     <hr />
 

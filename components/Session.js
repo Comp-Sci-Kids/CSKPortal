@@ -220,8 +220,8 @@ class Session extends React.Component {
         return (
             <div style = {divStyle}>
                 <h2 style = {headerStyle}>{session.Display + " Session"}</h2>
-                <h3>{"Time: " + (session.ELearn == 0 ? "4:30PM - 5:30PM" : "All Day")}</h3>
-                <h3 style = {redStyle}>{session.OpenDate}</h3>
+                <p>{"Time: " + (session.ELearn == 0 ? "4:30PM - 5:30PM" : "All Day")}</p>
+                <p style = {redStyle}>{session.OpenDate}</p>
                 <Calendar key = {this.props.session.Name} dates = {this.props.session.Dates}/>
 
                 {this.props.session.Open

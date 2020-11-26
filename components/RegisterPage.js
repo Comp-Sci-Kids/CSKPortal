@@ -135,7 +135,7 @@ class RegisterPage extends React.Component {
                     ?
                     <div style={contentDivStyle}>
                         <div style={headerStyle}>
-                            <h1 style={titleStyle}>Register</h1>
+                            <h1 style={titleStyle}>Register Children</h1>
                         </div>
                         <hr />
                         {sessions.length > 0

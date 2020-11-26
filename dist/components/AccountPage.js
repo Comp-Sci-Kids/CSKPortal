@@ -62,7 +62,7 @@ var AccountPage = /*#__PURE__*/function (_React$Component) {
   _createClass(AccountPage, [{
     key: "logOut",
     value: function logOut() {
-      localStorage.clear();
+      window.localStorage.clear();
       sessionStorage.clear();
       location.reload();
     }
@@ -351,7 +351,7 @@ var AccountPage = /*#__PURE__*/function (_React$Component) {
         style: headerStyle
       }, /*#__PURE__*/React.createElement("h1", {
         style: titleStyle
-      }, "Information")), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("input", {
+      }, "Parent Account")), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("input", {
         style: inputStyle,
         type: "text",
         placeholder: "First Name",
