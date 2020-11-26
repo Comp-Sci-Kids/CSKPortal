@@ -173,8 +173,8 @@ class Calendar extends React.Component {
 
         var tableChild = [cHead, cBody]
 
-        var widthStyle = window.screen.width >= 760 && "400px" || "200px"
-        var sizeStyle = window.screen.width >= 760 && "25px" || "12px"
+        var widthStyle = window.screen.width >= mobileThreshold && "400px" || "200px"
+        var sizeStyle = window.screen.width >= mobileThreshold && "25px" || "12px"
 
         var cTable = e("table", {
             style: {
