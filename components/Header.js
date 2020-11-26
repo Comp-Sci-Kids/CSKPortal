@@ -39,7 +39,7 @@ class Header extends React.Component {
         return (<div style={outerDivStyle}>
             <div style={innerDivStyle}>
                 <h1 style={titleStyle}>CompSci Kids Portal</h1>
-                <User name={sessionStorage.getItem("firstName") + " " + sessionStorage.getItem("lastName")} />
+                <User name={localStorage.getItem("firstName") + " " + localStorage.getItem("lastName")} />
             </div>
             <TabBar defaultPage={this.props.defaultPage} tabChanged={this.tabChanged} />
         </div>)

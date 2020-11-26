@@ -27,7 +27,8 @@ class AccountPage extends React.Component {
     }
 
     logOut(){
-        sessionStorage.clear()
+        localStorage.clear()
+        sessionStorage.clear();
         location.reload()
     }
 

@@ -6,6 +6,7 @@ class User extends React.Component {
     }
     logOut(){
         sessionStorage.clear()
+        localStorage.clear()
         location.reload()
     }
     

@@ -28,7 +28,7 @@
           const http = new XMLHttpRequest()
           http.responseType = 'json'
           http.open(method, "https://api.compscikids.net/" + handler, true)
-          http.setRequestHeader('Authorization', sessionStorage.getItem("token"))
+          http.setRequestHeader('Authorization', localStorage.getItem("token"))
           if (body != null) {
               http.setRequestHeader('Content-Type', 'application/json')
           }
@@ -40,7 +40,7 @@
       function sendFormData(data, method, action, callback) {
           let request = new XMLHttpRequest()
           request.open(method, action)
-          request.setRequestHeader('Authorization', sessionStorage.getItem("token"))
+          request.setRequestHeader('Authorization', localStorage.getItem("token"))
           request.onload = function () {
               callback()
           }

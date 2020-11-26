@@ -12,8 +12,8 @@ class Page extends React.Component {
     }
 
     componentDidMount() {
-        if(sessionStorage.getItem("account")){
-            if(sessionStorage.getItem("account") == "parent"){
+        if(localStorage.getItem("account")){
+            if(localStorage.getItem("account") == "parent"){
                 this.loggedIn();
             }
         }
