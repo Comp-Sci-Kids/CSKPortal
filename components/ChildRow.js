@@ -85,18 +85,28 @@ class ChildRow extends React.Component {
             currentSessions.push(<p key = {i}>None</p>)
         }
 
-        return (
-            <tr>
-                <td>{this.props.kid.firstName}</td>
-                <td>{this.props.kid.lastName}</td>
-                <td>{grade}</td>
-                <td>{this.props.kid.birthday}</td>
-                <td>{shirtSize}</td>
-                <td>{currentSessions}</td>
-                <td>{pastSessions}</td>
-                {/* for editing a user account */}
-                <td><IconButton src="images/edit.png" small={true} onClick={() => {this.props.popup(this.props.kid)}}/></td>
-            </tr>
-        )
+        if(window.screen.width >= 760) {
+            return (
+                <tr>
+                    <td>{this.props.kid.firstName}</td>
+                    <td>{this.props.kid.lastName}</td>
+                    <td>{grade}</td>
+                    <td>{this.props.kid.birthday}</td>
+                    <td>{shirtSize}</td>
+                    <td>{currentSessions}</td>
+                    <td>{pastSessions}</td>
+                    {/* for editing a user account */}
+                    <td><IconButton src="images/edit.png" small={true} onClick={() => {this.props.popup(this.props.kid)}}/></td>
+                </tr>
+            )
+        } else {
+            return (
+                <tr>
+                    <td>{this.props.kid.firstName}</td>
+                    <td>{this.props.kid.lastName}</td>
+                    <td><IconButton src="images/edit.png" small={true} onClick={() => {this.props.popup(this.props.kid)}}/></td>
+                </tr>
+            )
+        }
     }
 }

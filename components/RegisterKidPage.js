@@ -101,7 +101,7 @@ class RegisterKidPage extends React.Component {
             }
         }
 
-        let dob = registrationData.birthday;
+        var dob = registrationData.birthday;
 
         if(dob.length != 10) {
             this.updateState("error", "Please enter the birthday in MM/DD/YYYY format.")
@@ -129,55 +129,28 @@ class RegisterKidPage extends React.Component {
     }
 
     render(){
-        let divStyle = {
+        var divStyle = {
             height: "100%",
             width: "100%",
             textAlign: "center"
         }
-        let contentDivStyle = {
+        var contentDivStyle = {
             width: "50%",
             margin: "auto",
             textAlign: "center"
         }
-        let headerStyle = {
+        var headerStyle = {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             marginTop: "30px",
             flexDirection: "column",
         }
-        let titleStyle = {
+        var titleStyle = {
             margin : "10px",
         }
 
-        let inputStyle = {
-            borderRadius: "27px",
-            border: "2px solid rgba(8,58,174,1)",
-            padding: "10px 20px", 
-            width: "20%",
-            height: "20px",
-            outline: "none",
-            fontSize: "18px",
-            marginTop: "10px",
-        }
-        let labelStyle = {
-            margin: 0,
-            marginRight: "40px",
-            fontSize: "20px",
-
-        }
-        let selectStyle = {
-            borderRadius: "27px",
-            border: "2px solid rgba(8,58,174,1)",
-            padding: "10px 20px", 
-            // width: "144px",
-            // height: "30px",
-            outline: "none",
-            fontSize: "20px",
-            marginTop: "20px",
-
-        }
-        let buttonStyle = {
+        var buttonStyle = {
             borderRadius: "27px",
             border: "2px solid rgba(8,58,174,1)",
             padding: "5px 5px", 
@@ -191,7 +164,7 @@ class RegisterKidPage extends React.Component {
             cursor: "pointer"
         }
 
-        let buttonStyle2 = {
+        var buttonStyle2 = {
             borderRadius: "27px",
             border: "2px solid #CC0000",
             padding: "5px 5px", 
@@ -205,7 +178,59 @@ class RegisterKidPage extends React.Component {
             cursor: "pointer"
         }
 
-        let errorBox = null
+        if(window.screen.width < 1280) {
+             divStyle = {
+                height: "100%",
+                width: "100%",
+                textAlign: "center"
+            }
+             contentDivStyle = {
+                width: "90%",
+                margin: "auto",
+                textAlign: "center"
+            }
+             headerStyle = {
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                marginTop: "30px",
+                flexDirection: "column",
+            }
+             titleStyle = {
+                margin : "10px",
+            }
+    
+             buttonStyle = {
+                borderRadius: "15px",
+                border: "2px solid rgba(8,58,174,1)",
+                padding: "5px 5px", 
+                width: "35vw",
+                height: "30px",
+                outline: "none",
+                fontSize: "15px",
+                backgroundColor: "#083ab9",
+                color: "white",
+                marginTop: "15px",
+                cursor: "pointer"
+            }
+    
+             buttonStyle2 = {
+                borderRadius: "15px",
+                border: "2px solid #CC0000",
+                padding: "5px 5px", 
+                width: "35vw",
+                height: "30px",
+                outline: "none",
+                fontSize: "15px",
+                backgroundColor: appRed,
+                color: "white",
+                marginTop: "15px",
+                cursor: "pointer"
+            }
+
+        }
+
+        var errorBox = null
 
         var color = "red"
         if (this.state.success) {
@@ -213,7 +238,7 @@ class RegisterKidPage extends React.Component {
         }
 
         if(this.state.error != ""){
-            let errorBoxStyle = {
+            var errorBoxStyle = {
                 position: "fixed",
                 width: "100%",
                 margin: "auto",
@@ -230,7 +255,7 @@ class RegisterKidPage extends React.Component {
             errorBox = <div style={errorBoxStyle}>{this.state.error}</div>
         }
 
-        let divStyle2 = {
+        var divStyle2 = {
             // textAlign: "left"
 
         }
@@ -260,50 +285,22 @@ class RegisterKidPage extends React.Component {
                         
                         <LabelField title="Parent First Name" field="parentFirstname" value={this.state.parentFirstname} editing={true} valueChanged={this.updateState} />
 
-                        {/* <label style={labelStyle}>Parent First Name: </label>
-                        <input style={inputStyle} type="text" placeholder="Parent First Name" name="parentfirstname" value={this.state.parentFirstname} onChange={this.valueChanged}/>
-                        <br></br> */}
+    
 
                         <LabelField title="Parent Last Name" field="parentLastname" value={this.state.parentLastname} editing={true} valueChanged={this.updateState} />
 
-                        {/* <label style={labelStyle}>Parent Last Name: </label>
-                        <input style={inputStyle} type="text" placeholder="Parent Last Name" name="parentlastname" value={this.state.parentLastname} onChange={this.valueChanged}/>
-                        <br></br> */}
+    
 
                         <SelectField title="Parent Prefix" field="parentPrefix" value={this.state.parentPrefix} editing={true} valueChanged={this.updateState} options={[{value: "Mr", display: "Mr"}, {value: "Mrs", display: "Mrs"}, {value: "Ms", display: "Ms"}]}/>
 
-                        {/* <label style={labelStyle}>Parent Prefix: </label>
-                        <select style={selectStyle} name="parentPrefix" value = {this.state.parentPrefix} onChange={this.valueChanged}>
-                            <option value="" defaultValue hidden>Prefix</option>
-                            <option value="Mr">Mr</option>
-                            <option value="Ms">Mrs</option>
-                            <option value="Mrs">Ms</option>
-                        </select>
-                        <br></br> */}
 
                         <SelectField title="Parent Relationship" field="parentRelationship" value={this.state.parentRelationship} editing={true} valueChanged={this.updateState} options={[{value: "Mother", display: "Mother"}, {value: "Father", display: "Father"}, {value: "Other", display: "Other"}]}/>
-
-
-                        {/* <label style={labelStyle}>Parent Relationship: </label>
-                        <select style={selectStyle} name="parentRelationship" value = {this.state.parentRelationship} onChange={this.valueChanged}>
-                            <option value="" defaultValue hidden>Parent Relationship</option>
-                            <option value="Mother">Mother</option>
-                            <option value="Father">Father</option>
-                            <option value="Other">Other</option>
-                        </select>
-                        <br></br>     */}
 
                         <LabelField title="Parent Phone Number" field="parentPhone" value={this.state.parentPhone} editing={true} valueChanged={this.updateState} />
 
 
-                        {/* <label style={labelStyle}>Parent Phone Number: </label>      
-                        <input style={inputStyle} type="tel" placeholder="Parent Phone" name="parentPhone" value={this.state.parentPhone} onChange={this.valueChanged}/>
-                        <br></br> */}
+      
                         <LabelField title="Parent Email" field="parentEmail" value={this.state.parentEmail} editing={true} valueChanged={this.updateState} />
-
-                        {/* <label style={labelStyle}>Parent Email: </label>
-                        <input style={inputStyle} type="email" placeholder="Parent Email" name="parentEmail" value={this.state.parentEmail} onChange={this.valueChanged}/>
-                        <br></br> */}
 
                     </div>
 
@@ -315,38 +312,16 @@ class RegisterKidPage extends React.Component {
 
                     <LabelField title="Emergency Contact Name" field="emergencyName" value={this.state.emergencyName} editing={true} valueChanged={this.updateState} />
 
-                        {/* <label style={labelStyle}>Emergency Contact Name: </label>
-                        <input style={inputStyle} type="text" placeholder="Emergency Contact Name" name="emergencyName" value={this.state.emergencyName} onChange={this.valueChanged}/>
-                        <br></br> */}
 
                 <SelectField title="Emergency Contact Prefix" field="emergencyPrefix" value={this.state.emergencyPrefix} editing={true} valueChanged={this.updateState} options={[{value: "Mr", display: "Mr"}, {value: "Mrs", display: "Mrs"}, {value: "Ms", display: "Ms"}]}/>
 
 
-                        {/* <label style={labelStyle}>Emergency Contact Prefix: </label>
-                        <select style={selectStyle} name="emergencyPrefix" value = {this.state.emergencyPrefix} onChange={this.valueChanged}>
-                            <option value="" defaultValue hidden>Emergency Contact Prefix</option>
-                            <option value="Mr">Mr</option>
-                            <option value="Ms">Mrs</option>
-                            <option value="Mrs">Ms</option>
-                        </select>
-                        <br></br> */}
 
 <SelectField title="Emergency Contact Relationship" field="emergencyRelationship" value={this.state.emergencyRelationship} editing={true} valueChanged={this.updateState} options={[{value: "Mother", display: "Mother"}, {value: "Father", display: "Father"}, {value: "Other", display: "Other"}]}/>
 
-                        {/* <label style={labelStyle}>Emergency Contact Relationship: </label>
-                        <select style={selectStyle} name="emergencyRelationship" value = {this.state.emergencyRelationship} onChange={this.valueChanged}>
-                            <option value="" defaultValue hidden>Emergency Contact Relationship</option>
-                            <option value="Mother">Mother</option>
-                            <option value="Father">Father</option>
-                            <option value="Other">Other</option>
-                        </select>
-                        <br></br> */}
+
                         <LabelField title="Emergency Contact Phone Number" field="emergencyPhone" value={this.state.emergencyPhone} editing={true} valueChanged={this.updateState} />
 
-                        {/* <label style={labelStyle}>Emergency Contact Phone Number: </label>
-                        <input style={inputStyle} type="tel" placeholder="Emergency Contact Phone Number" name="emergencyPhone" value={this.state.emergencyPhone} onChange={this.valueChanged}/>
-                        <br></br>
-                        <br></br> */}
 
                     </div>
 

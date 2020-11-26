@@ -43,7 +43,7 @@ class ResendConfirmation extends React.Component {
    
       
     render() {
-        let divStyle = {
+        var divStyle = {
             width: "100%",
             height: "100%",
             background: "linear-gradient(90deg, rgba(8,58,134,1) 0%, rgba(8,58,194,1) 100%)",
@@ -53,7 +53,7 @@ class ResendConfirmation extends React.Component {
             margin: 0,
             padding: 0
         }
-        let boxStyle = {
+        var boxStyle = {
             width: "60vh",
             backgroundColor: "white",
             borderRadius: "30px",
@@ -66,13 +66,13 @@ class ResendConfirmation extends React.Component {
             padding: "20px 0",
             zIndex: "10"
         }
-        let titleStyle = {
+        var titleStyle = {
             margin: 0,
             fontFamily: "brandFont",
             fontSize: "40px",
             color: appRed
         }
-        let inputStyle = {
+        var inputStyle = {
             borderRadius: "27px",
             border: "2px solid rgba(8,58,174,1)",
             padding: "10px 20px", 
@@ -83,7 +83,7 @@ class ResendConfirmation extends React.Component {
             marginTop: "20px"
         }
 
-        let buttonStyle = {
+        var buttonStyle = {
             borderRadius: "27px",
             border: "2px solid rgba(8,58,174,1)",
             padding: "5px 5px", 
@@ -96,7 +96,67 @@ class ResendConfirmation extends React.Component {
             marginTop: "15px",
             cursor: "pointer"
         }
-        let errorBox = null
+
+        if(window.screen.width < 1280) {
+             divStyle = {
+                width: "100%",
+                height: "100%",
+                background: "linear-gradient(90deg, rgba(8,58,134,1) 0%, rgba(8,58,194,1) 100%)",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                margin: 0,
+                padding: 0
+            }
+             boxStyle = {
+                width: "95vw",
+                backgroundColor: "white",
+                borderRadius: "30px",
+                boxShadow: "10px 10px 18px rgba(0, 0, 0, 0.5)",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-start",
+                alignItems: "center",
+                boxSizing: "border-box",
+                padding: "20px 0",
+                zIndex: "10"
+            }
+             titleStyle = {
+                margin: 0,
+                fontFamily: "brandFont",
+                fontSize: "40px",
+                color: appRed,
+                textAlign: "center"
+            }
+             inputStyle = {
+                borderRadius: "17px",
+                border: "2px solid rgba(8,58,174,1)",
+                padding: "10px 20px", 
+                width: "70%",
+                height: "15px",
+                outline: "none",
+                fontSize: "12px",
+                marginTop: "20px"
+            }
+    
+             buttonStyle = {
+                borderRadius: "17px",
+                border: "2px solid rgba(8,58,174,1)",
+                padding: "5px 5px", 
+                width: "45%",
+                height: "44px",
+                outline: "none",
+                fontSize: "15px",
+                backgroundColor: "#083ab9",
+                color: "white",
+                marginTop: "15px",
+                cursor: "pointer"
+            }
+
+        }
+
+
+        var errorBox = null
 
         var color = "red"
         if (this.state.success) {
@@ -104,7 +164,7 @@ class ResendConfirmation extends React.Component {
         }
 
         if(this.state.error != ""){
-            let errorBoxStyle = {
+            var errorBoxStyle = {
                 position: "fixed",
                 width: "90%",
                 margin: "auto",

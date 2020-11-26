@@ -63,7 +63,8 @@ class LoginPage extends React.Component {
     }
 
     render() {
-        let divStyle = {
+
+        var divStyle = {
             width: "100%",
             height: "100%",
             background: "linear-gradient(90deg, rgba(190,58,0,1) 0%, rgba(255,58,0,1) 100%)",
@@ -73,7 +74,8 @@ class LoginPage extends React.Component {
             margin: 0,
             padding: 0
         }
-        let boxStyle = {
+
+        var boxStyle = {
             width: "60vh",
             backgroundColor: "white",
             borderRadius: "30px",
@@ -86,20 +88,21 @@ class LoginPage extends React.Component {
             padding: "20px 0",
             zIndex: "10"
         }
-        let titleStyle1 = {
+        var titleStyle1 = {
             margin: 0,
             fontFamily: "brandFont",
             fontSize: "40px",
-            color: appRed
+            color: appRed,
+            textAlign: "center"
         }
-        let titleStyle2 = {
+        var titleStyle2 = {
             margin: 0,
             fontSize: "20px",
             color: "blue",
             textDecoration: "underline",
             marginTop: '7.5px'
         }
-        let inputStyle = {
+        var inputStyle = {
             borderRadius: "27px",
             border: "2px solid rgba(254,58,0,1)",
             padding: "10px 20px", 
@@ -109,7 +112,7 @@ class LoginPage extends React.Component {
             fontSize: "20px",
             marginTop: "20px"
         }
-        let buttonStyle = {
+        var buttonStyle = {
             borderRadius: "27px",
             border: "2px solid rgba(254,58,0,1)",
             padding: "5px 5px", 
@@ -122,7 +125,7 @@ class LoginPage extends React.Component {
             marginTop: "15px",
             cursor: "pointer"
         }
-        let errorBoxStyle = {
+        var errorBoxStyle = {
             position: "fixed",
             width: "90%",
             margin: "auto",
@@ -135,7 +138,76 @@ class LoginPage extends React.Component {
             boxSizing: "border-box",
             borderRadius: "8px"
         }
-        let errorBox = null
+        var errorBox = null
+
+        if(window.screen.width < 1280) {
+
+            boxStyle = {
+                width: "90vw",
+                backgroundColor: "white",
+                borderRadius: "30px",
+                boxShadow: "10px 10px 18px rgba(0, 0, 0, 0.5)",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-start",
+                alignItems: "center",
+                boxSizing: "border-box",
+                padding: "20px 0",
+                zIndex: "10"
+            }
+            titleStyle1 = {
+                margin: 0,
+                fontFamily: "brandFont",
+                fontSize: "30px",
+                color: appRed,
+                textAlign: "center"
+            }
+            titleStyle2 = {
+                margin: 0,
+                fontSize: "15px",
+                color: "blue",
+                textDecoration: "underline",
+                marginTop: '7.5px'
+            }
+            inputStyle = {
+                borderRadius: "17px",
+                border: "2px solid rgba(254,58,0,1)",
+                padding: "10px 20px", 
+                width: "70%",
+                height: "15px",
+                outline: "none",
+                fontSize: "20px",
+                marginTop: "20px"
+            }
+            buttonStyle = {
+                borderRadius: "17px",
+                border: "2px solid rgba(254,58,0,1)",
+                padding: "5px 5px", 
+                width: "45%",
+                height: "30px",
+                outline: "none",
+                fontSize: "15px",
+                backgroundColor: "#fe3a01",
+                color: "white",
+                marginTop: "15px",
+                cursor: "pointer"
+            }
+            errorBoxStyle = {
+                position: "fixed",
+                width: "90%",
+                margin: "auto",
+                backgroundColor: "rgba(8,58,194,1)",
+                color: "white",
+                fontSize: "20px",
+                textAlign: "center",
+                top: "20px",
+                padding: "10px",
+                boxSizing: "border-box",
+                borderRadius: "8px"
+            }
+        }
+
+
         if(this.state.error != ""){
             errorBox = <div style={errorBoxStyle}>{this.state.error}</div>
         }

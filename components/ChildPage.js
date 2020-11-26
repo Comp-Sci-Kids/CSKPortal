@@ -96,7 +96,7 @@ class ChildPage extends React.Component {
 
                 <div style={contentDivStyle}>
                     <div style={headerStyle}>
-                        <h1 style={titleStyle}>Child Account</h1>
+                        <h1 style={titleStyle}>Child Information</h1>
                         <IconButton src="images/add.png" onClick={this.openPopup}/>  
                     </div>
                     <hr />

@@ -15,13 +15,15 @@ class Header extends React.Component {
             width: "100%",
             display: "flex",
             justifyContent: "space-between",
-            alignItems: "center"
+            alignItems: "center",
+            textAlign: "center"
         }
         let titleStyle = {
             margin: "20px",
             color: appBlue,
             fontFamily: "brandFont",
-            fontSize: "50px"
+            fontSize: "50px",
+            textAlign: "left"
         }
         return (<div style={outerDivStyle}>
             <div style={innerDivStyle}>

@@ -13,7 +13,7 @@ class LabelField extends React.Component {
     }
     render() {
 
-        let divStlye = {
+        var divStlye = {
             boxSizing: "border-box",
             width: "100%",
             padding: "5px 0px",
@@ -22,21 +22,50 @@ class LabelField extends React.Component {
             alignItems: "flex-end"
         }
 
-        let labelStyle = {
+        var labelStyle = {
             margin: 0,
             marginRight: "40px",
             fontSize: "25px",
             fontWeight: "bold"
         }
 
-        let pStyle = {
+        var pStyle = {
             margin: 0,
             fontSize: "20px"
         }
-        let inputStyle = {
+        var inputStyle = {
             height: "20px",
             fontSize: "18px",
             width: "200px"
+        }
+
+        if(window.screen.width < 1280) {
+             divStlye = {
+                boxSizing: "border-box",
+                width: "100%",
+                padding: "5px 0px",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "flex-end"
+            }
+    
+            labelStyle = {
+                margin: 0,
+                marginRight: "40px",
+                fontSize: "15px",
+                fontWeight: "bold"
+            }
+    
+            pStyle = {
+                margin: 0,
+                fontSize: "15px"
+            }
+            
+             inputStyle = {
+                height: "15px",
+                fontSize: "10px",
+                width: "100px"
+            }
         }
 
         if(this.props.disabled){
@@ -45,7 +74,7 @@ class LabelField extends React.Component {
             pStyle.fontStyle = "italic",
             pStyle.color = "gray"
         }
-        let element = null
+        var element = null
         if(this.props.editing){
             element = <input ref={this.input} style={inputStyle} type={this.props.secure ? "password" : "text"} value={this.props.value} onChange={this.onChange}/>
         }else{

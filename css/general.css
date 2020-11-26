@@ -57,3 +57,16 @@ body {
         transform: rotate(360deg);
     }
 }
+
+/* extra */
+
+.footer{
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: rgb(250, 249, 249);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }

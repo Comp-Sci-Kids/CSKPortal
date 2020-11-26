@@ -51,10 +51,16 @@ class ChildTable extends React.Component {
             popup = <EditChildPopup sampleKid = {this.state.kid} refreshCallback = {this.props.refreshCallback} name={this.state.name} username={this.state.username} closeCallback={this.closePopup}/>
         }
 
+
+
         return (
             <React.Fragment>
                 <table style={tableStyle}>
                     <thead>
+
+                        {window.screen.width >= 760
+
+                        ?
                         <tr>
                             <td style={{...headStyle, width: "200px"}}>First Name</td>
                             <td style={{...headStyle, width: "200px"}}>Last Name</td>
@@ -65,6 +71,13 @@ class ChildTable extends React.Component {
                             <td style={{...headStyle, width: "300px"}}>Past Sessions</td>
                             <td style={{width: "45px"}}></td>
                         </tr>
+                        :
+                        <tr>
+                            <td style={{...headStyle, width: "200px"}}>First Name</td>
+                            <td style={{...headStyle, width: "200px"}}>Last Name</td>
+                            <td style={{width: "45px"}}></td>
+                        </tr>
+                        }
                     </thead>
                     <tbody>
                         {rows}

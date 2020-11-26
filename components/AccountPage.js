@@ -34,7 +34,7 @@ class AccountPage extends React.Component {
     delete() {
 
         if(confirm("Are you sure you want to delete this account?")){
-            // console.log("deleting")
+            // console.log("devaring")
             networkRequest("parent/delete", "DELETE", {
 
             }, d => {
@@ -140,26 +140,26 @@ class AccountPage extends React.Component {
 
 
     render() {
-        let divStyle = {
+        var divStyle = {
             height: "100%",
             width: "100%",
             textAlign: "center"
         }
-        let contentDivStyle = {
+        var contentDivStyle = {
             width: "90%",
             margin: "auto",
         }
-        let headerStyle = {
+        var headerStyle = {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             marginTop: "30px"
         }
-        let titleStyle = {
+        var titleStyle = {
             margin : "10px",
         }
 
-        let inputStyle = {
+        var inputStyle = {
             borderRadius: "27px",
             border: "2px solid rgba(8,58,174,1)",
             padding: "10px 20px", 
@@ -169,7 +169,7 @@ class AccountPage extends React.Component {
             fontSize: "20px",
             marginTop: "20px"
         }
-        let selectStyle = {
+        var selectStyle = {
             borderRadius: "27px",
             border: "2px solid rgba(8,58,174,1)",
             padding: "10px 20px", 
@@ -179,7 +179,7 @@ class AccountPage extends React.Component {
             fontSize: "20px",
             marginTop: "20px"
         }
-        let buttonStyle = {
+        var buttonStyle = {
             borderRadius: "27px",
             border: "2px solid rgba(8,58,174,1)",
             padding: "5px 5px", 
@@ -193,7 +193,7 @@ class AccountPage extends React.Component {
             cursor: "pointer"
         }
 
-        let buttonStyle2 = {
+        var buttonStyle2 = {
             borderRadius: "27px",
             border: "2px solid #CC0000",
             padding: "5px 5px", 
@@ -206,8 +206,79 @@ class AccountPage extends React.Component {
             marginTop: "15px",
             cursor: "pointer"
         }
+
+        if(window.screen.width < 1280) {
+
+             divStyle = {
+                height: "100%",
+                width: "100%",
+                textAlign: "center"
+            }
+             contentDivStyle = {
+                width: "90%",
+                margin: "auto",
+            }
+             headerStyle = {
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                marginTop: "30px"
+            }
+             titleStyle = {
+                margin : "10px",
+            }
+    
+             inputStyle = {
+                borderRadius: "17px",
+                border: "2px solid rgba(8,58,174,1)",
+                padding: "10px 10px", 
+                width: "70%",
+                height: "15px",
+                outline: "none",
+                fontSize: "12px",
+                marginTop: "20px"
+            }
+             selectStyle = {
+                borderRadius: "17px",
+                border: "2px solid rgba(8,58,174,1)",
+                padding: "10px 10px", 
+                // width: "20%",
+                // height: "30px",
+                outline: "none",
+                fontSize: "15px",
+                marginTop: "20px"
+            }
+             buttonStyle = {
+                borderRadius: "17px",
+                border: "2px solid rgba(8,58,174,1)",
+                padding: "5px 5px", 
+                width: "70%",
+                height: "30px",
+                outline: "none",
+                fontSize: "15px",
+                backgroundColor: "#083ab9",
+                color: "white",
+                marginTop: "15px",
+                cursor: "pointer"
+            }
+    
+             buttonStyle2 = {
+                borderRadius: "17px",
+                border: "2px solid #CC0000",
+                padding: "5px 5px", 
+                width: "70%",
+                height: "30px",
+                outline: "none",
+                fontSize: "15px",
+                backgroundColor: appRed,
+                color: "white",
+                marginTop: "15px",
+                cursor: "pointer"
+            }
+
+        }
         
-        let errorBox = null
+        var errorBox = null
 
         var color = "red"
         if (this.state.success) {
@@ -215,7 +286,7 @@ class AccountPage extends React.Component {
         }
 
         if(this.state.error != ""){
-            let errorBoxStyle = {
+            var errorBoxStyle = {
                 position: "fixed",
                 width: "100%",
                 margin: "auto",

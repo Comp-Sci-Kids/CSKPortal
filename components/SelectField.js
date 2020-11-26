@@ -13,7 +13,7 @@ class SelectField extends React.Component {
     }
     render() {
 
-        let divStlye = {
+        var divStlye = {
             boxSizing: "border-box",
             width: "100%",
             padding: "5px 0px",
@@ -22,23 +22,52 @@ class SelectField extends React.Component {
             alignItems: "flex-end"
         }
 
-        let labelStyle = {
+        var labelStyle = {
             margin: 0,
             marginRight: "40px",
             fontSize: "25px",
             fontWeight: "bold"
         }
 
-        let pStyle = {
+        var pStyle = {
             margin: 0,
             fontSize: "20px"
         }
         
 
-        let selectStyle = {
+        var selectStyle = {
             width: "206px",
             fontSize: "18px"
         }
+
+        if(window.screen.width < 1280) {
+             divStlye = {
+                boxSizing: "border-box",
+                width: "100%",
+                padding: "5px 0px",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "flex-end"
+            }
+    
+             labelStyle = {
+                margin: 0,
+                marginRight: "40px",
+                fontSize: "15px",
+                fontWeight: "bold"
+            }
+    
+             pStyle = {
+                margin: 0,
+                fontSize: "15px"
+            }
+            
+    
+             selectStyle = {
+                width: "106px",
+                fontSize: "10px"
+            }
+       }
 
         if(this.props.disabled){
             labelStyle.fontStyle = "italic",
@@ -46,9 +75,9 @@ class SelectField extends React.Component {
             pStyle.fontStyle = "italic",
             pStyle.color = "gray"
         }
-        let element = null
+        var element = null
         if(this.props.editing){
-            let options = []
+            var options = []
             this.props.options.forEach(o => {
                 options.push(<option key={o.value} value={o.value}>{o.display}</option>)
             })

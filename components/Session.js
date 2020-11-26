@@ -92,28 +92,28 @@ class Session extends React.Component {
 
     render() {
 
-        let session = this.state.session;
+        var session = this.state.session;
 
 
-        let divStyle = {
+        var divStyle = {
             margin: "auto",
             width: '50%',
             textAlign: "center"
         }
 
-        let selectStyle = {
+        var selectStyle = {
             width: "206px",
             fontSize: "18px"
         }
 
-        let headerStyle = {
+        var headerStyle = {
             textDecoration: "underline"
         }
 
-        let dropDown = null;
-        let options = [];
+        var dropDown = null;
+        var options = [];
 
-        let infoStyle = {
+        var infoStyle = {
             fontStyle: 'italic',
             fontSize: '25px'
         }
@@ -133,11 +133,11 @@ class Session extends React.Component {
             )
         }
 
-        let redStyle = {
+        var redStyle = {
             color: appRed
         }
 
-        let buttonStyle = {
+        var buttonStyle = {
             borderRadius: "27px",
             border: "2px solid rgba(8,58,174,1)",
             padding: "5px 5px", 
@@ -151,7 +151,7 @@ class Session extends React.Component {
             cursor: "pointer"
         }
 
-        let buttonStyle2 = {
+        var buttonStyle2 = {
             borderRadius: "27px",
             border: "2px solid #D3D3D3",
             padding: "5px 5px", 
@@ -164,6 +164,36 @@ class Session extends React.Component {
             marginTop: "15px",
             cursor: "pointer"
         }
+
+        if(window.screen.width < 1280) {
+            var buttonStyle = {
+                borderRadius: "27px",
+                border: "2px solid rgba(8,58,174,1)",
+                padding: "5px 5px", 
+                width: "50vw",
+                height: "30px",
+                outline: "none",
+                fontSize: "15px",
+                backgroundColor: "#083ab9",
+                color: "white",
+                marginTop: "15px",
+                cursor: "pointer"
+            }
+    
+            var buttonStyle2 = {
+                borderRadius: "27px",
+                border: "2px solid #D3D3D3",
+                padding: "5px 5px", 
+                width: "50vw",
+                height: "30px",
+                outline: "none",
+                fontSize: "15px",
+                backgroundColor: "#D3D3D3",
+                color: "white",
+                marginTop: "15px",
+                cursor: "pointer"
+            }
+        }
         
         var registerButton = null;
 
@@ -175,10 +205,10 @@ class Session extends React.Component {
             registerButton = <button style={buttonStyle2}>Closed</button>
         }  
 
-        let errorMessage = null
+        var errorMessage = null
 
         if(this.state.error != ""){
-            let errorStyle = {
+            var errorStyle = {
                 color: "red",
                 fontSize: "18px",
                 textAlign: "center",

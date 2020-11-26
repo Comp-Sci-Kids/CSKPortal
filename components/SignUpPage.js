@@ -101,7 +101,15 @@ class SignUpPage extends React.Component {
         })
     }
     render() {
-        let divStyle = {
+
+        var errorBox = null
+
+        var color = "red"
+        if (this.state.success) {
+            color = "green"
+        }
+
+        var divStyle = {
             width: "100%",
             height: "100%",
             background: "linear-gradient(90deg, rgba(8,58,134,1) 0%, rgba(8,58,194,1) 100%)",
@@ -111,7 +119,7 @@ class SignUpPage extends React.Component {
             margin: 0,
             padding: 0
         }
-        let boxStyle = {
+        var boxStyle = {
             width: "60vh",
             backgroundColor: "white",
             borderRadius: "30px",
@@ -124,23 +132,24 @@ class SignUpPage extends React.Component {
             padding: "20px 0",
             zIndex: "10"
         }
-        let titleStyle = {
+        var titleStyle = {
             margin: 0,
             fontFamily: "brandFont",
             fontSize: "40px",
-            color: appRed
+            color: appRed,
+            textAlign: "center"
         }
-        let inputStyle = {
+        var inputStyle = {
             borderRadius: "27px",
             border: "2px solid rgba(8,58,174,1)",
             padding: "10px 20px", 
             width: "70%",
-            height: "30px",
+            height: "2vh",
             outline: "none",
             fontSize: "20px",
             marginTop: "20px"
         }
-        let selectStyle = {
+        var selectStyle = {
             borderRadius: "27px",
             border: "2px solid rgba(8,58,174,1)",
             padding: "10px 20px", 
@@ -150,7 +159,7 @@ class SignUpPage extends React.Component {
             fontSize: "20px",
             marginTop: "20px"
         }
-        let buttonStyle = {
+        var buttonStyle = {
             borderRadius: "27px",
             border: "2px solid rgba(8,58,174,1)",
             padding: "5px 5px", 
@@ -163,15 +172,90 @@ class SignUpPage extends React.Component {
             marginTop: "15px",
             cursor: "pointer"
         }
-        let errorBox = null
 
-        var color = "red"
-        if (this.state.success) {
-            color = "green"
+        var errorBoxStyle = {
+            position: "fixed",
+            width: "90%",
+            margin: "auto",
+            backgroundColor: color,
+            color: "white",
+            fontSize: "20px",
+            textAlign: "center",
+            top: "20px",
+            padding: "10px",
+            boxSizing: "border-box",
+            borderRadius: "8px",
+            zIndex: "20"
         }
 
-        if(this.state.error != ""){
-            let errorBoxStyle = {
+        if(window.screen.width < 1280) {
+            divStyle = {
+                width: "100%",
+                height: "100%",
+                background: "linear-gradient(90deg, rgba(8,58,134,1) 0%, rgba(8,58,194,1) 100%)",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                margin: 0,
+                padding: 0,
+                overflowY: "auto" 
+            }
+            boxStyle = {
+                width: "95vw",
+                backgroundColor: "white",
+                borderRadius: "30px",
+                boxShadow: "10px 10px 18px rgba(0, 0, 0, 0.5)",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-start",
+                alignItems: "center",
+                boxSizing: "border-box",
+                padding: "20px 0",
+                zIndex: "10",
+                margin: "50px"
+            }
+            titleStyle = {
+                margin: 0,
+                fontFamily: "brandFont",
+                fontSize: "30px",
+                color: appRed,
+                textAlign: "center"
+            }
+            inputStyle = {
+                borderRadius: "17px",
+                border: "2px solid rgba(8,58,174,1)",
+                padding: "10px 20px", 
+                width: "70%",
+                height: "2vh",
+                outline: "none",
+                fontSize: "15px",
+                marginTop: "15px"
+            }
+            selectStyle = {
+                borderRadius: "17px",
+                border: "2px solid rgba(8,58,174,1)",
+                padding: "10px 15px", 
+                // width: "40%",
+                // height: "30px",
+                outline: "none",
+                fontSize: "15px",
+                marginTop: "15px"
+            }
+            buttonStyle = {
+                borderRadius: "17px",
+                border: "2px solid rgba(8,58,174,1)",
+                padding: "5px 5px", 
+                width: "45%",
+                height: "30px",
+                outline: "none",
+                fontSize: "15px",
+                backgroundColor: "#083ab9",
+                color: "white",
+                marginTop: "15px",
+                cursor: "pointer"
+            }
+    
+            errorBoxStyle = {
                 position: "fixed",
                 width: "90%",
                 margin: "auto",
@@ -185,6 +269,11 @@ class SignUpPage extends React.Component {
                 borderRadius: "8px",
                 zIndex: "20"
             }
+
+        }
+
+        if(this.state.error != ""){
+            
             errorBox = <div style={errorBoxStyle}>{this.state.error}</div>
         }
         return (
@@ -212,8 +301,8 @@ class SignUpPage extends React.Component {
                     <select style={selectStyle} name="prefix" value = {this.state.prefix} onChange={this.valueChanged}>
                         <option value="" defaultValue hidden>Prefix</option>
                         <option value="Mr">Mr</option>
-                        <option value="Ms">Mrs</option>
-                        <option value="Mrs">Ms</option>
+                        <option value="Mrs">Mrs</option>
+                        <option value="Ms">Ms</option>
                     </select>
 
                     <select style={selectStyle} name="relationship" value = {this.state.relationship} onChange={this.valueChanged}>

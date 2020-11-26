@@ -40,7 +40,7 @@ class AddChildPopup extends React.Component {
             return;
           }
 
-        let dob = this.state.dob;
+        var dob = this.state.dob;
 
         if(dob.length != 10) {
             this.updateState("error", "Please enter the birthday in MM/DD/YYYY format.")
@@ -85,7 +85,7 @@ class AddChildPopup extends React.Component {
         this.setState(this.state)
     }
     render() {
-        let popupStyle = {
+        var popupStyle = {
             position: "fixed",
             width: "100%",
             height: "100%",
@@ -96,7 +96,7 @@ class AddChildPopup extends React.Component {
             alignItems: "center",
             justifyContent: "center"
         }
-        let boxStyle = {
+        var boxStyle = {
             width: "fit-content",
             height: "fit-content",
             backgroundColor: "white",
@@ -105,12 +105,13 @@ class AddChildPopup extends React.Component {
             justifyContent: "space-between",
             flexDirection: "column",
             alignItems: "center",
-            position: "relative"
+            position: "relative",
+            overflowY: "auto" 
         }
-        let contentDiv = {
+        var contentDiv = {
             width: "90%"
         }
-        let buttonDivStyle = {
+        var buttonDivStyle = {
             width: "100%",
             display: "flex",
             justifyContent: "flex-end",
@@ -120,7 +121,7 @@ class AddChildPopup extends React.Component {
             paddingRight: "10px"
         }
 
-        let divStlye = {
+        var divStlye = {
             boxSizing: "border-box",
             width: "100%",
             padding: "5px 0px",
@@ -129,22 +130,92 @@ class AddChildPopup extends React.Component {
             alignItems: "flex-end"
         }
 
-        let labelStyle = {
+        var labelStyle = {
             margin: 0,
             marginRight: "40px",
             fontSize: "25px",
             fontWeight: "bold"
         }
 
-        let inputStyle = {
+        var inputStyle = {
             height: "20px",
             fontSize: "18px",
             width: "200px"
         }
 
-        let errorMessage = null
+        var headerStyle = {
+            fontSize: "35px"
+        }
+
+        if(window.screen.width < 1280) {
+             popupStyle = {
+                position: "fixed",
+                width: "100vw",
+                height: "100vh",
+                backgroundColor: "rgba(0, 0, 0, 0.5)",
+                top: 0,
+                left: 0,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+            }
+
+             boxStyle = {
+                width: "fit-content",
+                height: "fit-content",
+                backgroundColor: "white",
+                borderRadius: "25px",
+                display: "flex",
+                justifyContent: "space-between",
+                flexDirection: "column",
+                alignItems: "center",
+                position: "relative",
+                overflowY: "auto" 
+            }
+             contentDiv = {
+                width: "95vw"
+            }
+             buttonDivStyle = {
+                width: "100%",
+                display: "flex",
+                justifyContent: "flex-end",
+                alignItems: "center",
+                boxSizing: "border-box",
+                paddingBottom: "10px",
+                paddingRight: "10px"
+            }
+    
+             divStlye = {
+                boxSizing: "border-box",
+                width: "100%",
+                padding: "5px 0px",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "flex-end"
+            }
+    
+            labelStyle = {
+                margin: 0,
+                marginRight: "20px",
+                fontSize: "15px",
+                fontWeight: "bold"
+            }
+    
+            inputStyle = {
+                height: "15px",
+                fontSize: "10px",
+                width: "100px"
+            }
+
+            headerStyle = {
+                fontSize: "22px"
+            }
+
+        }
+
+        var errorMessage = null
         if(this.state.error != ""){
-            let errorStyle = {
+            var errorStyle = {
                 color: "red",
                 fontSize: "18px",
                 textAlign: "center",
@@ -153,7 +224,7 @@ class AddChildPopup extends React.Component {
             errorMessage = <p style={errorStyle}>{this.state.error}</p>
         }
 
-        let hrStyle = {
+        var hrStyle = {
             border: '5px dotted ' + appBlue,
             borderStyle: 'none none dotted',
             color: '#fff',
@@ -164,7 +235,7 @@ class AddChildPopup extends React.Component {
             <div style={popupStyle}>
                 <div style={boxStyle}>
                     <div style={contentDiv}>
-                        <h1>Add Child</h1>
+                        <h1 style = {headerStyle}>Add Child</h1>
                         <hr></hr>
                         <LabelField title="First Name" field="firstName" value={this.state.firstName} editing={true} valueChanged={this.updateState} />
                         <LabelField title="Last Name" field="lastName" value={this.state.lastName} editing={true} valueChanged={this.updateState} />
