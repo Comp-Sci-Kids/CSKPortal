@@ -277,6 +277,10 @@ class RegisterKidPage extends React.Component {
                             first day of instruction. All teachers are volunteer students. If the fee provides financial hardship to you, 
                             please contact <a href = "mailto@cskids211@gmail.com" target = '_blank'>cskids211@gmail.com.</a> Any other questions or concerns can also be emailed to <a href = "mailto@cskids211@gmail.com" target = '_blank'>cskids211@gmail.com.</a>
                             </p>
+
+                    <br>
+                    </br>
+                    <b>The information below should be automatically filled in. Please scroll to the bottom after checking for accuracy.</b>
                     <hr />
 
                     <h1>Parent Information</h1>

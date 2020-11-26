@@ -302,7 +302,7 @@ var RegisterKidPage = /*#__PURE__*/function (_React$Component) {
       }, "cskids211@gmail.com."), " Any other questions or concerns can also be emailed to ", /*#__PURE__*/React.createElement("a", {
         href: "mailto@cskids211@gmail.com",
         target: "_blank"
-      }, "cskids211@gmail.com.")), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("h1", null, "Parent Information"), /*#__PURE__*/React.createElement("div", {
+      }, "cskids211@gmail.com.")), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("b", null, "The information below should be automatically filled in. Please scroll to the bottom after checking for accuracy."), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("h1", null, "Parent Information"), /*#__PURE__*/React.createElement("div", {
         style: divStyle2
       }, /*#__PURE__*/React.createElement(LabelField, {
         title: "Parent First Name",
