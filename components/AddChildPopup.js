@@ -158,6 +158,7 @@ class AddChildPopup extends React.Component {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+                overflowY: 'scroll',
             }
 
              boxStyle = {
@@ -170,7 +171,7 @@ class AddChildPopup extends React.Component {
                 flexDirection: "column",
                 alignItems: "center",
                 position: "relative",
-                overflowY: "auto" 
+                overflowY: 'scroll',
             }
              contentDiv = {
                 width: "95vw"
@@ -198,7 +199,8 @@ class AddChildPopup extends React.Component {
                 margin: 0,
                 marginRight: "20px",
                 fontSize: "15px",
-                fontWeight: "bold"
+                fontWeight: "bold",
+                marginLeft: "7px"
             }
     
             inputStyle = {
@@ -222,10 +224,7 @@ class AddChildPopup extends React.Component {
                 textAlign: "center",
                 fontWeight: "bold"
             }
-
-            alert(this.state.error)
-
-            // errorMessage = <p style={errorStyle}>{this.state.error}</p>
+            errorMessage = <p style={errorStyle}>{this.state.error}</p>
         }
 
         var hrStyle = {

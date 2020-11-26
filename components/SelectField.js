@@ -52,6 +52,7 @@ class SelectField extends React.Component {
     
              labelStyle = {
                 margin: 0,
+                marginLeft: "7px",
                 marginRight: "40px",
                 fontSize: "15px",
                 fontWeight: "bold"

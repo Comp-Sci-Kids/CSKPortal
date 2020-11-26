@@ -198,6 +198,7 @@ class EditChildPopup extends React.Component {
                display: "flex",
                alignItems: "center",
                justifyContent: "center",
+               overflowY: 'scroll',
            }
 
             boxStyle = {
@@ -210,7 +211,7 @@ class EditChildPopup extends React.Component {
                flexDirection: "column",
                alignItems: "center",
                position: "relative",
-               overflowY: "auto" 
+               overflowY: 'scroll',
            }
             contentDiv = {
                width: "95vw"
@@ -262,8 +263,8 @@ class EditChildPopup extends React.Component {
                 textAlign: "center",
                 fontWeight: "bold"
             }
-            alert(this.state.error)
-            // errorMessage = <p style={errorStyle}>{this.state.error}</p>
+            // alert(this.state.error)
+            errorMessage = <p style={errorStyle}>{this.state.error}</p>
         }
 
         var hrStyle = {

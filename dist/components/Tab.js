@@ -54,7 +54,7 @@ var Tab = /*#__PURE__*/function (_React$Component) {
         tabStyle = {
           width: "20vw",
           height: "30px",
-          fontSize: "15px",
+          fontSize: "12px",
           outline: "none",
           borderStyle: "solid",
           borderWidth: "1px 1px 0 1px",

@@ -222,7 +222,8 @@ var EditChildPopup = /*#__PURE__*/function (_React$Component) {
           left: 0,
           display: "flex",
           alignItems: "center",
-          justifyContent: "center"
+          justifyContent: "center",
+          overflowY: 'scroll'
         };
         boxStyle = {
           width: "fit-content",
@@ -234,7 +235,7 @@ var EditChildPopup = /*#__PURE__*/function (_React$Component) {
           flexDirection: "column",
           alignItems: "center",
           position: "relative",
-          overflowY: "auto"
+          overflowY: 'scroll'
         };
         contentDiv = {
           width: "95vw"
@@ -281,8 +282,11 @@ var EditChildPopup = /*#__PURE__*/function (_React$Component) {
           fontSize: "18px",
           textAlign: "center",
           fontWeight: "bold"
-        };
-        alert(this.state.error); // errorMessage = <p style={errorStyle}>{this.state.error}</p>
+        }; // alert(this.state.error)
+
+        errorMessage = /*#__PURE__*/React.createElement("p", {
+          style: errorStyle
+        }, this.state.error);
       }
 
       var hrStyle = {

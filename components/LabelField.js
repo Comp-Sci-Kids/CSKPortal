@@ -53,7 +53,8 @@ class LabelField extends React.Component {
                 margin: 0,
                 marginRight: "40px",
                 fontSize: "15px",
-                fontWeight: "bold"
+                fontWeight: "bold",
+                marginLeft: "7px"
             }
     
             pStyle = {

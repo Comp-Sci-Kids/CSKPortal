@@ -89,7 +89,8 @@ var LabelField = /*#__PURE__*/function (_React$Component) {
           margin: 0,
           marginRight: "40px",
           fontSize: "15px",
-          fontWeight: "bold"
+          fontWeight: "bold",
+          marginLeft: "7px"
         };
         pStyle = {
           margin: 0,
