@@ -188,7 +188,7 @@ class SignUpPage extends React.Component {
             zIndex: "20"
         }
 
-        if(window.screen.width < 1280) {
+        if(window.screen.width < mobileThreshold) {
             divStyle = {
                 width: "100%",
                 height: "100%",

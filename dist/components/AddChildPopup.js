@@ -223,7 +223,8 @@ var AddChildPopup = /*#__PURE__*/function (_React$Component) {
         inputStyle = {
           height: "15px",
           fontSize: "10px",
-          width: "100px"
+          width: "100px",
+          marginRight: "7px"
         };
         headerStyle = {
           fontSize: "22px"

@@ -185,7 +185,7 @@ var LoginPage = /*#__PURE__*/function (_React$Component) {
       };
       var errorBox = null;
 
-      if (window.screen.width < 1280) {
+      if (window.screen.width < mobileThreshold) {
         boxStyle = {
           width: "90vw",
           backgroundColor: "white",

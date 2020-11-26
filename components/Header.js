@@ -7,24 +7,35 @@ class Header extends React.Component {
         this.props.changePage(index)
     }
     render() {
-        let outerDivStyle = {
+        var outerDivStyle = {
             backgroundColor: "white",
             // height: "200px"
         }
-        let innerDivStyle = {
+        var innerDivStyle = {
             width: "100%",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
             textAlign: "center"
         }
-        let titleStyle = {
+        var titleStyle = {
             margin: "20px",
             color: appBlue,
             fontFamily: "brandFont",
             fontSize: "50px",
             textAlign: "left"
         }
+
+        if(window.screen.width < 1280) {
+            titleStyle = {
+                margin: "20px",
+                color: appBlue,
+                fontFamily: "brandFont",
+                fontSize: "25px",
+                textAlign: "left"
+            }
+        }
+
         return (<div style={outerDivStyle}>
             <div style={innerDivStyle}>
                 <h1 style={titleStyle}>CompSci Kids Portal</h1>

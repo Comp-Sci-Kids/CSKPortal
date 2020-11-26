@@ -50,7 +50,7 @@ var Tab = /*#__PURE__*/function (_React$Component) {
         borderRadius: "15px 15px 0px 0px"
       };
 
-      if (window.screen.width < 1280) {
+      if (window.screen.width < mobileThreshold) {
         tabStyle = {
           width: "20vw",
           height: "30px",

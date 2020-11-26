@@ -208,7 +208,7 @@ var RegisterKidPage = /*#__PURE__*/function (_React$Component) {
         cursor: "pointer"
       };
 
-      if (window.screen.width < 1280) {
+      if (window.screen.width < mobileThreshold) {
         divStyle = {
           height: "100%",
           width: "100%",

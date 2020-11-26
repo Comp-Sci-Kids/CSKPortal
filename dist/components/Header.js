@@ -63,6 +63,17 @@ var Header = /*#__PURE__*/function (_React$Component) {
         fontSize: "50px",
         textAlign: "left"
       };
+
+      if (window.screen.width < 1280) {
+        titleStyle = {
+          margin: "20px",
+          color: appBlue,
+          fontFamily: "brandFont",
+          fontSize: "25px",
+          textAlign: "left"
+        };
+      }
+
       return /*#__PURE__*/React.createElement("div", {
         style: outerDivStyle
       }, /*#__PURE__*/React.createElement("div", {

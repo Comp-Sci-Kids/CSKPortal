@@ -40,7 +40,7 @@ class SelectField extends React.Component {
             fontSize: "18px"
         }
 
-        if(window.screen.width < 1280) {
+        if(window.screen.width < mobileThreshold) {
              divStlye = {
                 boxSizing: "border-box",
                 width: "100%",
@@ -59,13 +59,15 @@ class SelectField extends React.Component {
     
              pStyle = {
                 margin: 0,
-                fontSize: "15px"
+                fontSize: "15px",
+                marginRight: "7px",
             }
             
     
              selectStyle = {
                 width: "106px",
-                fontSize: "10px"
+                fontSize: "10px",
+                marginRight: "7px",
             }
        }
 

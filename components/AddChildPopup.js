@@ -204,7 +204,8 @@ class AddChildPopup extends React.Component {
             inputStyle = {
                 height: "15px",
                 fontSize: "10px",
-                width: "100px"
+                width: "100px",
+                marginRight: "7px"
             }
 
             headerStyle = {

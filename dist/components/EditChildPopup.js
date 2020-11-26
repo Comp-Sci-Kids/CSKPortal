@@ -212,7 +212,7 @@ var EditChildPopup = /*#__PURE__*/function (_React$Component) {
         fontSize: "35px"
       };
 
-      if (window.screen.width < 1280) {
+      if (window.screen.width < mobileThreshold) {
         popupStyle = {
           position: "fixed",
           width: "100vw",

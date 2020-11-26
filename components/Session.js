@@ -141,7 +141,7 @@ class Session extends React.Component {
             borderRadius: "27px",
             border: "2px solid rgba(8,58,174,1)",
             padding: "5px 5px", 
-            width: "30%",
+            width: "200px",
             height: "44px",
             outline: "none",
             fontSize: "20px",
@@ -155,7 +155,7 @@ class Session extends React.Component {
             borderRadius: "27px",
             border: "2px solid #D3D3D3",
             padding: "5px 5px", 
-            width: "20%",
+            width: "200px",
             height: "44px",
             outline: "none",
             fontSize: "20px",
@@ -165,7 +165,7 @@ class Session extends React.Component {
             cursor: "pointer"
         }
 
-        if(window.screen.width < 1280) {
+        if(window.screen.width < mobileThreshold) {
             var buttonStyle = {
                 borderRadius: "27px",
                 border: "2px solid rgba(8,58,174,1)",

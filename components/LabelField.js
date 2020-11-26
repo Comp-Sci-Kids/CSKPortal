@@ -39,7 +39,7 @@ class LabelField extends React.Component {
             width: "200px"
         }
 
-        if(window.screen.width < 1280) {
+        if(window.screen.width < mobileThreshold) {
              divStlye = {
                 boxSizing: "border-box",
                 width: "100%",
@@ -58,13 +58,15 @@ class LabelField extends React.Component {
     
             pStyle = {
                 margin: 0,
-                fontSize: "15px"
+                fontSize: "15px",
+                marginRight: "7px"
             }
             
              inputStyle = {
                 height: "15px",
                 fontSize: "10px",
-                width: "100px"
+                width: "100px",
+                marginRight: "7px"
             }
         }
 
