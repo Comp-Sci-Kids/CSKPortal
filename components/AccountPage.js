@@ -23,19 +23,21 @@ class AccountPage extends React.Component {
             success: false
         }
 
-        this.getInformation();
+        this.getInformation(); //load in parent information in the beginning
     }
 
+
+    //logging out a user
     logOut(){
         window.localStorage.clear()
         sessionStorage.clear();
         location.reload()
     }
 
+    //deleting a user
     delete() {
 
         if(confirm("Are you sure you want to delete this account?")){
-            // console.log("devaring")
             networkRequest("parent/delete", "DELETE", {
 
             }, d => {
@@ -50,6 +52,7 @@ class AccountPage extends React.Component {
 
     }
 
+    //used in input fields
     valueChanged(e){
         this.updateState(e.target.name, e.target.value);
     }
@@ -58,6 +61,7 @@ class AccountPage extends React.Component {
         this.setState(this.state)
     }
 
+    //gets a parent's information
     getInformation() {
         networkRequest("parent/getParent", "POST", {
  
@@ -78,6 +82,7 @@ class AccountPage extends React.Component {
         })
     }
 
+    //update a parent's information
     updateInformation() {
 
         const capitalize = (s) => {
@@ -109,6 +114,7 @@ class AccountPage extends React.Component {
         })
     }
 
+    //change parent password
     changePassword() {
         if(this.state.newPassword1 == this.state.newPassword2) {
             networkRequest("parent/updatePassword", "POST", {

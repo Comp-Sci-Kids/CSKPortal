@@ -116,9 +116,6 @@ class Calendar extends React.Component {
         var dateString = `20${this.state.year}-${this.state.month}-1 00:00:00`;
         var date = new Date(dateString.replace(/-/g, '/'));
         var daysInMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-        // for (i = date.getDay(); i < date.getDay() + daysInMonth; i++) {
-        // 	dateHolders[i].innerHTML = i - date.getDay() + 1
-        // }
         for (let i = 0; i < 6 * 7; i++) {
             if (i >= date.getDay() && i < date.getDay() + daysInMonth) {
                 dates.push(i - date.getDay() + 1)
@@ -155,12 +152,6 @@ class Calendar extends React.Component {
 
                 keyCount += 1;
 
-                // dateCols.push(<td style = {{
-                //     textAlign: "center",
-                //     padding: 0,
-                //     color: color
-                // }} key = {keyCount} />)
-                // keyCount += 1;
                 counter += 1
             }
             dateRows.push(e("tr", {key: keyCount}, dateCols))

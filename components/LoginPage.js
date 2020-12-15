@@ -44,6 +44,9 @@ class LoginPage extends React.Component {
                     incorrect: this.state.incorrect + 1
                 })
             }else{
+
+                //This here takes the token and saves it to local storage
+
                 let token = d.token
                 var base64Url = token.split('.')[1];
                 var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');

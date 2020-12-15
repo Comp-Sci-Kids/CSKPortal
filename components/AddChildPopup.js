@@ -20,6 +20,9 @@ class AddChildPopup extends React.Component {
             error: ""
         }
     }
+
+    //Adds a child 
+
     addChild(){
 
 
@@ -38,7 +41,6 @@ class AddChildPopup extends React.Component {
           ) {
             alert("You are missing some information.");
 
-            // this.updateState("error", "You are missing some information.")
             return;
           }
 
@@ -46,11 +48,9 @@ class AddChildPopup extends React.Component {
 
         if(dob.length != 10) {
             alert("Please enter the birthday in MM/DD/YYYY format.");
-            // this.updateState("error", "Please enter the birthday in MM/DD/YYYY format.")
             return;
         } else if(dob[2] != "/" || dob[5] != "/") {
             alert("Please enter the birthday in MM/DD/YYYY format.");
-            // this.updateState("error", "Please enter the birthday in MM/DD/YYYY format.")
             return;
         }
 
