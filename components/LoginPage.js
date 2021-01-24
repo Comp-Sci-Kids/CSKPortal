@@ -1,20 +1,27 @@
 class LoginPage extends React.Component {
     constructor(props) {
         super(props)
+        this.getCookie = this.getCookie.bind(this)
         this.signIn = this.signIn.bind(this)
         this.valueChanged = this.valueChanged.bind(this)
         this.updateState = this.updateState.bind(this)
+        this.closePopup = this.closePopup.bind(this)
         document.onkeypress = (e) => {
             if(e.keyCode == 13){
                 this.signIn()
             }
         }
         this.state = {
+            popup: false,
             username: "",
             password: "",
             error: "",
             missingInfo: false,
             incorrect: 0
+        }
+        var x = this.getCookie('cskparent');            //checks if user has the cookie that states that they don't want a popup, and if it doesn't exist a popup shows
+        if (!x) {
+            this.updateState("popup", 'true')
         }
     }
     valueChanged(e){
@@ -23,6 +30,9 @@ class LoginPage extends React.Component {
     updateState(key, val) {
         this.state[key] = val;
         this.setState(this.state)
+    }
+    closePopup() {
+        this.updateState("popup", false)
     }
     signIn(){
         if(this.state.username == ""){
@@ -65,7 +75,16 @@ class LoginPage extends React.Component {
             }
         })
     }
-
+    getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
     render() {
 
         var divStyle = {
@@ -211,6 +230,11 @@ class LoginPage extends React.Component {
             }
         }
 
+        let popup = null
+        if(this.state.popup){
+            popup = <InfoPopup closeCallback={this.closePopup}/>
+        }
+        
 
         if(this.state.error != ""){
             errorBox = <div style={errorBoxStyle}>{this.state.error}</div>
@@ -241,6 +265,8 @@ class LoginPage extends React.Component {
                     <p style={titleStyle2} onClick={() => this.props.changePage(3)}>Forgot your password?</p>
                     <p style={titleStyle2} onClick={() => this.props.changePage(5)}>Resend confirmation email</p>
                 </div>
+                <br></br>
+                {popup}
                 
             </div>
         )
