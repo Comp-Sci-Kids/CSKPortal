@@ -83,6 +83,7 @@ class InfoPopup extends React.Component {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+                zIndex: "15"
                 // overflowY: 'scroll',
             }
             boxStyle = {
