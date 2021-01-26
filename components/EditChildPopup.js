@@ -17,7 +17,7 @@ class EditChildPopup extends React.Component {
             school: this.props.sampleKid.school,
             emergencyName: this.props.sampleKid.emergencyName,
             emergencyPrefix: this.props.sampleKid.emergencyPrefix,
-            emergencyRelationship: this.props.sampleKid.emergencyRelationship,
+            emergencyRelationship: this.props.sampleKid.emergencyRelationship,  //should be a selectView
             emergencyPhone: this.props.sampleKid.emergencyPhone,
             error: ""
         
