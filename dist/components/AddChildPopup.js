@@ -51,7 +51,8 @@ var AddChildPopup = /*#__PURE__*/function (_React$Component) {
       error: ""
     };
     return _this;
-  }
+  } //Adds a child 
+
 
   _createClass(AddChildPopup, [{
     key: "addChild",
@@ -59,20 +60,17 @@ var AddChildPopup = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       if (this.state.emergencyPrefix == "" || this.state.emergencyName == "" || this.state.emergencyRelationship == "" || this.state.emergencyPhone == "" || this.state.firstName == "" || this.state.lastName == "" || this.state.gender == "" || this.state.dob == "" || this.state.grade == "" || this.state.school == "" || this.state.shirtSize == "") {
-        alert("You are missing some information."); // this.updateState("error", "You are missing some information.")
-
+        alert("You are missing some information.");
         return;
       }
 
       var dob = this.state.dob;
 
       if (dob.length != 10) {
-        alert("Please enter the birthday in MM/DD/YYYY format."); // this.updateState("error", "Please enter the birthday in MM/DD/YYYY format.")
-
+        alert("Please enter the birthday in MM/DD/YYYY format.");
         return;
       } else if (dob[2] != "/" || dob[5] != "/") {
-        alert("Please enter the birthday in MM/DD/YYYY format."); // this.updateState("error", "Please enter the birthday in MM/DD/YYYY format.")
-
+        alert("Please enter the birthday in MM/DD/YYYY format.");
         return;
       }
 

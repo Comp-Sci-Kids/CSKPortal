@@ -88,6 +88,7 @@ var LoginPage = /*#__PURE__*/function (_React$Component) {
             incorrect: _this2.state.incorrect + 1
           });
         } else {
+          //This here takes the token and saves it to local storage
           var token = d.token;
           var base64Url = token.split('.')[1];
           var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');

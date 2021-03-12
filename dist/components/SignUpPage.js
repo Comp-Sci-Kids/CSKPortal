@@ -22,6 +22,8 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+var SPECIAL_CODE = "CSKSESSION1";
+
 var SignUpPage = /*#__PURE__*/function (_React$Component) {
   _inherits(SignUpPage, _React$Component);
 
@@ -53,7 +55,8 @@ var SignUpPage = /*#__PURE__*/function (_React$Component) {
       password: "",
       password2: "",
       error: "",
-      success: false
+      success: false,
+      specialCode: ""
     };
     return _this;
   }
@@ -91,6 +94,11 @@ var SignUpPage = /*#__PURE__*/function (_React$Component) {
 
       if (this.state.password != this.state.password2) {
         this.updateState("error", "Your passwords do not match");
+        return;
+      }
+
+      if (this.state.specialCode.toUpperCase() != SPECIAL_CODE) {
+        this.updateState("error", "You have not entered the correct code.");
         return;
       } //continue to signup
 
@@ -394,6 +402,13 @@ var SignUpPage = /*#__PURE__*/function (_React$Component) {
         placeholder: "Confirm Password",
         name: "password2",
         value: this.state.password2,
+        onChange: this.valueChanged
+      }), /*#__PURE__*/React.createElement("input", {
+        style: inputStyle,
+        type: "text",
+        placeholder: "Special Parent Code",
+        name: "specialCode",
+        value: this.state.specialCode,
         onChange: this.valueChanged
       }), /*#__PURE__*/React.createElement("button", {
         style: buttonStyle,

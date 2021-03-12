@@ -1,3 +1,5 @@
+var SPECIAL_CODE = "CSKSESSION1";
+
 class SignUpPage extends React.Component {
     constructor(props) {
         super(props)
@@ -19,7 +21,8 @@ class SignUpPage extends React.Component {
             password: "",
             password2: "",
             error: "",
-            success: false
+            success: false,
+            specialCode: ""
         }
     }
     valueChanged(e){
@@ -51,6 +54,11 @@ class SignUpPage extends React.Component {
 
         if(this.state.password != this.state.password2) {
             this.updateState("error", "Your passwords do not match");
+            return;
+        }
+
+        if(this.state.specialCode.toUpperCase() != SPECIAL_CODE) {
+            this.updateState("error", "You have not entered the correct code.");
             return;
         }
 
@@ -319,7 +327,7 @@ class SignUpPage extends React.Component {
                     <input style={inputStyle} type="email" placeholder="Email" name="email" value={this.state.email} onChange={this.valueChanged}/>
                     <input style={inputStyle} type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.valueChanged}/>
                     <input style={inputStyle} type="password" placeholder="Confirm Password" name="password2" value={this.state.password2} onChange={this.valueChanged}/>
-
+                    <input style={inputStyle} type="text" placeholder="Special Parent Code" name="specialCode" value={this.state.specialCode} onChange={this.valueChanged}/>
                     <button style={buttonStyle} onClick={this.signUp}>Sign Up</button>
                     <button style={buttonStyle} onClick={() => this.props.changePage(1)}>Back</button>
                 </div>

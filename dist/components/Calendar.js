@@ -165,9 +165,7 @@ var Calendar = /*#__PURE__*/function (_React$Component) {
       var dates = [];
       var dateString = "20".concat(this.state.year, "-").concat(this.state.month, "-1 00:00:00");
       var date = new Date(dateString.replace(/-/g, '/'));
-      var daysInMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate(); // for (i = date.getDay(); i < date.getDay() + daysInMonth; i++) {
-      // 	dateHolders[i].innerHTML = i - date.getDay() + 1
-      // }
+      var daysInMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 
       for (var _i = 0; _i < 6 * 7; _i++) {
         if (_i >= date.getDay() && _i < date.getDay() + daysInMonth) {
@@ -203,13 +201,7 @@ var Calendar = /*#__PURE__*/function (_React$Component) {
             },
             key: keyCount
           }, dates[counter]));
-          keyCount += 1; // dateCols.push(<td style = {{
-          //     textAlign: "center",
-          //     padding: 0,
-          //     color: color
-          // }} key = {keyCount} />)
-          // keyCount += 1;
-
+          keyCount += 1;
           counter += 1;
         }
 

@@ -54,10 +54,12 @@ var AccountPage = /*#__PURE__*/function (_React$Component) {
       success: false
     };
 
-    _this.getInformation();
+    _this.getInformation(); //load in parent information in the beginning
+
 
     return _this;
-  }
+  } //logging out a user
+
 
   _createClass(AccountPage, [{
     key: "logOut",
@@ -65,14 +67,14 @@ var AccountPage = /*#__PURE__*/function (_React$Component) {
       window.localStorage.clear();
       sessionStorage.clear();
       location.reload();
-    }
+    } //deleting a user
+
   }, {
     key: "delete",
     value: function _delete() {
       var _this2 = this;
 
       if (confirm("Are you sure you want to delete this account?")) {
-        // console.log("devaring")
         networkRequest("parent/delete", "DELETE", {}, function (d) {
           if (!d.success) {
             alert("error");
@@ -82,7 +84,8 @@ var AccountPage = /*#__PURE__*/function (_React$Component) {
           }
         });
       }
-    }
+    } //used in input fields
+
   }, {
     key: "valueChanged",
     value: function valueChanged(e) {
@@ -93,7 +96,8 @@ var AccountPage = /*#__PURE__*/function (_React$Component) {
     value: function updateState(key, val) {
       this.state[key] = val;
       this.setState(this.state);
-    }
+    } //gets a parent's information
+
   }, {
     key: "getInformation",
     value: function getInformation() {
@@ -113,7 +117,8 @@ var AccountPage = /*#__PURE__*/function (_React$Component) {
           _this3.logOut();
         }
       });
-    }
+    } //update a parent's information
+
   }, {
     key: "updateInformation",
     value: function updateInformation() {
@@ -146,7 +151,8 @@ var AccountPage = /*#__PURE__*/function (_React$Component) {
           _this4.setState(_this4.state);
         }, 3000);
       });
-    }
+    } //change parent password
+
   }, {
     key: "changePassword",
     value: function changePassword() {

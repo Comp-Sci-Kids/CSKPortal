@@ -13,7 +13,7 @@ class RegisterPage extends React.Component {
             selectedKid: {},
             session: {},
             selectedKidSection: "",
-            message: ""
+            message: "",
         }
 
         this.refreshPage();
