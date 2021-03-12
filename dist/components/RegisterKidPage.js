@@ -57,8 +57,16 @@ var RegisterKidPage = /*#__PURE__*/function (_React$Component) {
       grade: _this.props.kid.grade,
       studentSchool: _this.props.kid.school,
       shirtSize: _this.props.kid.shirtSize,
-      error: ""
+      error: "",
+      infoSess: ""
     };
+    networkRequest("websiteText", "GET", null, function (data) {
+      data.forEach(function (item) {
+        if (item.key == "sessInfo") {
+          _this.updateState("infoSess", item.value);
+        }
+      });
+    });
 
     _this.getParentInformation();
 
@@ -296,13 +304,11 @@ var RegisterKidPage = /*#__PURE__*/function (_React$Component) {
         style: titleStyle
       }, "CompSci Kids ", this.state.sessionName, " Session Registration"), /*#__PURE__*/React.createElement("h1", {
         style: titleStyle
-      }, "Section: ", this.props.section), /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement("p", null, "Registration is on a first come, first serve basis. By registering, you are committing to a ", /*#__PURE__*/React.createElement("b", null, "$20 sign up fee"), " which will be used for a T-shirt and other materials the students will take home. Payment is due by the first day of class and can be paid as a check made out to Conant High School with the memo CompSci Kids given to the Conant High School cashier or brought on the first day of instruction. All teachers are volunteer students. If the fee provides financial hardship to you, please contact ", /*#__PURE__*/React.createElement("a", {
-        href: "mailto@cskids211@gmail.com",
-        target: "_blank"
-      }, "cskids211@gmail.com."), " Any other questions or concerns can also be emailed to ", /*#__PURE__*/React.createElement("a", {
-        href: "mailto@cskids211@gmail.com",
-        target: "_blank"
-      }, "cskids211@gmail.com.")), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("b", null, "The information below should be automatically filled in. Please scroll to the bottom after checking for accuracy."), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("h1", null, "Parent Information"), /*#__PURE__*/React.createElement("div", {
+      }, "Section: ", this.props.section), /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement("td", {
+        dangerouslySetInnerHTML: {
+          __html: this.state.infoSess
+        }
+      }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("b", null, "The information below should be automatically filled in. Please scroll to the bottom after checking for accuracy."), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("h1", null, "Parent Information"), /*#__PURE__*/React.createElement("div", {
         style: divStyle2
       }, /*#__PURE__*/React.createElement(LabelField, {
         title: "Parent First Name",
@@ -396,6 +402,9 @@ var RegisterKidPage = /*#__PURE__*/function (_React$Component) {
         }, {
           value: "Father",
           display: "Father"
+        }, {
+          value: "Neighbor",
+          display: "Neighbor"
         }, {
           value: "Other",
           display: "Other"

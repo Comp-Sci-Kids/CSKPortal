@@ -33,9 +33,11 @@ var LoginPage = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, LoginPage);
 
     _this = _super.call(this, props);
+    _this.getCookie = _this.getCookie.bind(_assertThisInitialized(_this));
     _this.signIn = _this.signIn.bind(_assertThisInitialized(_this));
     _this.valueChanged = _this.valueChanged.bind(_assertThisInitialized(_this));
     _this.updateState = _this.updateState.bind(_assertThisInitialized(_this));
+    _this.closePopup = _this.closePopup.bind(_assertThisInitialized(_this));
 
     document.onkeypress = function (e) {
       if (e.keyCode == 13) {
@@ -44,12 +46,21 @@ var LoginPage = /*#__PURE__*/function (_React$Component) {
     };
 
     _this.state = {
+      popup: false,
       username: "",
       password: "",
       error: "",
       missingInfo: false,
       incorrect: 0
     };
+
+    var x = _this.getCookie('cskparent'); //checks if user has the cookie that states that they don't want a popup, and if it doesn't exist a popup shows
+
+
+    if (!x) {
+      _this.updateState("popup", 'true');
+    }
+
     return _this;
   }
 
@@ -63,6 +74,11 @@ var LoginPage = /*#__PURE__*/function (_React$Component) {
     value: function updateState(key, val) {
       this.state[key] = val;
       this.setState(this.state);
+    }
+  }, {
+    key: "closePopup",
+    value: function closePopup() {
+      this.updateState("popup", false);
     }
   }, {
     key: "signIn",
@@ -106,6 +122,24 @@ var LoginPage = /*#__PURE__*/function (_React$Component) {
           _this2.props.callback();
         }
       });
+    }
+  }, {
+    key: "getCookie",
+    value: function getCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1, c.length);
+        }
+
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+      }
+
+      return null;
     }
   }, {
     key: "render",
@@ -253,6 +287,14 @@ var LoginPage = /*#__PURE__*/function (_React$Component) {
         };
       }
 
+      var popup = null;
+
+      if (this.state.popup) {
+        popup = /*#__PURE__*/React.createElement(InfoPopup, {
+          closeCallback: this.closePopup
+        });
+      }
+
       if (this.state.error != "") {
         errorBox = /*#__PURE__*/React.createElement("div", {
           style: errorBoxStyle
@@ -300,7 +342,7 @@ var LoginPage = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this3.props.changePage(5);
         }
-      }, "Resend confirmation email")));
+      }, "Resend confirmation email")), /*#__PURE__*/React.createElement("br", null), popup);
     }
   }]);
 

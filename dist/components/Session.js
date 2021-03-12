@@ -267,7 +267,7 @@ var Session = /*#__PURE__*/function (_React$Component) {
         style: divStyle
       }, /*#__PURE__*/React.createElement("h2", {
         style: headerStyle
-      }, session.Display + " Session"), /*#__PURE__*/React.createElement("p", null, "Time: " + (session.ELearn == 0 ? "4:30PM - 5:30PM" : "All Day")), /*#__PURE__*/React.createElement("p", {
+      }, session.Display + " Session"), /*#__PURE__*/React.createElement("p", null, "Time: " + this.props.session.time), /*#__PURE__*/React.createElement("p", {
         style: redStyle
       }, session.OpenDate), /*#__PURE__*/React.createElement(Calendar, {
         key: this.props.session.Name,

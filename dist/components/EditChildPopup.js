@@ -49,6 +49,7 @@ var EditChildPopup = /*#__PURE__*/function (_React$Component) {
       emergencyName: _this.props.sampleKid.emergencyName,
       emergencyPrefix: _this.props.sampleKid.emergencyPrefix,
       emergencyRelationship: _this.props.sampleKid.emergencyRelationship,
+      //should be a selectView
       emergencyPhone: _this.props.sampleKid.emergencyPhone,
       error: ""
     };
@@ -430,12 +431,25 @@ var EditChildPopup = /*#__PURE__*/function (_React$Component) {
           value: "Mrs",
           display: "Mrs"
         }]
-      }), /*#__PURE__*/React.createElement(LabelField, {
+      }), /*#__PURE__*/React.createElement(SelectField, {
         title: "Emergency Contact Relationship",
         field: "emergencyRelationship",
         value: this.state.emergencyRelationship,
         editing: true,
-        valueChanged: this.updateState
+        valueChanged: this.updateState,
+        options: [{
+          value: "Mother",
+          display: "Mother"
+        }, {
+          value: "Father",
+          display: "Father"
+        }, {
+          value: "Neighbor",
+          display: "Neighbor"
+        }, {
+          value: "Other",
+          display: "Other"
+        }]
       }), /*#__PURE__*/React.createElement(LabelField, {
         title: "Emergency Contact Phone Number",
         field: "emergencyPhone",
