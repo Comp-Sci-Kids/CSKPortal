@@ -29,8 +29,17 @@ class RegisterKidPage extends React.Component {
             grade: this.props.kid.grade,
             studentSchool: this.props.kid.school,
             shirtSize: this.props.kid.shirtSize,
-            error: ""
+            error: "",
+            infoSess: "",
         }
+
+        networkRequest("websiteText", "GET", null, data => {
+            data.forEach(item => {
+                if(item.key=="sessInfo"){
+                    this.updateState("infoSess",item.value)
+                }
+            })
+        })
 
         this.getParentInformation();
 
@@ -269,14 +278,7 @@ class RegisterKidPage extends React.Component {
                         <h1 style={titleStyle}>Section: {this.props.section}</h1>
                         <br></br>
                     </div>
-                    <p>
-                            Registration is on a first come, first serve basis.
-                            By registering, you are committing to a <b>$20 sign up fee</b> which will be used for a T-shirt and other materials the 
-                            students will take home. Payment is due by the first day of class and can be paid as a check made out to 
-                            Conant High School with the memo CompSci Kids given to the Conant High School cashier or brought on the 
-                            first day of instruction. All teachers are volunteer students. If the fee provides financial hardship to you, 
-                            please contact <a href = "mailto@cskids211@gmail.com" target = '_blank'>cskids211@gmail.com.</a> Any other questions or concerns can also be emailed to <a href = "mailto@cskids211@gmail.com" target = '_blank'>cskids211@gmail.com.</a>
-                            </p>
+                    <td dangerouslySetInnerHTML={{__html: this.state.infoSess}} />
 
                     <br>
                     </br>
@@ -321,7 +323,7 @@ class RegisterKidPage extends React.Component {
 
 
 
-<SelectField title="Emergency Contact Relationship" field="emergencyRelationship" value={this.state.emergencyRelationship} editing={true} valueChanged={this.updateState} options={[{value: "Mother", display: "Mother"}, {value: "Father", display: "Father"}, {value: "Other", display: "Other"}]}/>
+<SelectField title="Emergency Contact Relationship" field="emergencyRelationship" value={this.state.emergencyRelationship} editing={true} valueChanged={this.updateState} options={[{value: "Mother", display: "Mother"}, {value: "Father", display: "Father"}, {value: "Neighbor", display: "Neighbor"}, {value: "Other", display: "Other"}]}/>
 
 
                         <LabelField title="Emergency Contact Phone Number" field="emergencyPhone" value={this.state.emergencyPhone} editing={true} valueChanged={this.updateState} />

@@ -17,7 +17,7 @@ class EditChildPopup extends React.Component {
             school: this.props.sampleKid.school,
             emergencyName: this.props.sampleKid.emergencyName,
             emergencyPrefix: this.props.sampleKid.emergencyPrefix,
-            emergencyRelationship: this.props.sampleKid.emergencyRelationship,
+            emergencyRelationship: this.props.sampleKid.emergencyRelationship,  //should be a selectView
             emergencyPhone: this.props.sampleKid.emergencyPhone,
             error: ""
         
@@ -300,7 +300,7 @@ class EditChildPopup extends React.Component {
                         <hr style = {hrStyle}></hr>
                         <LabelField title="Emergency Contact Name" field="emergencyName" value={this.state.emergencyName} editing={true} valueChanged={this.updateState} />
                         <SelectField title="Emergency Contact Prefix" field="emergencyPrefix" value={this.state.emergencyPrefix} editing={true} valueChanged={this.updateState} options={[{value: "Mr", display: "Mr"}, {value: "Ms", display: "Ms"}, {value: "Mrs", display: "Mrs"}]}/>
-                        <LabelField title="Emergency Contact Relationship" field="emergencyRelationship" value={this.state.emergencyRelationship} editing={true} valueChanged={this.updateState} />
+                        <SelectField title="Emergency Contact Relationship" field="emergencyRelationship" value={this.state.emergencyRelationship} editing={true} valueChanged={this.updateState} options={[{value: "Mother", display: "Mother"}, {value: "Father", display: "Father"}, {value: "Neighbor", display: "Neighbor"}, {value: "Other", display: "Other"}]}/>
                         <LabelField title="Emergency Contact Phone Number" field="emergencyPhone" value={this.state.emergencyPhone} editing={true} valueChanged={this.updateState} />
                         {errorMessage}
                     </div>

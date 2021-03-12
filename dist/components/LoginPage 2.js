@@ -232,7 +232,7 @@ class LoginPage extends React.Component {
 
         let popup = null
         if(this.state.popup){
-            popup = <InfoPopup closeCallback={this.closePopup}/>
+            popup = <InPopup closeCallback={this.closePopup}/>
         }
         
 
