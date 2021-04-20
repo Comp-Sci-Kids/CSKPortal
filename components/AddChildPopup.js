@@ -250,17 +250,17 @@ class AddChildPopup extends React.Component {
                         <hr></hr>
                         <LabelField title="Child First Name" field="firstName" value={this.state.firstName} editing={true} valueChanged={this.updateState} />
                         <LabelField title="Child Last Name" field="lastName" value={this.state.lastName} editing={true} valueChanged={this.updateState} />
-                        <SelectField title="Gender" field="gender" value={this.state.gender} editing={true} valueChanged={this.updateState} options={[{value: "male", display: "Male"}, {value: "female", display: "Female"}, {value: "other", display: "Other"}]}/>
+                        <SelectField title="Child Gender" field="gender" value={this.state.gender} editing={true} valueChanged={this.updateState} options={[{value: "male", display: "Male"}, {value: "female", display: "Female"}, {value: "other", display: "Other"}]}/>
 
                         <div style={divStlye}>
-                            <label style={labelStyle}>Birthday (MM/DD/YYYY):</label>
+                            <label style={labelStyle}>Child Birthday (MM/DD/YYYY):</label>
                             <input style={inputStyle} type="text" value={this.state.dob} pattern="\d{2}/\d{2}/\d{4}" placeholder="Birthday" name="dob" onChange={this.valueChanged} />
                         </div>
 
-                        <SelectField title="Grade" field="grade" value={this.state.grade} editing={true} valueChanged={this.updateState} options={[{value: 1, display: "1st"}, {value: 2, display: "2nd"}, {value: 3, display: "3rd"}, {value: 4, display: "4th"}, {value: 5, display: "5th"}, {value: 6, display: "6th"}, {value: 7, display: "7th"}, {value: 8, display: "8th"}]}/>
-                        <LabelField title="School" field="school" value={this.state.school} editing={true} valueChanged={this.updateState} />
+                        <SelectField title="Child Grade" field="grade" value={this.state.grade} editing={true} valueChanged={this.updateState} options={[{value: 1, display: "1st"}, {value: 2, display: "2nd"}, {value: 3, display: "3rd"}, {value: 4, display: "4th"}, {value: 5, display: "5th"}, {value: 6, display: "6th"}, {value: 7, display: "7th"}, {value: 8, display: "8th"}]}/>
+                        <LabelField title="Child School" field="school" value={this.state.school} editing={true} valueChanged={this.updateState} />
 
-                        <SelectField title="Shirt Size" field="shirtSize" value={this.state.shirtSize} editing={true} valueChanged={this.updateState} options={[{value: "ys", display: "Youth Small"}, {value: "ym", display: "Youth Medium"}, {value: "yl", display: "Youth Large"}, {value: "as", display: "Adult Small"}, {value: "am", display: "Adult Medium"}, {value: "al", display: "Adult Large"}, {value: "ax", display: "Adult X-Large"}]}/>
+                        <SelectField title="Child Shirt Size" field="shirtSize" value={this.state.shirtSize} editing={true} valueChanged={this.updateState} options={[{value: "ys", display: "Youth Small"}, {value: "ym", display: "Youth Medium"}, {value: "yl", display: "Youth Large"}, {value: "as", display: "Adult Small"}, {value: "am", display: "Adult Medium"}, {value: "al", display: "Adult Large"}, {value: "ax", display: "Adult X-Large"}]}/>
                         <hr style = {hrStyle}></hr>
                         <LabelField title="Emergency Contact Name" field="emergencyName" value={this.state.emergencyName} editing={true} valueChanged={this.updateState} />
                         <SelectField title="Emergency Contact Prefix" field="emergencyPrefix" value={this.state.emergencyPrefix} editing={true} valueChanged={this.updateState} options={[{value: "Mr", display: "Mr"}, {value: "Ms", display: "Ms"}, {value: "Mrs", display: "Mrs"}]}/>
