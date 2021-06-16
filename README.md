@@ -23,10 +23,11 @@ This website is currently in production.
 
 ## Features
 
-• Parent account creation
-• Automatic emailing
-• Adding and registering kids
-• Encrypted authentication system
+- Create accounts using an email and password in less than 30 seconds
+- Recieve automatic emails regarding account creation, potential hack attempt, and kid registration
+- Adding an unlimited number of kids
+- Registering kids for sessions with 2 clicks!
+- Viewing information about Seasonal/Weekend CS Tutoring Sessions
 
 ## Collaborators
 
