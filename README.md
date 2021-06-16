@@ -4,8 +4,6 @@
 
 This is a a website that allows parents to register kids for after-school CS tutoring sessions. It replaced an online form that parents had to fill out numerous times. Not only does this website save parents a lot of time, but it lays the groundwork for other future CompSci Kids sites.
 
-This website is currently in production.
-
 ## Tools
 
 ### Frontend
