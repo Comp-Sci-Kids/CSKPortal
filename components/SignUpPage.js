@@ -57,10 +57,10 @@ class SignUpPage extends React.Component {
             return;
         }
 
-        if(this.state.specialCode.toUpperCase() != SPECIAL_CODE) {
-            this.updateState("error", "You have not entered the correct code.");
-            return;
-        }
+        // if(this.state.specialCode.toUpperCase() != SPECIAL_CODE) {
+        //     this.updateState("error", "You have not entered the correct code.");
+        //     return;
+        // }
 
         //continue to signup
 
@@ -327,7 +327,7 @@ class SignUpPage extends React.Component {
                     <input style={inputStyle} type="email" placeholder="Email" name="email" value={this.state.email} onChange={this.valueChanged}/>
                     <input style={inputStyle} type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.valueChanged}/>
                     <input style={inputStyle} type="password" placeholder="Confirm Password" name="password2" value={this.state.password2} onChange={this.valueChanged}/>
-                    <input style={inputStyle} type="text" placeholder="Special Parent Code" name="specialCode" value={this.state.specialCode} onChange={this.valueChanged}/>
+                    {/* <input style={inputStyle} type="text" placeholder="Special Parent Code" name="specialCode" value={this.state.specialCode} onChange={this.valueChanged}/> */}
                     <button style={buttonStyle} onClick={this.signUp}>Sign Up</button>
                     <button style={buttonStyle} onClick={() => this.props.changePage(1)}>Back</button>
                 </div>
