@@ -3,6 +3,8 @@ class Session extends React.Component {
         super(props)
         this.getKids = this.getKids.bind(this)
         this.checkStudent = this.checkStudent.bind(this)
+        this.cancelRegistration = this.cancelRegistration.bind(this)
+        this.getParentInformation = this.getParentInformation.bind(this)
 
         this.state = {
             session: this.props.session,
@@ -11,15 +13,23 @@ class Session extends React.Component {
             selectedKid: -1, //index for selected kid
             buttonState: 0,
             error: "",
-            kidSection: "" //section the selected kid belongs to 
+            kidSection: "", //section the selected kid belongs to 
             //button state options
     
             //1 - can register
             //2 - waitlist
             //3 - already registered or not open
+            sessionName: this.props.session.Display,
+            parentFirstname: "",
+            parentLastname: "",
+            parentPrefix: "",
+            parentRelationship: "",
+            parentPhone: "",
+            parentEmail: ""
         }
 
         this.getKids();
+        this.getParentInformation()
     }
 
 
@@ -44,6 +54,112 @@ class Session extends React.Component {
         })
     }
 
+
+    cancelRegistration() {
+        var index = -1;
+
+        // for(var i = 0; i < this.state.kids.length; i++) {
+        //     if(this.state.kids[i]['_id'] == String(e.target.value)) {
+        //         index = i;
+        //         break;
+        //     }
+        // }
+        // console.log(this.state.session)
+        // console.log("Skeet")
+        // this.setState({
+        //     session: this.state.session,
+        //     kids: this.state.kids,
+        //     selectedKid: index,
+        //     selectedKidId: String(e.target.value),
+        //     buttonState: this.state.buttonState,
+        //     error: "",
+        //     kidSection: this.state.kidSection
+        // });
+        // console.log(this.state.selectedKidId)
+        for(var i = 0; i < this.state.kids.length; i++) {
+            if(this.state.kids[i]['_id'] == String(this.state.selectedKidId)) {
+                // console.log(this.state.kids[i]['_id'])
+                index = i;
+                // console.log(index)
+                break;
+            }
+        }
+        
+        this.state.selectedKid = this.state.kids[index]
+        // console.log(this.state.selectedKid['sessions']['current'])
+        this.state.selectedKid['sessions']['current'] = []
+        this.state.selectedKid['sessionName'] = ""
+        this.getParentInformation()
+
+        
+
+        var registrationData = {
+            parentPrefix: this.state.parentPrefix,
+            parentFirstname: this.state.parentFirstname,
+            parentLastname: this.state.parentLastname,
+            parentRelationship: this.state.parentRelationship,
+            parentPhone: this.state.parentPhone,
+            email: this.state.parentEmail,
+            emergencyPrefix: this.state.selectedKid['emergencyPrefix'],
+            emergencyName: this.state.selectedKid['emergencyName'],
+            emergencyRelationship: this.state.selectedKid['emergencyRelationship'],
+            emergencyPhone: this.state.selectedKid['emergencyPhone'],
+            firstName: this.state.selectedKid['firstName'],
+            lastName: this.state.selectedKid['lastName'],
+            gender: this.state.selectedKid['gender'],
+            birthday: this.state.selectedKid['birthday'],
+            grade: this.state.selectedKid['grade'],
+            school: this.state.selectedKid['school'],
+            shirtSize: this.state.selectedKid['shirtSize'],
+            previousSessions: null,
+            appliedAdvanced: false,
+            session: "",
+            section: "",
+            childId: this.state.selectedKid['_id']
+        }
+
+        
+
+        if(confirm("Are you sure that you want to CANCEL your child's registration?")) {
+            console.log(registrationData)
+            networkRequest("parent/register", "POST", registrationData, d => {
+    
+                if(d.success) {
+                    //TODO: return back to main page
+                    this.props.back(d.message);
+
+                } else {
+                    alert(d.message);
+                }
+    
+            })
+        } 
+
+        
+    }
+
+    getParentInformation() {
+        networkRequest("parent/getParent", "POST", {
+ 
+        }, d => {
+
+            if(d.success) {
+                this.state["parentFirstname"] = d.parent.firstName;
+                this.state["parentLastname"] = d.parent.lastName;
+                this.state["parentRelationship"] = d.parent.relationship;
+                this.state["parent"] = d.parent.lastName;
+                this.state["parentPrefix"] = d.parent.prefix;
+                this.state["parentPhone"] = d.parent.phone;
+                this.state["parentEmail"] = d.parent.email;
+                this.setState(this.state)
+            } else {
+                this.logOut()
+            }
+
+        })
+        // console.log(this.state.parentRelationship)
+    }
+
     checkStudent(e) {
 
         var index = -1;
@@ -54,7 +170,7 @@ class Session extends React.Component {
                 break;
             }
         }
-
+        // console.log(this.state.session)
         this.setState({
             session: this.state.session,
             kids: this.state.kids,
@@ -66,6 +182,7 @@ class Session extends React.Component {
         });
 
         //check if the kid is good
+        // console.log(this.state.kids[index])
 
         networkRequest("parent/checkEligibility", "POST", {
             childData: this.state.kids[index],
@@ -202,7 +319,7 @@ class Session extends React.Component {
         } else if (this.state.buttonState == 2) {
             registerButton = <button style={buttonStyle} onClick = {() => this.props.changePage(1, this.state.kids[this.state.selectedKid], this.state.session, this.state.kidSection)}>Waitlist for {this.state.kidSection}</button>
         } else if (this.state.buttonState == 3) {
-            registerButton = <button style={buttonStyle2}>Closed</button>
+            registerButton = <button style={buttonStyle} onClick = {() => this.cancelRegistration()}>Cancel Registration</button>
         }  
 
         var errorMessage = null
