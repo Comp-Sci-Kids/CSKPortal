@@ -2,6 +2,7 @@ class Session extends React.Component {
     constructor(props) {
         super(props)
         this.getKids = this.getKids.bind(this)
+        this.getStudents = this.getStudents.bind(this)
         this.checkStudent = this.checkStudent.bind(this)
         this.cancelRegistration = this.cancelRegistration.bind(this)
         this.getParentInformation = this.getParentInformation.bind(this)
@@ -25,9 +26,12 @@ class Session extends React.Component {
             parentPrefix: "",
             parentRelationship: "",
             parentPhone: "",
-            parentEmail: ""
-        }
+            parentEmail: "",
+            tab: 0,
+            students: []
 
+        }
+        this.getStudents();
         this.getKids();
         this.getParentInformation()
     }
@@ -54,28 +58,20 @@ class Session extends React.Component {
         })
     }
 
+    getStudents() {
+        networkRequest("parent/fetchStudents?session="+this.state.selectedKid['sessionName'], 'GET', null, (d) => {
+            this.setState({
+                tab: this.state.tab,
+                students: d
+            })
+        })
+    }
+
 
     cancelRegistration() {
-        var index = -1;
+        var index = -1
+        var id = -1;
 
-        // for(var i = 0; i < this.state.kids.length; i++) {
-        //     if(this.state.kids[i]['_id'] == String(e.target.value)) {
-        //         index = i;
-        //         break;
-        //     }
-        // }
-        // console.log(this.state.session)
-        // console.log("Skeet")
-        // this.setState({
-        //     session: this.state.session,
-        //     kids: this.state.kids,
-        //     selectedKid: index,
-        //     selectedKidId: String(e.target.value),
-        //     buttonState: this.state.buttonState,
-        //     error: "",
-        //     kidSection: this.state.kidSection
-        // });
-        // console.log(this.state.selectedKidId)
         for(var i = 0; i < this.state.kids.length; i++) {
             if(this.state.kids[i]['_id'] == String(this.state.selectedKidId)) {
                 // console.log(this.state.kids[i]['_id'])
@@ -86,53 +82,40 @@ class Session extends React.Component {
         }
         
         this.state.selectedKid = this.state.kids[index]
-        // console.log(this.state.selectedKid['sessions']['current'])
-        this.state.selectedKid['sessions']['current'] = []
-        this.state.selectedKid['sessionName'] = ""
-        this.getParentInformation()
-
         
+        // console.log(this.state.selectedKid['sessions']['current'])
+        
+        // console.log(this.state.selectedKid)
+        var sessionName = this.state.selectedKid['sessionName']
+        // console.log(this.state.selectedKid['_id'])
 
-        var registrationData = {
-            parentPrefix: this.state.parentPrefix,
-            parentFirstname: this.state.parentFirstname,
-            parentLastname: this.state.parentLastname,
-            parentRelationship: this.state.parentRelationship,
-            parentPhone: this.state.parentPhone,
-            email: this.state.parentEmail,
-            emergencyPrefix: this.state.selectedKid['emergencyPrefix'],
-            emergencyName: this.state.selectedKid['emergencyName'],
-            emergencyRelationship: this.state.selectedKid['emergencyRelationship'],
-            emergencyPhone: this.state.selectedKid['emergencyPhone'],
-            firstName: this.state.selectedKid['firstName'],
-            lastName: this.state.selectedKid['lastName'],
-            gender: this.state.selectedKid['gender'],
-            birthday: this.state.selectedKid['birthday'],
-            grade: this.state.selectedKid['grade'],
-            school: this.state.selectedKid['school'],
-            shirtSize: this.state.selectedKid['shirtSize'],
-            previousSessions: null,
-            appliedAdvanced: false,
-            session: "",
-            section: "",
-            childId: this.state.selectedKid['_id']
+        this.getStudents()
+
+        for (let i = 0; i < this.state.students.length; i++) {
+            if (this.state.students[i].firstName == this.state.selectedKid['firstName'] && 
+                this.state.students[i].lastName == this.state.selectedKid['lastName'] &&
+                this.state.students[i].grade == this.state.selectedKid['grade'] &&
+                this.state.students[i].school == this.state.selectedKid['school'] &&
+                this.state.students[i].emergencyPhone == this.state.selectedKid['emergencyPhone'] &&
+                this.state.students[i].emergencyRelationship == this.state.selectedKid['emergencyRelationship']) {
+                // console.log(i)
+                id = (this.state.students[i].ID)
+                break;
+            }
         }
 
-        
 
         if(confirm("Are you sure that you want to CANCEL your child's registration?")) {
-            console.log(registrationData)
-            networkRequest("parent/register", "POST", registrationData, d => {
-    
-                if(d.success) {
-                    //TODO: return back to main page
-                    this.props.back(d.message);
+            // console.log(id)
+            // console.log(sessionName)
 
-                } else {
-                    alert(d.message);
-                }
-    
+            networkRequest("parent/cancelRegistration", "POST", {
+                id: id,
+                session: sessionName
+            }, function (d) {
+                console.log(d)
             })
+            alert("Registration has been successfully cancelled")
         } 
 
         
@@ -183,6 +166,7 @@ class Session extends React.Component {
 
         //check if the kid is good
         // console.log(this.state.kids[index])
+        // console.log(index)
 
         networkRequest("parent/checkEligibility", "POST", {
             childData: this.state.kids[index],
@@ -268,6 +252,20 @@ class Session extends React.Component {
             cursor: "pointer"
         }
 
+        var buttonStyle3 = {
+            borderRadius: "27px",
+            border: "2px solid rgba(225,40,40,1)",
+            padding: "5px 5px", 
+            width: "200px",
+            height: "44px",
+            outline: "none",
+            fontSize: "20px",
+            backgroundColor: "#E12828",
+            color: "white",
+            marginTop: "15px",
+            cursor: "pointer"
+        }
+
         var buttonStyle2 = {
             borderRadius: "27px",
             border: "2px solid #D3D3D3",
@@ -296,6 +294,20 @@ class Session extends React.Component {
                 marginTop: "15px",
                 cursor: "pointer"
             }
+
+            var buttonStyle3 = {
+                borderRadius: "27px",
+                border: "2px solid rgba(225,40,40,1)",
+                padding: "5px 5px", 
+                width: "50vw",
+                height: "30px",
+                outline: "none",
+                fontSize: "15px",
+                backgroundColor: "#E12828",
+                color: "white",
+                marginTop: "15px",
+                cursor: "pointer"
+            }
     
             var buttonStyle2 = {
                 borderRadius: "27px",
@@ -319,7 +331,7 @@ class Session extends React.Component {
         } else if (this.state.buttonState == 2) {
             registerButton = <button style={buttonStyle} onClick = {() => this.props.changePage(1, this.state.kids[this.state.selectedKid], this.state.session, this.state.kidSection)}>Waitlist for {this.state.kidSection}</button>
         } else if (this.state.buttonState == 3) {
-            registerButton = <button style={buttonStyle} onClick = {() => this.cancelRegistration()}>Cancel Registration</button>
+            registerButton = <button style={buttonStyle3} onClick = {() => this.cancelRegistration()}>Cancel Registration</button>
         }  
 
         var errorMessage = null
