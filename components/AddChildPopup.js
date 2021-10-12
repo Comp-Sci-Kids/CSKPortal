@@ -250,7 +250,7 @@ class AddChildPopup extends React.Component {
                         <hr></hr>
                         <LabelField title="Child First Name" field="firstName" value={this.state.firstName} editing={true} valueChanged={this.updateState} />
                         <LabelField title="Child Last Name" field="lastName" value={this.state.lastName} editing={true} valueChanged={this.updateState} />
-                        <SelectField title="Child Gender" field="gender" value={this.state.gender} editing={true} valueChanged={this.updateState} options={[{value: "male", display: "Male"}, {value: "female", display: "Female"}, {value: "other", display: "Other"}]}/>
+                        <SelectField title="Child Gender" field="gender" value={this.state.gender} editing={true} valueChanged={this.updateState} options={[{value: "male", display: "Male"}, {value: "female", display: "Female"}, {value: "other", display: "Other"}, {value: "prefer not to answer", display: "I Prefer Not To Answer"}]}/>
 
                         <div style={divStlye}>
                             <label style={labelStyle}>Child Birthday (MM/DD/YYYY):</label>

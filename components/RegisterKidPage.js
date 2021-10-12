@@ -338,7 +338,7 @@ class RegisterKidPage extends React.Component {
                         
                     <LabelField title="First Name" field="firstName" value={this.state.firstName} editing={true} valueChanged={this.updateState} />
                         <LabelField title="Last Name" field="lastName" value={this.state.lastName} editing={true} valueChanged={this.updateState} />
-                        <SelectField title="Gender" field="gender" value={this.state.gender} editing={true} valueChanged={this.updateState} options={[{value: "male", display: "Male"}, {value: "female", display: "Female"}, {value: "other", display: "Other"}]}/>
+                        <SelectField title="Gender" field="gender" value={this.state.gender} editing={true} valueChanged={this.updateState} options={[{value: "male", display: "Male"}, {value: "female", display: "Female"}, {value: "other", display: "Other"}, {value: "prefer not to answer", display: "I Prefer Not To Answer"}]}/>
 
                         <LabelField title="Birthday (MM/DD/YYYY)" field="dob" value={this.state.dob} editing={true} valueChanged={this.updateState} />
 
