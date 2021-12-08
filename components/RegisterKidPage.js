@@ -1,3 +1,5 @@
+var SPECIAL_CODE = "CSKTSTSESSION1";
+
 class RegisterKidPage extends React.Component {
     constructor(props) {
         super(props)
@@ -117,6 +119,11 @@ class RegisterKidPage extends React.Component {
             return;
         } else if(dob[2] != "/" || dob[5] != "/") {
             this.updateState("error", "Please enter the birthday in MM/DD/YYYY format.")
+            return;
+        }
+
+        if(this.state.specialCode.toUpperCase() != SPECIAL_CODE) {
+            this.updateState("error", "You have not entered the correct code.");
             return;
         }
       
@@ -348,6 +355,7 @@ class RegisterKidPage extends React.Component {
 
                         <SelectField title="Shirt Size" field="shirtSize" value={this.state.shirtSize} editing={true} valueChanged={this.updateState} options={[{value: "ys", display: "Youth Small"}, {value: "ym", display: "Youth Medium"}, {value: "yl", display: "Youth Large"}, {value: "as", display: "Adult Small"}, {value: "am", display: "Adult Medium"}, {value: "al", display: "Adult Large"}, {value: "ax", display: "Adult X-Large"}]}/>
 
+                        <input type="text" placeholder="Special Parent Code" name="specialCode" value={this.state.specialCode} onChange={this.valueChanged}/>
                         {/* <label style={labelStyle}>Student First Name: </label>
                         <input style={inputStyle} type="text" placeholder="Student First Name" name="firstName" value={this.state.firstName} onChange={this.valueChanged}/>
                         <br></br> */}
