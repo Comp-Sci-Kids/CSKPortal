@@ -46,7 +46,6 @@ class ChildRow extends React.Component {
             var text = ""
 
             text += sessionData.sessionName + ", " + sessionData.section
-            console.log(sessionData.advanced)
             if(sessionData.waitlist) {
                 text += " Waitlist"
             } else if(sessionData.advanced == 2) {
@@ -71,7 +70,7 @@ class ChildRow extends React.Component {
             var sessionData = this.props.kid.sessions.current[i];
 
             var text = ""
-            console.log(this.props.kid)
+            // console.log(this.props.kid)
             text += sessionData.sessionName + ", " + sessionData.section
             if(sessionData.waitlist) {
                 text += " Waitlist"
