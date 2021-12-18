@@ -46,14 +46,17 @@ class ChildRow extends React.Component {
             var text = ""
 
             text += sessionData.sessionName + ", " + sessionData.section
+            console.log(sessionData.advanced)
             if(sessionData.waitlist) {
                 text += " Waitlist"
-            } else if(sessionData.advanced) {
-                text += " Advanced"
+            } else if(sessionData.advanced == 2) {
+                text += " C"
+            } else if(sessionData.advanced == 1) {
+                text += " B"
             } else {
-                text += " Regular"
+                text += " A"
             }
-            console.log(text)
+            //console.log(text)
 
             pastSessions.push(<li key = {i}>{text}</li>)
         }
@@ -68,14 +71,16 @@ class ChildRow extends React.Component {
             var sessionData = this.props.kid.sessions.current[i];
 
             var text = ""
-
+            console.log(this.props.kid)
             text += sessionData.sessionName + ", " + sessionData.section
             if(sessionData.waitlist) {
                 text += " Waitlist"
-            } else if(sessionData.advanced) {
-                text += " Advanced"
+            } else if(sessionData.advanced == 2) {
+                text += " C"
+            } else if(sessionData.advanced == 1) {
+                text += " B"
             } else {
-                text += " Regular"
+                text += " A"
             }
 
             currentSessions.push(<li key = {i}>{text}</li>)
