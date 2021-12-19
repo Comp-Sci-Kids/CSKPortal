@@ -49,11 +49,23 @@ class ChildRow extends React.Component {
             if(sessionData.waitlist) {
                 text += " Waitlist"
             } else if(sessionData.advanced == 2) {
-                text += " C"
+                if(sessionData.section[3]=="A"){
+                    text = text.substring(0, text.length-1) + "C"
+                } else {
+                    text += " C"
+                }
             } else if(sessionData.advanced == 1) {
-                text += " B"
+                if(sessionData.section[3]=="A"){
+                    text = text.substring(0, text.length-1) + "B"
+                } else {
+                    text += " B"
+                }
             } else {
-                text += " A"
+                if(sessionData.section[3]=="A"){
+                    text = text.substring(0, text.length-1) + "A"
+                } else {
+                    text += " A"
+                }
             }
             //console.log(text)
 
@@ -75,11 +87,23 @@ class ChildRow extends React.Component {
             if(sessionData.waitlist) {
                 text += " Waitlist"
             } else if(sessionData.advanced == 2) {
-                text += " C"
+                if(sessionData.section[3]=="A"){
+                    text = text.substring(0, text.length-1) + "C"
+                } else {
+                    text += " C"
+                }
             } else if(sessionData.advanced == 1) {
-                text += " B"
+                if(sessionData.section[3]=="A"){
+                    text = text.substring(0, text.length-1) + "B"
+                } else {
+                    text += " B"
+                }
             } else {
-                text += " A"
+                if(sessionData.section[3]=="A"){
+                    text = text.substring(0, text.length-1) + "A"
+                } else {
+                    text += " A"
+                }
             }
 
             currentSessions.push(<li key = {i}>{text}</li>)

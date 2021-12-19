@@ -5,7 +5,7 @@ class EditChildPopup extends React.Component {
         this.updateState = this.updateState.bind(this)
         this.deleteAccount = this.deleteAccount.bind(this)
         this.updateChild = this.updateChild.bind(this)
-        console.log(this.props.sampleKid.birthday)
+        // console.log(this.props.sampleKid.birthday)
         this.state = {
             id: this.props.sampleKid._id,
             firstName: this.props.sampleKid.firstName,
@@ -41,7 +41,7 @@ class EditChildPopup extends React.Component {
             if(!d.success){
                 alert("Error! Please refresh the page and try again.")
             }else{
-                console.log(d.kids);
+                // console.log(d.kids);
                 this.setState({
                     popup: false,
                     kids: d.kids

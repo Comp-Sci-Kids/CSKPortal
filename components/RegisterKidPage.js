@@ -8,8 +8,6 @@ class RegisterKidPage extends React.Component {
         this.register = this.register.bind(this)
         this.getParentInformation = this.getParentInformation.bind(this)
 
-        console.log(this.props.session);
-        console.log(this.props.kid)
         
         this.state = {
             sessionName: this.props.session.Display,
