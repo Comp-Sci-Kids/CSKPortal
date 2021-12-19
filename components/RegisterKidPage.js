@@ -120,10 +120,11 @@ class RegisterKidPage extends React.Component {
             return;
         }
 
-        if(this.state.specialCode.toUpperCase() != SPECIAL_CODE) {
-            this.updateState("error", "You have not entered the correct code.");
-            return;
-        }
+        //USE WHEN TESTING SESSIONS AND DONT WANT PARENTS TO JOIN (ALSO UNCOMMENT TEXT ELEMENT IN THE FORM)
+        // if(this.state.specialCode.toUpperCase() != SPECIAL_CODE) {
+        //     this.updateState("error", "You have not entered the correct code.");
+        //     return;
+        // }
       
 
         if(confirm("Are you sure that you want to register your child?")) {
@@ -353,7 +354,7 @@ class RegisterKidPage extends React.Component {
 
                         <SelectField title="Shirt Size" field="shirtSize" value={this.state.shirtSize} editing={true} valueChanged={this.updateState} options={[{value: "ys", display: "Youth Small"}, {value: "ym", display: "Youth Medium"}, {value: "yl", display: "Youth Large"}, {value: "as", display: "Adult Small"}, {value: "am", display: "Adult Medium"}, {value: "al", display: "Adult Large"}, {value: "ax", display: "Adult X-Large"}]}/>
 
-                        <input type="text" placeholder="Special Parent Code" name="specialCode" value={this.state.specialCode} onChange={this.valueChanged}/>
+                        {/* <input type="text" placeholder="Special Parent Code" name="specialCode" value={this.state.specialCode} onChange={this.valueChanged}/> */}
                         {/* <label style={labelStyle}>Student First Name: </label>
                         <input style={inputStyle} type="text" placeholder="Student First Name" name="firstName" value={this.state.firstName} onChange={this.valueChanged}/>
                         <br></br> */}
