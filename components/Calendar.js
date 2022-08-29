@@ -77,7 +77,7 @@ class Calendar extends React.Component {
             }
             var cHeadCol = e("td", { 
             style: {
-                // fontSize: "15px"
+                fontSize: "15px"
             },
             key: keyCount}, colChild)
             keyCount += 1;
@@ -101,7 +101,7 @@ class Calendar extends React.Component {
                 style: {
                     textAlign: "center",
                     padding: 0,
-                    // fontSize: "15px"
+                    fontSize: "15px"
                 },
                 key: c,
             }, weekDays[c]))
@@ -137,7 +137,7 @@ class Calendar extends React.Component {
                 if (dates[counter] != "") {
                     var eventDay = `${this.state.month}/${dates[counter]}/${this.state.year}`
                     if (eventDates.includes(eventDay)) {
-                        color = "red"
+                        color = "blue"
                     }
                 }
 

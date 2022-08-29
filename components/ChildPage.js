@@ -57,10 +57,16 @@ class ChildPage extends React.Component {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            marginTop: "30px"
+            marginTop: "30px",
         }
+
         let titleStyle = {
-            margin : "10px"
+            margin : "10px",
+            fontFamily: "brandFont",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "30px"
         }
 
         let popup = null
@@ -88,13 +94,15 @@ class ChildPage extends React.Component {
 
         let infoStyle = {
             fontStyle: 'italic',
-            fontSize: '25px'
+            fontSize: '25px',
+            fontFamily: "brandFont"
+
         }
 
         return (
             <div style={divStyle}>
 
-                <div style={contentDivStyle}>
+                <div style={contentDivStyle} class="background-red">
                     <div style={headerStyle}>
                         <h1 style={titleStyle}>Child Information</h1>
                         <IconButton src="images/add.png" onClick={this.openPopup}/>  

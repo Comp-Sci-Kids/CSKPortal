@@ -18,7 +18,7 @@ class User extends React.Component {
         }
         let buttonStyle = {
             backgroundColor: "transparent",
-            color: appBlue,
+            color: appRed,
             padding: "16px",
             fontSize: "16px",
             border: "none",

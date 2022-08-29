@@ -59,7 +59,7 @@ var User = /*#__PURE__*/function (_React$Component) {
       };
       var buttonStyle = {
         backgroundColor: "transparent",
-        color: appBlue,
+        color: appRed,
         padding: "16px",
         fontSize: "16px",
         border: "none",

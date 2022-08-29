@@ -148,9 +148,10 @@ class AccountPage extends React.Component {
 
     render() {
         var divStyle = {
-            height: "100%",
+            height: "200%",
             width: "100%",
             textAlign: "center"
+            // overflow: "scroll"
         }
         var contentDivStyle = {
             width: "90%",
@@ -164,6 +165,7 @@ class AccountPage extends React.Component {
         }
         var titleStyle = {
             margin : "10px",
+            fontFamily: "brandFont"
         }
 
         var inputStyle = {
@@ -180,8 +182,8 @@ class AccountPage extends React.Component {
             borderRadius: "27px",
             border: "2px solid rgba(8,58,174,1)",
             padding: "10px 20px", 
-            // width: "20%",
-            // height: "30px",
+            // width: "23%",
+            // height: "50px",
             outline: "none",
             fontSize: "20px",
             marginTop: "20px"
@@ -312,9 +314,9 @@ class AccountPage extends React.Component {
 
         return (
             
-            <div style={divStyle}>
+            <div style={divStyle} >
                 {errorBox}
-                <div style={contentDivStyle}>
+                <div style={contentDivStyle} class="background-red">
                     <div style={headerStyle}>
                         <h1 style={titleStyle}>Parent Account</h1>
                     </div>

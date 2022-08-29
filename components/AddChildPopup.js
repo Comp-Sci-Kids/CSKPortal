@@ -102,6 +102,7 @@ class AddChildPopup extends React.Component {
             alignItems: "center",
             justifyContent: "center"
         }
+
         var boxStyle = {
             width: "fit-content",
             height: "fit-content",
@@ -236,7 +237,7 @@ class AddChildPopup extends React.Component {
         }
 
         var hrStyle = {
-            border: '5px dotted ' + appBlue,
+            border: '5px dotted ' + appRed,
             borderStyle: 'none none dotted',
             color: '#fff',
             backgroundColor: '#fff' 

@@ -6,6 +6,8 @@ class RegisterPage extends React.Component {
         this.refreshPage = this.refreshPage.bind(this)
         this.togglePage = this.togglePage.bind(this)
         this.back = this.back.bind(this)
+        this.openPopup = this.openPopup.bind(this)
+        this.closePopup = this.closePopup.bind(this)
 
         this.state = {
             page: 0,
@@ -14,6 +16,7 @@ class RegisterPage extends React.Component {
             session: {},
             selectedKidSection: "",
             message: "",
+            popup:false
         }
 
         this.refreshPage();
@@ -56,6 +59,7 @@ class RegisterPage extends React.Component {
           }, 4000)
 
     }
+    
 
     refreshPage() {
         networkRequest("session?filter=active", "GET", {
@@ -73,8 +77,43 @@ class RegisterPage extends React.Component {
         })
     }
 
+    openPopup() {
+        this.updateState("popup", true)
+    }
+
+    closePopup() {
+        this.updateState("popup", false)
+        this.refreshPage();
+    }
+
 
     render() {
+        var buttonStyle = {
+            borderRadius: "27px",
+            border: "2px solid rgba(8,58,174,1)",
+            padding: "5px 5px", 
+            width: "15%",
+            height: "44px",
+            outline: "none",
+            fontSize: "20px",
+            backgroundColor: "#083ab9",
+            color: "white",
+            marginTop: "15px",
+            cursor: "pointer",
+            position: "relative",
+            left:"150px"
+        }
+        var popupStyle = {
+            position: "fixed",
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            top: 0,
+            left: 0,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+        }
         let divStyle = {
             height: "100%",
             width: "100%",
@@ -82,7 +121,7 @@ class RegisterPage extends React.Component {
         }
         let contentDivStyle = {
             width: "90%",
-            margin: "auto"
+            margin: "auto",
         }
         let headerStyle = {
             display: "flex",
@@ -91,7 +130,12 @@ class RegisterPage extends React.Component {
             marginTop: "30px"
         }
         let titleStyle = {
-            margin : "10px",
+            margin : "20px",
+            width: "50%",
+            fontFamily: "brandFont",
+            position:"relative",
+            textAlign: "center",
+            justifyContent:"center"
         }
 
         let infoStyle = {
@@ -104,6 +148,15 @@ class RegisterPage extends React.Component {
         this.state.sessions.forEach(session => {
             sessions.push(<Session changePage = {this.togglePage} key = {session.Name} session = {session}/>)
         });
+
+        //popup
+        let popup = null
+        if(this.state.popup){
+            popup = <RegisterPopup closeCallback={this.closePopup}/>
+
+            console.log("hello")
+        }
+
 
         //message
 
@@ -128,19 +181,23 @@ class RegisterPage extends React.Component {
         }
 
         return (
+            // <div class = "body">
+
             <div style={divStyle}>
                 {messageBox}
                 {
                     this.state.page == 0
                     ?
-                    <div style={contentDivStyle}>
+                    
+                    <div style={contentDivStyle} class="background-red">
                         <div style={headerStyle}>
                             <h1 style={titleStyle}>Register Children</h1>
+                            <button style={buttonStyle} onClick = {this.openPopup}>How Do I Register?</button>
                         </div>
-                        <hr />
+                        <hr  />
                         {sessions.length > 0
                         ?
-                        sessions
+                         sessions
                         :
                         <p style = {infoStyle}>There are no open sessions.</p>
                         }
@@ -150,7 +207,11 @@ class RegisterPage extends React.Component {
                 }               
                 <br/>
                 <br/>
+                {popup} 
+
             </div>
+            // </div>
+
         )
     }
 }
