@@ -265,7 +265,7 @@ class LoginPage extends React.Component {
                 </ul>
                 {errorBox}
                 <div style={boxStyle}>
-                    <h1 style={titleStyle1}>CompSci Kids Parent Login</h1>
+                    <h1 style={titleStyle1}>CompSci Kids Parent Portal</h1>
                     <input style={inputStyle} type="email" placeholder="Email" name="username" value={this.state.username} onChange={this.valueChanged}/>
                     <input style={inputStyle} type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.valueChanged}/>
                     <button style={buttonStyle} onClick={this.signIn}>Login</button>
