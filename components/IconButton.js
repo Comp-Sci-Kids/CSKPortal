@@ -12,12 +12,16 @@ class IconButton extends React.Component {
             borderRadius: this.props.small ? "4px" : "10px",
             display: "inline-block",
             marginLeft: this.props.small ? "2px" : "5px",
-            cursor: "pointer"
+            cursor: "pointer",
+            width: this.props.menu == "menu" ? "75px" : "40px",
+            height: this.props.menu == "menu" ? "75px" : "40px"
         }
         let imageStyle = {
             maxWidth: "100%",
             filter: "invert(100%)",
-            userSelect: "none"
+            userSelect: "none",
+            width: this.props.menu == "menu" ? "75px" : "40px",
+            height: this.props.menu == "menu" ? "75px" : "40px"
         }
         return (
             <div style={imageButtonStyle} onClick={this.props.disabled ? null : this.props.onClick}>

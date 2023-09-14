@@ -14,7 +14,7 @@ class SlidingMenu extends React.Component{
 
       return(
         <div className={"sliding-menu animated " + this.props.slideClass}>
-        <IconButton style={buttonStyle} src="images/menu.png" onClick={this.props.onClick}/>  
+        <IconButton style={buttonStyle} src="images/close.png" onClick={this.props.onClick}/>  
           {this.props.children}
         </div>
       );
@@ -68,7 +68,7 @@ class TabBar extends React.Component {
         return( 
 
         <div style={barStyle}>
-                 <IconButton src="images/menu.png" onClick={this.handleClick}/>  
+                 <IconButton src="images/menu.png" onClick={this.handleClick} menu = "menu"/>  
 
             {/* <button type="button" onClick={this.handleClick}>
           <span className="glyphicon glyphicon-menu-hamburger"></span>
