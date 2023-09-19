@@ -175,6 +175,8 @@ class RegisterPopup extends React.Component {
                 <div style={boxStyle}>
                     <div style={contentDiv}>
                         <p>
+                            <a href="https://www.youtube.com/watch?v=-h3o3GXP_2c">Tutorial Link</a>
+                            <br></br>
                             1.Go to the Children tab 
                             <br></br>
                             2.Click the plus button and add your child's information
@@ -182,6 +184,7 @@ class RegisterPopup extends React.Component {
                             3.Go to the Register tab
                             <br></br>
                             4.Click the register button and select the child you would like to register for the session.
+ 
                         </p>
                         {errorMessage}
                     </div>
