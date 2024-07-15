@@ -90,6 +90,9 @@ var TabBar = /*#__PURE__*/function (_React$Component2) {
         selectedTab: index
       });
       this.props.tabChanged(index);
+      this.setState({
+        toggleMenu: !this.state.toggleMenu
+      });
     }
   }, {
     key: "render",
@@ -116,13 +119,14 @@ var TabBar = /*#__PURE__*/function (_React$Component2) {
         flexDirection: "column",
         borderLeft: "solid 1px",
         width: "100%",
+        // paddingTop: "50px",
         paddingLeft: "50px",
         boxSizing: "border-box"
       };
       return /*#__PURE__*/React.createElement("div", {
         style: barStyle
       }, /*#__PURE__*/React.createElement(IconButton, {
-        src: "images/menu.png",
+        src: "images/menu2.png",
         onClick: this.handleClick,
         menu: "menu"
       }), /*#__PURE__*/React.createElement(SlidingMenu, {

@@ -42,6 +42,7 @@ class TabBar extends React.Component {
             selectedTab: index
         })
         this.props.tabChanged(index)
+        this.setState({toggleMenu: !this.state.toggleMenu});
     }
     render() {
 
@@ -59,6 +60,7 @@ class TabBar extends React.Component {
             flexDirection: "column",
             borderLeft: "solid 1px",    
             width: "100%",
+            // paddingTop: "50px",
             paddingLeft: "50px",
             boxSizing: "border-box",
         }
@@ -68,7 +70,7 @@ class TabBar extends React.Component {
         return( 
 
         <div style={barStyle}>
-                 <IconButton src="images/menu.png" onClick={this.handleClick} menu = "menu"/>  
+                 <IconButton src="images/menu2.png" onClick={this.handleClick} menu = "menu"/>  
 
             {/* <button type="button" onClick={this.handleClick}>
           <span className="glyphicon glyphicon-menu-hamburger"></span>
