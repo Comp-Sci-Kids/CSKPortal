@@ -36,7 +36,8 @@ var EditChildPopup = /*#__PURE__*/function (_React$Component) {
     _this.valueChanged = _this.valueChanged.bind(_assertThisInitialized(_this));
     _this.updateState = _this.updateState.bind(_assertThisInitialized(_this));
     _this.deleteAccount = _this.deleteAccount.bind(_assertThisInitialized(_this));
-    _this.updateChild = _this.updateChild.bind(_assertThisInitialized(_this));
+    _this.updateChild = _this.updateChild.bind(_assertThisInitialized(_this)); // console.log(this.props.sampleKid.birthday)
+
     _this.state = {
       id: _this.props.sampleKid._id,
       firstName: _this.props.sampleKid.firstName,
@@ -79,6 +80,7 @@ var EditChildPopup = /*#__PURE__*/function (_React$Component) {
         if (!d.success) {
           alert("Error! Please refresh the page and try again.");
         } else {
+          // console.log(d.kids);
           _this2.setState({
             popup: false,
             kids: d.kids
@@ -335,6 +337,9 @@ var EditChildPopup = /*#__PURE__*/function (_React$Component) {
         }, {
           value: "other",
           display: "Other"
+        }, {
+          value: "prefer not to answer",
+          display: "I Prefer Not To Answer"
         }]
       }), /*#__PURE__*/React.createElement(LabelField, {
         title: "Birthday (MM/DD/YYYY)",
@@ -343,7 +348,7 @@ var EditChildPopup = /*#__PURE__*/function (_React$Component) {
         editing: false,
         valueChanged: this.updateState
       }), /*#__PURE__*/React.createElement(SelectField, {
-        title: "Grade",
+        title: "Current Grade in School",
         field: "grade",
         value: this.state.grade,
         editing: true,

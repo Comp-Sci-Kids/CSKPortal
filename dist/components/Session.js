@@ -34,7 +34,10 @@ var Session = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.getKids = _this.getKids.bind(_assertThisInitialized(_this));
+    _this.getStudents = _this.getStudents.bind(_assertThisInitialized(_this));
     _this.checkStudent = _this.checkStudent.bind(_assertThisInitialized(_this));
+    _this.cancelRegistration = _this.cancelRegistration.bind(_assertThisInitialized(_this));
+    _this.getParentInformation = _this.getParentInformation.bind(_assertThisInitialized(_this));
     _this.state = {
       session: _this.props.session,
       kids: [],
@@ -43,15 +46,28 @@ var Session = /*#__PURE__*/function (_React$Component) {
       //index for selected kid
       buttonState: 0,
       error: "",
-      kidSection: "" //section the selected kid belongs to 
+      kidSection: "",
+      //section the selected kid belongs to 
       //button state options
       //1 - can register
       //2 - waitlist
       //3 - already registered or not open
-
+      sessionName: _this.props.session.Display,
+      parentFirstname: "",
+      parentLastname: "",
+      parentPrefix: "",
+      parentRelationship: "",
+      parentPhone: "",
+      parentEmail: "",
+      tab: 0,
+      students: []
     };
 
+    _this.getStudents();
+
     _this.getKids();
+
+    _this.getParentInformation();
 
     return _this;
   }
@@ -78,9 +94,82 @@ var Session = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "getStudents",
+    value: function getStudents() {
+      var _this3 = this;
+
+      networkRequest("parent/fetchStudents?session=" + this.state.selectedKid['sessionName'], 'GET', null, function (d) {
+        _this3.setState({
+          tab: _this3.state.tab,
+          students: d
+        });
+      });
+    }
+  }, {
+    key: "cancelRegistration",
+    value: function cancelRegistration() {
+      var index = -1;
+      var id = -1;
+
+      for (var i = 0; i < this.state.kids.length; i++) {
+        if (this.state.kids[i]['_id'] == String(this.state.selectedKidId)) {
+          // console.log(this.state.kids[i]['_id'])
+          index = i; // console.log(index)
+
+          break;
+        }
+      }
+
+      this.state.selectedKid = this.state.kids[index]; // console.log(this.state.selectedKid['sessions']['current'])
+      // console.log(this.state.selectedKid)
+
+      var sessionName = this.state.selectedKid['sessionName']; // console.log(this.state.selectedKid['_id'])
+
+      this.getStudents();
+
+      for (var _i = 0; _i < this.state.students.length; _i++) {
+        if (this.state.students[_i].firstName == this.state.selectedKid['firstName'] && this.state.students[_i].lastName == this.state.selectedKid['lastName'] && this.state.students[_i].grade == this.state.selectedKid['grade'] && this.state.students[_i].school == this.state.selectedKid['school'] && this.state.students[_i].emergencyPhone == this.state.selectedKid['emergencyPhone'] && this.state.students[_i].emergencyRelationship == this.state.selectedKid['emergencyRelationship']) {
+          // console.log(i)
+          id = this.state.students[_i].ID;
+          break;
+        }
+      }
+
+      if (confirm("Are you sure that you want to CANCEL your child's registration?")) {
+        // console.log(id)
+        // console.log(sessionName)
+        networkRequest("parent/cancelRegistration", "POST", {
+          id: id,
+          session: sessionName
+        }, function (d) {});
+        alert("Registration has been successfully cancelled");
+      }
+    }
+  }, {
+    key: "getParentInformation",
+    value: function getParentInformation() {
+      var _this4 = this;
+
+      networkRequest("parent/getParent", "POST", {}, function (d) {
+        if (d.success) {
+          _this4.state["parentFirstname"] = d.parent.firstName;
+          _this4.state["parentLastname"] = d.parent.lastName;
+          _this4.state["parentRelationship"] = d.parent.relationship;
+          _this4.state["parent"] = d.parent.lastName;
+          _this4.state["parentPrefix"] = d.parent.prefix;
+          _this4.state["parentPhone"] = d.parent.phone;
+          _this4.state["parentEmail"] = d.parent.email;
+
+          _this4.setState(_this4.state);
+        } else {
+          _this4.logOut();
+        }
+      }); // console.log(this.state.parentRelationship)
+    }
+  }, {
     key: "checkStudent",
     value: function checkStudent(e) {
-      var _this3 = this;
+      var _this5 = this;
 
       var index = -1;
 
@@ -89,7 +178,8 @@ var Session = /*#__PURE__*/function (_React$Component) {
           index = i;
           break;
         }
-      }
+      } // console.log(this.state.session)
+
 
       this.setState({
         session: this.state.session,
@@ -100,6 +190,8 @@ var Session = /*#__PURE__*/function (_React$Component) {
         error: "",
         kidSection: this.state.kidSection
       }); //check if the kid is good
+      // console.log(this.state.kids[index])
+      // console.log(index)
 
       networkRequest("parent/checkEligibility", "POST", {
         childData: this.state.kids[index],
@@ -109,11 +201,11 @@ var Session = /*#__PURE__*/function (_React$Component) {
         if (!d.success) {
           alert("Error! Please refresh the page and try again.");
         } else {
-          _this3.setState({
-            session: _this3.state.session,
-            kids: _this3.state.kids,
-            selectedKid: _this3.state.selectedKid,
-            selectedKidId: _this3.state.selectedKidId,
+          _this5.setState({
+            session: _this5.state.session,
+            kids: _this5.state.kids,
+            selectedKid: _this5.state.selectedKid,
+            selectedKidId: _this5.state.selectedKidId,
             buttonState: d.state,
             error: d.message,
             kidSection: d.section
@@ -124,7 +216,7 @@ var Session = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this6 = this;
 
       var session = this.state.session;
       var divStyle = {
@@ -184,6 +276,19 @@ var Session = /*#__PURE__*/function (_React$Component) {
         marginTop: "15px",
         cursor: "pointer"
       };
+      var buttonStyle3 = {
+        borderRadius: "27px",
+        border: "2px solid rgba(225,40,40,1)",
+        padding: "5px 5px",
+        width: "200px",
+        height: "44px",
+        outline: "none",
+        fontSize: "20px",
+        backgroundColor: "#E12828",
+        color: "white",
+        marginTop: "15px",
+        cursor: "pointer"
+      };
       var buttonStyle2 = {
         borderRadius: "27px",
         border: "2px solid #D3D3D3",
@@ -212,6 +317,19 @@ var Session = /*#__PURE__*/function (_React$Component) {
           marginTop: "15px",
           cursor: "pointer"
         };
+        var buttonStyle3 = {
+          borderRadius: "27px",
+          border: "2px solid rgba(225,40,40,1)",
+          padding: "5px 5px",
+          width: "50vw",
+          height: "30px",
+          outline: "none",
+          fontSize: "15px",
+          backgroundColor: "#E12828",
+          color: "white",
+          marginTop: "15px",
+          cursor: "pointer"
+        };
         var buttonStyle2 = {
           borderRadius: "27px",
           border: "2px solid #D3D3D3",
@@ -233,20 +351,23 @@ var Session = /*#__PURE__*/function (_React$Component) {
         registerButton = /*#__PURE__*/React.createElement("button", {
           style: buttonStyle,
           onClick: function onClick() {
-            return _this4.props.changePage(1, _this4.state.kids[_this4.state.selectedKid], _this4.state.session, _this4.state.kidSection);
+            return _this6.props.changePage(1, _this6.state.kids[_this6.state.selectedKid], _this6.state.session, _this6.state.kidSection);
           }
         }, "Register for ", this.state.kidSection);
       } else if (this.state.buttonState == 2) {
         registerButton = /*#__PURE__*/React.createElement("button", {
           style: buttonStyle,
           onClick: function onClick() {
-            return _this4.props.changePage(1, _this4.state.kids[_this4.state.selectedKid], _this4.state.session, _this4.state.kidSection);
+            return _this6.props.changePage(1, _this6.state.kids[_this6.state.selectedKid], _this6.state.session, _this6.state.kidSection);
           }
         }, "Waitlist for ", this.state.kidSection);
       } else if (this.state.buttonState == 3) {
         registerButton = /*#__PURE__*/React.createElement("button", {
-          style: buttonStyle2
-        }, "Closed");
+          style: buttonStyle3,
+          onClick: function onClick() {
+            return _this6.cancelRegistration();
+          }
+        }, "Cancel Registration");
       }
 
       var errorMessage = null;

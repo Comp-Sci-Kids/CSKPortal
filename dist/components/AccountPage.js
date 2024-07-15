@@ -191,9 +191,10 @@ var AccountPage = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var divStyle = {
-        height: "100%",
+        height: "200%",
         width: "100%",
-        textAlign: "center"
+        textAlign: "center" // overflow: "scroll"
+
       };
       var contentDivStyle = {
         width: "90%",
@@ -206,7 +207,8 @@ var AccountPage = /*#__PURE__*/function (_React$Component) {
         marginTop: "30px"
       };
       var titleStyle = {
-        margin: "10px"
+        margin: "10px",
+        fontFamily: "brandFont"
       };
       var inputStyle = {
         borderRadius: "27px",
@@ -222,8 +224,8 @@ var AccountPage = /*#__PURE__*/function (_React$Component) {
         borderRadius: "27px",
         border: "2px solid rgba(8,58,174,1)",
         padding: "10px 20px",
-        // width: "20%",
-        // height: "30px",
+        // width: "23%",
+        // height: "50px",
         outline: "none",
         fontSize: "20px",
         marginTop: "20px"
@@ -352,7 +354,8 @@ var AccountPage = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/React.createElement("div", {
         style: divStyle
       }, errorBox, /*#__PURE__*/React.createElement("div", {
-        style: contentDivStyle
+        style: contentDivStyle,
+        class: "background-red"
       }, /*#__PURE__*/React.createElement("div", {
         style: headerStyle
       }, /*#__PURE__*/React.createElement("h1", {

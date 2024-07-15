@@ -38,13 +38,16 @@ var RegisterPage = /*#__PURE__*/function (_React$Component) {
     _this.refreshPage = _this.refreshPage.bind(_assertThisInitialized(_this));
     _this.togglePage = _this.togglePage.bind(_assertThisInitialized(_this));
     _this.back = _this.back.bind(_assertThisInitialized(_this));
+    _this.openPopup = _this.openPopup.bind(_assertThisInitialized(_this));
+    _this.closePopup = _this.closePopup.bind(_assertThisInitialized(_this));
     _this.state = {
       page: 0,
       sessions: [],
       selectedKid: {},
       session: {},
       selectedKidSection: "",
-      message: ""
+      message: "",
+      popup: false
     };
 
     _this.refreshPage();
@@ -111,10 +114,47 @@ var RegisterPage = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "openPopup",
+    value: function openPopup() {
+      this.updateState("popup", true);
+    }
+  }, {
+    key: "closePopup",
+    value: function closePopup() {
+      this.updateState("popup", false);
+      this.refreshPage();
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this4 = this;
 
+      var buttonStyle = {
+        borderRadius: "27px",
+        border: "2px solid rgba(8,58,174,1)",
+        padding: "5px 5px",
+        width: "15%",
+        height: "44px",
+        outline: "none",
+        fontSize: "20px",
+        backgroundColor: "#083ab9",
+        color: "white",
+        marginTop: "15px",
+        cursor: "pointer",
+        position: "relative",
+        left: "150px"
+      };
+      var popupStyle = {
+        position: "fixed",
+        width: "100%",
+        height: "100%",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        top: 0,
+        left: 0,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
+      };
       var divStyle = {
         height: "100%",
         width: "100%",
@@ -131,7 +171,12 @@ var RegisterPage = /*#__PURE__*/function (_React$Component) {
         marginTop: "30px"
       };
       var titleStyle = {
-        margin: "10px"
+        margin: "20px",
+        width: "50%",
+        fontFamily: "brandFont",
+        position: "relative",
+        textAlign: "center",
+        justifyContent: "center"
       };
       var infoStyle = {
         fontStyle: 'italic',
@@ -144,7 +189,16 @@ var RegisterPage = /*#__PURE__*/function (_React$Component) {
           key: session.Name,
           session: session
         }));
-      }); //message
+      }); //popup
+
+      var popup = null;
+
+      if (this.state.popup) {
+        popup = /*#__PURE__*/React.createElement(RegisterPopup, {
+          closeCallback: this.closePopup
+        });
+      } //message
+
 
       var messageBox = null;
 
@@ -168,22 +222,31 @@ var RegisterPage = /*#__PURE__*/function (_React$Component) {
         }, this.state.message);
       }
 
-      return /*#__PURE__*/React.createElement("div", {
-        style: divStyle
-      }, messageBox, this.state.page == 0 ? /*#__PURE__*/React.createElement("div", {
-        style: contentDivStyle
-      }, /*#__PURE__*/React.createElement("div", {
-        style: headerStyle
-      }, /*#__PURE__*/React.createElement("h1", {
-        style: titleStyle
-      }, "Register Children")), /*#__PURE__*/React.createElement("hr", null), sessions.length > 0 ? sessions : /*#__PURE__*/React.createElement("p", {
-        style: infoStyle
-      }, "There are no open sessions.")) : /*#__PURE__*/React.createElement(RegisterKidPage, {
-        back: this.back,
-        section: this.state.selectedKidSection,
-        session: this.state.selectedSession,
-        kid: this.state.selectedKid
-      }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null));
+      return (
+        /*#__PURE__*/
+        // <div class = "body">
+        React.createElement("div", {
+          style: divStyle
+        }, messageBox, this.state.page == 0 ? /*#__PURE__*/React.createElement("div", {
+          style: contentDivStyle,
+          class: "background-red"
+        }, /*#__PURE__*/React.createElement("div", {
+          style: headerStyle
+        }, /*#__PURE__*/React.createElement("h1", {
+          style: titleStyle
+        }, "Register Children"), /*#__PURE__*/React.createElement("button", {
+          style: buttonStyle,
+          onClick: this.openPopup
+        }, "How Do I Register?")), /*#__PURE__*/React.createElement("hr", null), sessions.length > 0 ? sessions : /*#__PURE__*/React.createElement("p", {
+          style: infoStyle
+        }, "There are no open sessions.")) : /*#__PURE__*/React.createElement(RegisterKidPage, {
+          back: this.back,
+          section: this.state.selectedKidSection,
+          session: this.state.selectedSession,
+          kid: this.state.selectedKid
+        }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), popup) // </div>
+
+      );
     }
   }]);
 

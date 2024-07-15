@@ -127,11 +127,26 @@ var ChildRow = /*#__PURE__*/function (_React$Component) {
 
         if (sessionData.waitlist) {
           text += " Waitlist";
-        } else if (sessionData.advanced) {
-          text += " Advanced";
+        } else if (sessionData.advanced == 2) {
+          if (sessionData.section[3] == "A") {
+            text = text.substring(0, text.length - 1) + "C";
+          } else {
+            text += " C";
+          }
+        } else if (sessionData.advanced == 1) {
+          if (sessionData.section[3] == "A") {
+            text = text.substring(0, text.length - 1) + "B";
+          } else {
+            text += " B";
+          }
         } else {
-          text += " Regular";
-        }
+          if (sessionData.section[3] == "A") {
+            text = text.substring(0, text.length - 1) + "A";
+          } else {
+            text += " A";
+          }
+        } //console.log(text)
+
 
         pastSessions.push( /*#__PURE__*/React.createElement("li", {
           key: i
@@ -148,15 +163,30 @@ var ChildRow = /*#__PURE__*/function (_React$Component) {
 
       for (var i = 0; i < this.props.kid.sessions.current.length; i++) {
         var sessionData = this.props.kid.sessions.current[i];
-        var text = "";
+        var text = ""; // console.log(this.props.kid)
+
         text += sessionData.sessionName + ", " + sessionData.section;
 
         if (sessionData.waitlist) {
           text += " Waitlist";
-        } else if (sessionData.advanced) {
-          text += " Advanced";
+        } else if (sessionData.advanced == 2) {
+          if (sessionData.section[3] == "A") {
+            text = text.substring(0, text.length - 1) + "C";
+          } else {
+            text += " C";
+          }
+        } else if (sessionData.advanced == 1) {
+          if (sessionData.section[3] == "A") {
+            text = text.substring(0, text.length - 1) + "B";
+          } else {
+            text += " B";
+          }
         } else {
-          text += " Regular";
+          if (sessionData.section[3] == "A") {
+            text = text.substring(0, text.length - 1) + "A";
+          } else {
+            text += " A";
+          }
         }
 
         currentSessions.push( /*#__PURE__*/React.createElement("li", {

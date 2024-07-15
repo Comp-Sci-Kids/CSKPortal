@@ -22,6 +22,8 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+var SPECIAL_CODE = "CSKTSTSESSION1";
+
 var RegisterKidPage = /*#__PURE__*/function (_React$Component) {
   _inherits(RegisterKidPage, _React$Component);
 
@@ -151,7 +153,12 @@ var RegisterKidPage = /*#__PURE__*/function (_React$Component) {
       } else if (dob[2] != "/" || dob[5] != "/") {
         this.updateState("error", "Please enter the birthday in MM/DD/YYYY format.");
         return;
-      }
+      } //USE WHEN TESTING SESSIONS AND DONT WANT PARENTS TO JOIN (ALSO UNCOMMENT TEXT ELEMENT IN THE FORM)
+      // if(this.state.specialCode.toUpperCase() != SPECIAL_CODE) {
+      //     this.updateState("error", "You have not entered the correct code.");
+      //     return;
+      // }
+
 
       if (confirm("Are you sure that you want to register your child?")) {
         networkRequest("parent/register", "POST", registrationData, function (d) {
@@ -444,6 +451,9 @@ var RegisterKidPage = /*#__PURE__*/function (_React$Component) {
         }, {
           value: "other",
           display: "Other"
+        }, {
+          value: "prefer not to answer",
+          display: "I Prefer Not To Answer"
         }]
       }), /*#__PURE__*/React.createElement(LabelField, {
         title: "Birthday (MM/DD/YYYY)",

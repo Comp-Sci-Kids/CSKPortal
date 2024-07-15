@@ -149,7 +149,7 @@ var LoginPage = /*#__PURE__*/function (_React$Component) {
       var divStyle = {
         width: "100%",
         height: "100%",
-        background: "linear-gradient(90deg, rgba(190,58,0,1) 0%, rgba(255,58,0,1) 100%)",
+        background: "rgba(29, 64, 145, 1) ",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -185,7 +185,7 @@ var LoginPage = /*#__PURE__*/function (_React$Component) {
       };
       var inputStyle = {
         borderRadius: "27px",
-        border: "2px solid rgba(254,58,0,1)",
+        border: "2px solid rgba(204, 0, 0, 1)",
         padding: "10px 20px",
         width: "70%",
         height: "30px",
@@ -195,13 +195,13 @@ var LoginPage = /*#__PURE__*/function (_React$Component) {
       };
       var buttonStyle = {
         borderRadius: "27px",
-        border: "2px solid rgba(254,58,0,1)",
+        border: "2px solid rgba(204, 0, 0, 1)",
         padding: "5px 5px",
         width: "45%",
         height: "44px",
         outline: "none",
         fontSize: "20px",
-        backgroundColor: "#fe3a01",
+        backgroundColor: "#CC0000",
         color: "white",
         marginTop: "15px",
         cursor: "pointer"
@@ -210,7 +210,7 @@ var LoginPage = /*#__PURE__*/function (_React$Component) {
         position: "fixed",
         width: "90%",
         margin: "auto",
-        backgroundColor: "rgba(8,58,194,1)",
+        backgroundColor: "rgba(204, 0, 0, 1)",
         color: "white",
         fontSize: "20px",
         textAlign: "center",
@@ -251,7 +251,7 @@ var LoginPage = /*#__PURE__*/function (_React$Component) {
         };
         inputStyle = {
           borderRadius: "17px",
-          border: "2px solid rgba(254,58,0,1)",
+          border: "2px solid rgba(204, 0, 0, 1)",
           padding: "10px 20px",
           width: "70%",
           height: "15px",
@@ -261,7 +261,7 @@ var LoginPage = /*#__PURE__*/function (_React$Component) {
         };
         buttonStyle = {
           borderRadius: "17px",
-          border: "2px solid rgba(254,58,0,1)",
+          border: "2px solid rgba(204, 0, 0, 1)",
           padding: "5px 5px",
           width: "45%",
           height: "30px",
@@ -306,11 +306,51 @@ var LoginPage = /*#__PURE__*/function (_React$Component) {
         style: divStyle
       }, /*#__PURE__*/React.createElement("ul", {
         className: "circles"
-      }, /*#__PURE__*/React.createElement("li", null), /*#__PURE__*/React.createElement("li", null), /*#__PURE__*/React.createElement("li", null), /*#__PURE__*/React.createElement("li", null), /*#__PURE__*/React.createElement("li", null), /*#__PURE__*/React.createElement("li", null), /*#__PURE__*/React.createElement("li", null), /*#__PURE__*/React.createElement("li", null), /*#__PURE__*/React.createElement("li", null), /*#__PURE__*/React.createElement("li", null)), errorBox, /*#__PURE__*/React.createElement("div", {
+      }, /*#__PURE__*/React.createElement("img", {
+        id: "circle1",
+        src: "images/logo.png",
+        width: "460",
+        height: "345"
+      }), /*#__PURE__*/React.createElement("img", {
+        id: "circle2",
+        src: "images/logo.png",
+        width: "460",
+        height: "345"
+      }), /*#__PURE__*/React.createElement("img", {
+        id: "circle3",
+        src: "images/logo.png",
+        width: "460",
+        height: "345"
+      }), /*#__PURE__*/React.createElement("img", {
+        id: "circle4",
+        src: "images/logo.png",
+        width: "460",
+        height: "345"
+      }), /*#__PURE__*/React.createElement("img", {
+        id: "circle5",
+        src: "favicon/apple-touch-icon.png",
+        width: "460",
+        height: "345"
+      }), /*#__PURE__*/React.createElement("img", {
+        id: "circle6",
+        src: "favicon/apple-touch-icon.png",
+        width: "460",
+        height: "345"
+      }), /*#__PURE__*/React.createElement("img", {
+        id: "circle7",
+        src: "favicon/apple-touch-icon.png",
+        width: "460",
+        height: "345"
+      }), /*#__PURE__*/React.createElement("img", {
+        id: "circle8",
+        src: "favicon/apple-touch-icon.png",
+        width: "460",
+        height: "345"
+      })), errorBox, /*#__PURE__*/React.createElement("div", {
         style: boxStyle
       }, /*#__PURE__*/React.createElement("h1", {
         style: titleStyle1
-      }, "CompSci Kids Parent Login"), /*#__PURE__*/React.createElement("input", {
+      }, "CompSci Kids Parent Portal"), /*#__PURE__*/React.createElement("input", {
         style: inputStyle,
         type: "email",
         placeholder: "Email",

@@ -73,6 +73,7 @@ var ChildPage = /*#__PURE__*/function (_React$Component) {
         if (!d.success) {
           alert("Error! Please refresh the page and try again.");
         } else {
+          // console.log(d.kids);
           _this2.setState({
             popup: false,
             kids: d.kids
@@ -104,7 +105,12 @@ var ChildPage = /*#__PURE__*/function (_React$Component) {
         marginTop: "30px"
       };
       var titleStyle = {
-        margin: "10px"
+        margin: "10px",
+        fontFamily: "brandFont",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: "30px"
       };
       var popup = null;
 
@@ -134,12 +140,14 @@ var ChildPage = /*#__PURE__*/function (_React$Component) {
 
       var infoStyle = {
         fontStyle: 'italic',
-        fontSize: '25px'
+        fontSize: '25px',
+        fontFamily: "brandFont"
       };
       return /*#__PURE__*/React.createElement("div", {
         style: divStyle
       }, /*#__PURE__*/React.createElement("div", {
-        style: contentDivStyle
+        style: contentDivStyle,
+        class: "background-red"
       }, /*#__PURE__*/React.createElement("div", {
         style: headerStyle
       }, /*#__PURE__*/React.createElement("h1", {

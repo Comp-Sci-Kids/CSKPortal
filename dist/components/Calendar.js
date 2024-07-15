@@ -126,7 +126,8 @@ var Calendar = /*#__PURE__*/function (_React$Component) {
         }
 
         var cHeadCol = e("td", {
-          style: {// fontSize: "15px"
+          style: {
+            fontSize: "15px"
           },
           key: keyCount
         }, colChild);
@@ -150,8 +151,8 @@ var Calendar = /*#__PURE__*/function (_React$Component) {
         dayCols.push(e("td", {
           style: {
             textAlign: "center",
-            padding: 0 // fontSize: "15px"
-
+            padding: 0,
+            fontSize: "15px"
           },
           key: _c
         }, weekDays[_c]));
@@ -189,7 +190,7 @@ var Calendar = /*#__PURE__*/function (_React$Component) {
             var eventDay = "".concat(this.state.month, "/").concat(dates[counter], "/").concat(this.state.year);
 
             if (eventDates.includes(eventDay)) {
-              color = "red";
+              color = "blue";
             }
           }
 

@@ -6,7 +6,6 @@ class IconButton extends React.Component {
         let imageButtonStyle = {
             width: this.props.small ? "40px" : "40px",
             height: this.props.small ? "40px" : "40px",
-            backgroundColor: this.props.disabled ? "#DDDDDD" : appRed,
             padding: this.props.small ? "0px" : "0px",
             boxSizing: "border-box",
             borderRadius: this.props.small ? "4px" : "10px",

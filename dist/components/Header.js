@@ -46,31 +46,45 @@ var Header = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var outerDivStyle = {
-        backgroundColor: "white" // height: "200px"
-
+        // backgroundColor:  "#1d4091",
+        zIndex: -1000
       };
       var innerDivStyle = {
         width: "100%",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        textAlign: "center"
+        textAlign: "center",
+        zIndex: -1000
       };
       var titleStyle = {
         margin: "20px",
-        color: appBlue,
+        color: appRed,
         fontFamily: "brandFont",
         fontSize: "50px",
-        textAlign: "left"
+        textAlign: "center",
+        justifyContent: 'center',
+        alignItems: "center",
+        display: 'flex',
+        width: '100%'
       };
 
       if (window.screen.width < 1280) {
         titleStyle = {
           margin: "20px",
-          color: appBlue,
+          color: appRed,
           fontFamily: "brandFont",
-          fontSize: "25px",
-          textAlign: "left"
+          fontSize: "50px",
+          textAlign: "center",
+          justifyContent: 'center',
+          alignItems: "center",
+          display: 'flex',
+          width: '100%' // margin: "20px",
+          // color: appRed,
+          // fontFamily: "brandFont",
+          // fontSize: "25px",
+          // textAlign: "left"
+
         };
       }
 

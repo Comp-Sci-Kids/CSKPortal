@@ -7,14 +7,45 @@
 }
 
 html {
-    height: 100%;
+    /* height: 100%; */
+    overflow-y: auto;
+    overflow-x: auto;
+    width: 200px;
+    height: 500px;
+    overflow: scroll;
+
+    /* height: 100%;
+    margin: auto;
+    width: 960px;
+    overflow: scroll; */
+}
+
+.area{
+    /* background-color: rgba(29, 64, 145, 1); */
+    /* background: -webkit-linear-gradient(to left, #1a2d1f, #292934);   */
+    /* width: 100%;
+    height:100vh; */
+    
+   
 }
 
 body {
     margin: 0;
     padding: 0;
     height: 100%;
+    width: 100%;    
+    /* overflow: scroll; */
+
+
+    /* margin: 0;
+    padding: 0;
+    height: 200%;
     width: 100%;
+    overflow: hidden;
+    /* overflow-y: scroll; */
+
+    background-color: rgba(29, 64, 145, 1); 
+
 }
 
 #container {
@@ -64,9 +95,148 @@ body {
     margin-top: 1rem;
     padding: 1rem;
     background-color: rgb(250, 249, 249);
-    position: fixed;
+    /* position: fixed; */
     bottom: 0;
     left: 0;
     width: 100%;
     text-align: center;
+  }
+
+
+  area{
+    /* background: #a53180;  
+    background: -webkit-linear-gradient(to left, #8c21ac, #416b25);  
+    background-size: 400% 400%; */
+}
+
+
+
+.circles{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* overflow: hidden; */
+}
+
+.circles img{
+     position: absolute;
+     background-color: transparent;
+     width: 40px;
+     height: 40px;
+    /*display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2); */
+}
+
+#circle1 {
+    left: 25%;
+    width: 80px;
+    height: 80px;
+    bottom: -150px;
+    animation-delay: 0s;
+    animation: animate 26s linear infinite;
+    z-index:-999;
+
+}
+#circle2 {
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    bottom: -150px;
+    animation-delay: 3s;
+    animation-duration: 12s;
+    animation: animate 26s linear infinite;
+    z-index:-999;
+
+}
+#circle3 {
+    left: 70%;
+    width: 20px;
+    height: 20px;
+    bottom: -150px;
+    animation-delay: 6s;
+    animation: animate 24s linear infinite;
+    z-index:-999;
+
+}
+#circle4 {
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    bottom: -150px;
+    animation-delay: 9s;
+    animation-duration: 18s;
+    animation: animate 18s linear infinite;
+    z-index:-999;
+
+  }
+#circle4 {
+    left: 65%;
+    width: 20px;
+    height: 20px;
+    bottom: -150px;
+    animation-delay: 12s;
+    animation: animate 15s linear infinite;
+    z-index:-999;
+}
+#circle5 {
+    left: 65%;
+    width: 20px;
+    height: 20px;
+    bottom: 150px;
+    animation-delay: 15s;
+    animation: animate 16s linear infinite;
+    z-index:-999;
+}
+#circle6 {
+    left: 75%;
+    width: 110px;
+    height: 110px;
+    bottom: -150px;
+    animation-delay: 18s;
+    animation: animate 21s linear infinite;
+    z-index:-999;
+}
+#circle7 {
+    left: 35%;
+    width: 150px;
+    height: 150px;
+    bottom: -150px;
+    animation-delay: 21s;
+    animation: animate 24s linear infinite;
+    z-index:-999;
+}
+#circle8 {
+    left: 25%;
+    width: 80px;
+    height: 80px;
+    bottom: -150px;
+    animation-delay: 8s;
+    animation: animate 13s linear infinite;
+    z-index:-999;
+}
+.tab:not(:target) {
+    display: none;
+  }
+  
+  .tab:last-child {
+    display: block;
+  }
+  
+  .tab:target ~ .tab:last-child {
+    display: none;
+  }
+  
+  .background-red {
+    background-color: rgb(255, 255, 255);
+    margin: 30px auto;
+    z-index:999;
+
+    border-radius: 20px;
+  box-shadow: 5px 5px 30px 7px 
   }

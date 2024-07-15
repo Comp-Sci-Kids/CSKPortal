@@ -22,25 +22,68 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var TabBar = /*#__PURE__*/function (_React$Component) {
-  _inherits(TabBar, _React$Component);
+var SlidingMenu = /*#__PURE__*/function (_React$Component) {
+  _inherits(SlidingMenu, _React$Component);
 
-  var _super = _createSuper(TabBar);
+  var _super = _createSuper(SlidingMenu);
+
+  function SlidingMenu(props) {
+    _classCallCheck(this, SlidingMenu);
+
+    return _super.call(this, props);
+  }
+
+  _createClass(SlidingMenu, [{
+    key: "render",
+    value: function render() {
+      var buttonStyle = {
+        flexDirection: "column",
+        borderLeft: "solid 1px",
+        width: "50%",
+        paddingLeft: "50px",
+        boxSizing: "border-box"
+      };
+      return /*#__PURE__*/React.createElement("div", {
+        className: "sliding-menu animated " + this.props.slideClass
+      }, /*#__PURE__*/React.createElement(IconButton, {
+        style: buttonStyle,
+        src: "images/close.png",
+        onClick: this.props.onClick
+      }), this.props.children);
+    }
+  }]);
+
+  return SlidingMenu;
+}(React.Component);
+
+var TabBar = /*#__PURE__*/function (_React$Component2) {
+  _inherits(TabBar, _React$Component2);
+
+  var _super2 = _createSuper(TabBar);
 
   function TabBar(props) {
     var _this;
 
     _classCallCheck(this, TabBar);
 
-    _this = _super.call(this, props);
+    _this = _super2.call(this, props);
     _this.changeTab = _this.changeTab.bind(_assertThisInitialized(_this));
     _this.state = {
-      selectedTab: _this.props.defaultPage
+      selectedTab: _this.props.defaultPage,
+      toggleMenu: false
     };
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(TabBar, [{
+    key: "handleClick",
+    value: function handleClick() {
+      this.setState({
+        toggleMenu: !this.state.toggleMenu
+      });
+    }
+  }, {
     key: "changeTab",
     value: function changeTab(index) {
       this.setState({
@@ -51,12 +94,15 @@ var TabBar = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var slideClass;
+      this.state.toggleMenu ? slideClass = 'slideInLeft slide-menu' : slideClass = 'slideInRight';
       var tabNames = ["Register", "Children", "Account"];
       var tabs = [];
 
       for (var i = 0; i < tabNames.length; i++) {
         tabs.push( /*#__PURE__*/React.createElement(Tab, {
           key: i,
+          class: "active",
           index: i,
           title: tabNames[i],
           selected: i == this.state.selectedTab,
@@ -67,14 +113,22 @@ var TabBar = /*#__PURE__*/function (_React$Component) {
       }
 
       var barStyle = {
-        borderBottom: "solid 1px",
+        flexDirection: "column",
+        borderLeft: "solid 1px",
         width: "100%",
         paddingLeft: "50px",
         boxSizing: "border-box"
       };
       return /*#__PURE__*/React.createElement("div", {
         style: barStyle
-      }, tabs);
+      }, /*#__PURE__*/React.createElement(IconButton, {
+        src: "images/menu.png",
+        onClick: this.handleClick,
+        menu: "menu"
+      }), /*#__PURE__*/React.createElement(SlidingMenu, {
+        slideClass: slideClass,
+        onClick: this.handleClick
+      }, tabs));
     }
   }]);
 

@@ -39,15 +39,16 @@ var Tab = /*#__PURE__*/function (_React$Component) {
       var _this = this;
 
       var tabStyle = {
-        width: "30vw",
-        height: "30px",
+        fontFamily: "brandFont",
+        // width: "20vw",
+        // height: "20px",
         fontSize: "20px",
-        outline: "none",
-        borderStyle: "solid",
-        borderWidth: "1px 1px 0 1px",
-        borderColor: "black",
-        color: "black",
-        borderRadius: "15px 15px 0px 0px"
+        // outline: "none",
+        borderStyle: "none" // borderWidth: "1px 1px 0 1px",
+        // borderColor: "black",
+        // color: "black",
+        // borderRadius: "15px 15px 0px 0px"
+
       };
 
       if (window.screen.width < mobileThreshold) {
@@ -65,7 +66,7 @@ var Tab = /*#__PURE__*/function (_React$Component) {
       }
 
       if (this.props.selected) {
-        tabStyle.backgroundColor = appBlue;
+        tabStyle.backgroundColor = appRed;
         tabStyle.color = "white";
       }
 

@@ -253,7 +253,7 @@ var AddChildPopup = /*#__PURE__*/function (_React$Component) {
       }
 
       var hrStyle = {
-        border: '5px dotted ' + appBlue,
+        border: '5px dotted ' + appRed,
         borderStyle: 'none none dotted',
         color: '#fff',
         backgroundColor: '#fff'
@@ -279,7 +279,7 @@ var AddChildPopup = /*#__PURE__*/function (_React$Component) {
         editing: true,
         valueChanged: this.updateState
       }), /*#__PURE__*/React.createElement(SelectField, {
-        title: "Gender",
+        title: "Child Gender",
         field: "gender",
         value: this.state.gender,
         editing: true,
@@ -293,12 +293,15 @@ var AddChildPopup = /*#__PURE__*/function (_React$Component) {
         }, {
           value: "other",
           display: "Other"
+        }, {
+          value: "prefer not to answer",
+          display: "I Prefer Not To Answer"
         }]
       }), /*#__PURE__*/React.createElement("div", {
         style: divStlye
       }, /*#__PURE__*/React.createElement("label", {
         style: labelStyle
-      }, "Birthday (MM/DD/YYYY):"), /*#__PURE__*/React.createElement("input", {
+      }, "Child Birthday (MM/DD/YYYY):"), /*#__PURE__*/React.createElement("input", {
         style: inputStyle,
         type: "text",
         value: this.state.dob,
@@ -307,7 +310,7 @@ var AddChildPopup = /*#__PURE__*/function (_React$Component) {
         name: "dob",
         onChange: this.valueChanged
       })), /*#__PURE__*/React.createElement(SelectField, {
-        title: "Grade",
+        title: "Child Current Grade in School",
         field: "grade",
         value: this.state.grade,
         editing: true,
@@ -338,13 +341,13 @@ var AddChildPopup = /*#__PURE__*/function (_React$Component) {
           display: "8th"
         }]
       }), /*#__PURE__*/React.createElement(LabelField, {
-        title: "School",
+        title: "Child School",
         field: "school",
         value: this.state.school,
         editing: true,
         valueChanged: this.updateState
       }), /*#__PURE__*/React.createElement(SelectField, {
-        title: "Shirt Size",
+        title: "Child Shirt Size",
         field: "shirtSize",
         value: this.state.shirtSize,
         editing: true,

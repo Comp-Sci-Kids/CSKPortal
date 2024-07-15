@@ -2,6 +2,8 @@
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -36,21 +38,24 @@ var IconButton = /*#__PURE__*/function (_React$Component) {
   _createClass(IconButton, [{
     key: "render",
     value: function render() {
-      var imageButtonStyle = {
-        width: this.props.small ? "30px" : "50px",
-        height: this.props.small ? "30px" : "50px",
-        backgroundColor: this.props.disabled ? "#DDDDDD" : appBlue,
-        padding: this.props.small ? "4px" : "8px",
+      var _imageButtonStyle;
+
+      var imageButtonStyle = (_imageButtonStyle = {
+        width: this.props.small ? "40px" : "40px",
+        height: this.props.small ? "40px" : "40px",
+        padding: this.props.small ? "0px" : "0px",
         boxSizing: "border-box",
         borderRadius: this.props.small ? "4px" : "10px",
         display: "inline-block",
-        marginLeft: this.props.small ? "5px" : "10px",
+        marginLeft: this.props.small ? "2px" : "5px",
         cursor: "pointer"
-      };
+      }, _defineProperty(_imageButtonStyle, "width", this.props.menu == "menu" ? "75px" : "40px"), _defineProperty(_imageButtonStyle, "height", this.props.menu == "menu" ? "75px" : "40px"), _imageButtonStyle);
       var imageStyle = {
         maxWidth: "100%",
         filter: "invert(100%)",
-        userSelect: "none"
+        userSelect: "none",
+        width: this.props.menu == "menu" ? "75px" : "40px",
+        height: this.props.menu == "menu" ? "75px" : "40px"
       };
       return /*#__PURE__*/React.createElement("div", {
         style: imageButtonStyle,
