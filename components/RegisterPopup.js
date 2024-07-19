@@ -30,30 +30,30 @@ class RegisterPopup extends React.Component {
 
         }
         var boxStyle = {
-            width: "fit-content",
-            height: "fit-content",
-            backgroundColor: "white",
-            borderRadius: "25px",
+            width: "1500px",
+            height: "700px",
+            backgroundColor: appBlue,
+            borderRadius: "75px",
             display: "flex",
             justifyContent: "space-between",
             flexDirection: "column",
             alignItems: "center",
             position: "relative",
             overflowY: "hidden" ,
-            overflowX : 'hidden'
+            overflowX : 'hidden',
+            color: "white",
+            fontSize: "45px",
+            alignItems: "center"
         }
         var contentDiv = {
             width: "90%"
         }
         var buttonDivStyle = {
-            width: "100%",
-            display: "flex",
-            justifyContent: "flex-end",
-            alignItems: "center",
-            boxSizing: "border-box",
-            paddingBottom: "10px",
-            paddingRight: "10px"
-        }
+            position: "absolute",
+            top: "25px",
+            left: "10px",
+            transform: "scale(1.5)"  
+        };
 
         var divStlye = {
             boxSizing: "border-box",
@@ -98,7 +98,7 @@ class RegisterPopup extends React.Component {
              boxStyle = {
                 width: "fit-content",
                 height: "fit-content",
-                backgroundColor: "white",
+                backgroundColor: appBlue,
                 borderRadius: "25px",
                 display: "flex",
                 justifyContent: "space-between",
@@ -175,7 +175,10 @@ class RegisterPopup extends React.Component {
                 <div style={boxStyle}>
                     <div style={contentDiv}>
                         <p>
-                            <a href="https://www.youtube.com/watch?v=-h3o3GXP_2c">Tutorial Link</a>
+                            <br></br>
+                            <a href="https://www.youtube.com/watch?v=-h3o3GXP_2c" style={{ color: 'white' }}>Tutorial Link</a>
+                            <br></br>
+                            <br></br>
                             <br></br>
                             1.Go to the Children tab 
                             <br></br>

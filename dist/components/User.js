@@ -58,12 +58,16 @@ var User = /*#__PURE__*/function (_React$Component) {
         marginRight: "20px"
       };
       var buttonStyle = {
-        backgroundColor: "transparent",
-        color: appRed,
-        padding: "16px",
+        backgroundColor: appRed,
+        borderRadius: "27px",
+        border: "2px solid rgba(255,0,0,1)",
+        width: "115px",
+        height: "55px",
+        color: "white",
+        padding: "5px",
         fontSize: "16px",
-        border: "none",
         outline: "none",
+        textAlign: "center",
         cursor: "pointer"
       };
       var dropdownStyle = {
@@ -97,7 +101,7 @@ var User = /*#__PURE__*/function (_React$Component) {
             hidden: !_this2.state.hidden
           });
         }
-      }, this.props.name, " ", this.state.hidden ? String.fromCharCode("9660") : String.fromCharCode("9650")), /*#__PURE__*/React.createElement("div", {
+      }, this.props.name), /*#__PURE__*/React.createElement("div", {
         style: dropdownStyle
       }, /*#__PURE__*/React.createElement("a", {
         href: "",

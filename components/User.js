@@ -17,12 +17,16 @@ class User extends React.Component {
             marginRight: "20px",
         }
         let buttonStyle = {
-            backgroundColor: "transparent",
-            color: appRed,
-            padding: "16px",
+            backgroundColor: appRed,
+            borderRadius: "27px",
+            border: "2px solid rgba(255,0,0,1)",
+            width: "115px",
+            height: "55px",
+            color: "white",
+            padding: "5px",
             fontSize: "16px",
-            border: "none",
             outline: "none",
+            textAlign: "center",
             cursor: "pointer"
         }
         let dropdownStyle = {
@@ -46,7 +50,9 @@ class User extends React.Component {
             dropdownStyle.display = "block"
         }
         return (<div style={divStyle}>
-            <button style={buttonStyle} onClick={() => { this.setState({ hidden: !this.state.hidden }) }}>{this.props.name} {this.state.hidden ? String.fromCharCode("9660") : String.fromCharCode("9650")}</button>
+            <button style={buttonStyle} onClick={() => { this.setState({ hidden: !this.state.hidden }) }}>
+                    {this.props.name}
+                </button>
             <div style={dropdownStyle}>
                 <a href="" style={linkStyle} onClick={this.logOut}>Log Out</a>
             </div>

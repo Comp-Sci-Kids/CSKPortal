@@ -21,7 +21,7 @@ class Header extends React.Component {
         }
         var titleStyle = {
             margin: "20px",
-            color: appRed,
+            color: "white",
             fontFamily: "brandFont",
             fontSize: "50px",
             textAlign: "center",
@@ -34,7 +34,7 @@ class Header extends React.Component {
         if(window.screen.width < 1280) {
             titleStyle = {
             margin: "20px",
-            color: appRed,
+            color: "white",
             fontFamily: "brandFont",
             fontSize: "50px",
             textAlign: "center"

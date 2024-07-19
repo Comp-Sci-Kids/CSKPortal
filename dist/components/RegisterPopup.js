@@ -2,6 +2,8 @@
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -66,30 +68,31 @@ var RegisterPopup = /*#__PURE__*/function (_React$Component) {
         alignItems: "center",
         justifyContent: "center"
       };
-      var boxStyle = {
-        width: "fit-content",
-        height: "fit-content",
-        backgroundColor: "white",
-        borderRadius: "25px",
+
+      var boxStyle = _defineProperty({
+        width: "1500px",
+        height: "700px",
+        backgroundColor: appBlue,
+        borderRadius: "75px",
         display: "flex",
         justifyContent: "space-between",
         flexDirection: "column",
         alignItems: "center",
         position: "relative",
         overflowY: "hidden",
-        overflowX: 'hidden'
-      };
+        overflowX: 'hidden',
+        color: "white",
+        fontSize: "45px"
+      }, "alignItems", "center");
+
       var contentDiv = {
         width: "90%"
       };
       var buttonDivStyle = {
-        width: "100%",
-        display: "flex",
-        justifyContent: "flex-end",
-        alignItems: "center",
-        boxSizing: "border-box",
-        paddingBottom: "10px",
-        paddingRight: "10px"
+        position: "absolute",
+        top: "25px",
+        left: "10px",
+        transform: "scale(1.5)"
       };
       var divStlye = {
         boxSizing: "border-box",
@@ -130,7 +133,7 @@ var RegisterPopup = /*#__PURE__*/function (_React$Component) {
         boxStyle = {
           width: "fit-content",
           height: "fit-content",
-          backgroundColor: "white",
+          backgroundColor: appBlue,
           borderRadius: "25px",
           display: "flex",
           justifyContent: "space-between",
@@ -205,9 +208,12 @@ var RegisterPopup = /*#__PURE__*/function (_React$Component) {
         style: boxStyle
       }, /*#__PURE__*/React.createElement("div", {
         style: contentDiv
-      }, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("a", {
-        href: "https://www.youtube.com/watch?v=-h3o3GXP_2c"
-      }, "Tutorial Link"), /*#__PURE__*/React.createElement("br", null), "1.Go to the Children tab", /*#__PURE__*/React.createElement("br", null), "2.Click the plus button and add your child's information", /*#__PURE__*/React.createElement("br", null), "3.Go to the Register tab", /*#__PURE__*/React.createElement("br", null), "4.Click the register button and select the child you would like to register for the session."), errorMessage), /*#__PURE__*/React.createElement("div", {
+      }, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("a", {
+        href: "https://www.youtube.com/watch?v=-h3o3GXP_2c",
+        style: {
+          color: 'white'
+        }
+      }, "Tutorial Link"), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "1.Go to the Children tab", /*#__PURE__*/React.createElement("br", null), "2.Click the plus button and add your child's information", /*#__PURE__*/React.createElement("br", null), "3.Go to the Register tab", /*#__PURE__*/React.createElement("br", null), "4.Click the register button and select the child you would like to register for the session."), errorMessage), /*#__PURE__*/React.createElement("div", {
         style: buttonDivStyle
       }, /*#__PURE__*/React.createElement(IconButton, {
         src: "images/close.png",
