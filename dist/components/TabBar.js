@@ -38,9 +38,12 @@ var SlidingMenu = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var buttonStyle = {
         flexDirection: "column",
-        borderLeft: "solid 1px",
-        width: "50%",
-        paddingLeft: "50px",
+        borderLeft: "solid 0.2vw",
+        // Use viewport units for border width
+        width: "50vw",
+        // Use viewport units for width
+        paddingLeft: "5vw",
+        // Use viewport units for padding
         boxSizing: "border-box"
       };
       return /*#__PURE__*/React.createElement("div", {
@@ -99,7 +102,7 @@ var TabBar = /*#__PURE__*/function (_React$Component2) {
     value: function render() {
       var slideClass;
       this.state.toggleMenu ? slideClass = 'slideInLeft slide-menu' : slideClass = 'slideInRight';
-      var tabNames = ["Register", "Children", "Account"];
+      var tabNames = ["Register!", "Children!", "Account"];
       var tabs = [];
 
       for (var i = 0; i < tabNames.length; i++) {
@@ -123,9 +126,20 @@ var TabBar = /*#__PURE__*/function (_React$Component2) {
         paddingLeft: "50px",
         boxSizing: "border-box"
       };
+      var buttonStyleMenu2 = {
+        flexDirection: "column",
+        borderLeft: "solid 0.2vw",
+        // Use viewport units for border width
+        width: "40vw",
+        // Use viewport units for width, slightly smaller than buttonStyle
+        paddingLeft: "4vw",
+        // Use viewport units for padding
+        boxSizing: "border-box"
+      };
       return /*#__PURE__*/React.createElement("div", {
         style: barStyle
       }, /*#__PURE__*/React.createElement(IconButton, {
+        style: buttonStyleMenu2,
         src: "images/menu2.png",
         onClick: this.handleClick,
         menu: "menu"

@@ -55,49 +55,57 @@ var User = /*#__PURE__*/function (_React$Component) {
       var divStyle = {
         position: "relative",
         display: "inline-block",
-        marginRight: "20px"
+        marginRight: "2vw" // Use viewport units for margin
+
       };
       var buttonStyle = {
         backgroundColor: appRed,
-        borderRadius: "27px",
-        border: "2px solid rgba(255,0,0,1)",
-        width: "115px",
-        height: "55px",
+        borderRadius: "2vw",
+        // Use viewport units for border radius
+        border: "0.2vw solid rgba(255,0,0,1)",
+        // Use viewport units for border width
+        width: "12vw",
+        // Use viewport units for width
+        height: "4vw",
+        // Use viewport units for height
         color: "white",
-        padding: "5px",
-        fontSize: "16px",
+        // Use viewport units for padding
+        fontSize: "1vw",
+        // Use viewport units for font size
         outline: "none",
         textAlign: "center",
         cursor: "pointer"
       };
       var dropdownStyle = {
-        display: "none",
+        display: this.state.hidden ? "none" : "block",
         position: "absolute",
         backgroundColor: "#f1f1f1",
-        boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
+        boxShadow: "0px 0.8vw 1.6vw rgba(0,0,0,0.2)",
+        // Use viewport units for box shadow
         zIndex: 1,
-        right: "5px",
-        borderRadius: "10px",
-        border: "0.5px solid"
+        right: "1vw",
+        // Use viewport units for positioning
+        borderRadius: "1vw",
+        // Use viewport units for border radius
+        border: "0.1vw solid" // Use viewport units for border width
+
       };
       var linkStyle = {
         color: "black",
-        padding: "12px 16px",
+        padding: "1vw 1.6vw",
+        // Use viewport units for padding
         textDecoration: "none",
         display: "block",
-        textAlign: "center"
+        textAlign: "center",
+        fontSize: "1.6vw" // Use viewport units for font size
+
       };
-
-      if (!this.state.hidden) {
-        dropdownStyle.display = "block";
-      }
-
       return /*#__PURE__*/React.createElement("div", {
         style: divStyle
       }, /*#__PURE__*/React.createElement("button", {
         style: buttonStyle,
         onClick: function onClick() {
-          _this2.setState({
+          return _this2.setState({
             hidden: !_this2.state.hidden
           });
         }

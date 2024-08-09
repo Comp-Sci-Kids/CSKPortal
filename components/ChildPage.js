@@ -51,7 +51,8 @@ class ChildPage extends React.Component {
         }
         let contentDivStyle = {
             width: "90%",
-            margin: "auto"
+            margin: "auto",
+    
         }
         let headerStyle = {
             display: "flex",
@@ -105,7 +106,7 @@ class ChildPage extends React.Component {
                 <div style={contentDivStyle} class="background-red">
                     <div style={headerStyle}>
                         <h1 style={titleStyle}>Child Information</h1>
-                        <IconButton src="images/add.png" onClick={this.openPopup}/>  
+                        <IconButton src="images/add.png" onClick={this.openPopup} class="background-black"/>  
                     </div>
                     <hr />
                     {this.state.kids.length > 0

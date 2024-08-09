@@ -17,7 +17,6 @@ class IconButton extends React.Component {
         }
         let imageStyle = {
             maxWidth: "100%",
-            filter: "invert(100%)",
             userSelect: "none",
             width: this.props.menu == "menu" ? "75px" : "40px",
             height: this.props.menu == "menu" ? "75px" : "40px"

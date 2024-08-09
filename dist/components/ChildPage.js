@@ -154,7 +154,8 @@ var ChildPage = /*#__PURE__*/function (_React$Component) {
         style: titleStyle
       }, "Child Information"), /*#__PURE__*/React.createElement(IconButton, {
         src: "images/add.png",
-        onClick: this.openPopup
+        onClick: this.openPopup,
+        class: "background-black"
       })), /*#__PURE__*/React.createElement("hr", null), this.state.kids.length > 0 ? /*#__PURE__*/React.createElement(ChildTable, {
         kids: this.state.kids,
         refreshCallback: this.refreshPage

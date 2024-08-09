@@ -52,7 +52,6 @@ var IconButton = /*#__PURE__*/function (_React$Component) {
       }, _defineProperty(_imageButtonStyle, "width", this.props.menu == "menu" ? "75px" : "40px"), _defineProperty(_imageButtonStyle, "height", this.props.menu == "menu" ? "75px" : "40px"), _imageButtonStyle);
       var imageStyle = {
         maxWidth: "100%",
-        filter: "invert(100%)",
         userSelect: "none",
         width: this.props.menu == "menu" ? "75px" : "40px",
         height: this.props.menu == "menu" ? "75px" : "40px"

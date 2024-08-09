@@ -6,11 +6,12 @@ class SlidingMenu extends React.Component{
 
       let buttonStyle = {
         flexDirection: "column",
-        borderLeft: "solid 1px",    
-        width: "50%",
-        paddingLeft: "50px",
+        borderLeft: "solid 0.2vw",  // Use viewport units for border width
+        width: "50vw",  // Use viewport units for width
+        paddingLeft: "5vw",  // Use viewport units for padding
         boxSizing: "border-box",
-    }
+    };
+    
 
       return(
         <div className={"sliding-menu animated " + this.props.slideClass}>
@@ -51,7 +52,7 @@ class TabBar extends React.Component {
           ? slideClass = 'slideInLeft slide-menu'
           : slideClass = 'slideInRight';
 
-        let tabNames = ["Register", "Children", "Account"]
+        let tabNames = ["Register!", "Children!", "Account"]
         let tabs = []
         for (let i = 0; i < tabNames.length; i++) {
             tabs.push(<Tab key={i} class="active" index={i} title={tabNames[i]} selected={i == this.state.selectedTab} callback={this.changeTab} left={i == 0} right={i == tabNames.length - 1} />)
@@ -66,11 +67,18 @@ class TabBar extends React.Component {
         }
 
 
+        let buttonStyleMenu2 = {
+          flexDirection: "column",
+          borderLeft: "solid 0.2vw",  // Use viewport units for border width
+          width: "40vw",  // Use viewport units for width, slightly smaller than buttonStyle
+          paddingLeft: "4vw",  // Use viewport units for padding
+          boxSizing: "border-box",
+      };
 
         return( 
 
         <div style={barStyle}>
-                 <IconButton src="images/menu2.png" onClick={this.handleClick} menu = "menu"/>  
+                 <IconButton style ={buttonStyleMenu2} src="images/menu2.png" onClick={this.handleClick} menu = "menu"/>  
 
             {/* <button type="button" onClick={this.handleClick}>
           <span className="glyphicon glyphicon-menu-hamburger"></span>

@@ -46,7 +46,6 @@ var Header = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var outerDivStyle = {
-        // backgroundColor:  "#1d4091",
         zIndex: -1000
       };
       var innerDivStyle = {
@@ -61,33 +60,14 @@ var Header = /*#__PURE__*/function (_React$Component) {
         margin: "20px",
         color: "white",
         fontFamily: "brandFont",
-        fontSize: "50px",
+        fontSize: "5vw",
+        // Using viewport width for responsive font size
         textAlign: "center",
         justifyContent: 'center',
         alignItems: "center",
         display: 'flex',
         width: '100%'
       };
-
-      if (window.screen.width < 1280) {
-        titleStyle = {
-          margin: "20px",
-          color: "white",
-          fontFamily: "brandFont",
-          fontSize: "50px",
-          textAlign: "center",
-          justifyContent: 'center',
-          alignItems: "center",
-          display: 'flex',
-          width: '100%' // margin: "20px",
-          // color: appRed,
-          // fontFamily: "brandFont",
-          // fontSize: "25px",
-          // textAlign: "left"
-
-        };
-      }
-
       return /*#__PURE__*/React.createElement("div", {
         style: outerDivStyle
       }, /*#__PURE__*/React.createElement("div", {
@@ -95,7 +75,7 @@ var Header = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/React.createElement("h1", {
         style: titleStyle
       }, "CompSci Kids Parent Portal"), /*#__PURE__*/React.createElement(User, {
-        name: localStorage.getItem("firstName") + " " + localStorage.getItem("lastName")
+        name: "".concat(localStorage.getItem("firstName"), " ").concat(localStorage.getItem("lastName"))
       })), /*#__PURE__*/React.createElement(TabBar, {
         defaultPage: this.props.defaultPage,
         tabChanged: this.tabChanged
