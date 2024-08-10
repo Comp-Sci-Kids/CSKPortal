@@ -132,7 +132,7 @@ var TabBar = /*#__PURE__*/function (_React$Component2) {
         // Use viewport units for border width
         width: "40vw",
         // Use viewport units for width, slightly smaller than buttonStyle
-        paddingLeft: "4vw",
+        paddingLeft: "2vw",
         // Use viewport units for padding
         boxSizing: "border-box"
       };

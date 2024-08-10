@@ -71,7 +71,7 @@ class TabBar extends React.Component {
           flexDirection: "column",
           borderLeft: "solid 0.2vw",  // Use viewport units for border width
           width: "40vw",  // Use viewport units for width, slightly smaller than buttonStyle
-          paddingLeft: "4vw",  // Use viewport units for padding
+          paddingLeft: "2vw",  // Use viewport units for padding
           boxSizing: "border-box",
       };
 

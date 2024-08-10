@@ -89,58 +89,66 @@ class RegisterPage extends React.Component {
 
     render() {
         var buttonStyle = {
-            borderRadius: "27px",
-            border: "2px solid rgba(8,58,174,1)",
-            padding: "5px 5px", 
-            width: "15%",
-            height: "44px",
+            borderRadius: "2vw",
+            border: "0.2vw solid rgba(8,58,174,1)",
+            padding: "0.2vw 0.5vw", 
+            width: "10vw",
+            height: "3vw",
             outline: "none",
-            fontSize: "20px",
+            fontSize: "1vw",
             backgroundColor: "#083ab9",
             color: "white",
-            marginTop: "15px",
+            marginTop: "1.5vw",
             cursor: "pointer",
             position: "relative",
-            left:"150px"
+            left: "2vw"  // Adjust this value to move the button more to the left
         }
+        
+        
+        let divStyle = {
+            height: "100vh",  // Full viewport height
+            width: "100vw",   // Full viewport width
+            textAlign: "center"
+        }
+        
+        let contentDivStyle = {
+            width: "90vw",    // 90% of the viewport width
+            margin: "auto",
+        }
+        
+        let headerStyle = {
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "1vw"  // Responsive top margin
+        }
+        
+        let titleStyle = {
+            margin: "2vw",      // Responsive margin
+            width: "50vw",      // 50% of the viewport width
+            fontSize: "3vw",    // Responsive font size
+            fontFamily: "brandFont",
+            position: "relative",
+            textAlign: "center",
+            justifyContent: "center"
+        }
+        
+        let infoStyle = {
+            fontStyle: 'italic',
+            fontSize: '1.5vw'  // Responsive font size
+        }
+        
+        // Adjust the popup style as well
         var popupStyle = {
             position: "fixed",
-            width: "100%",
-            height: "100%",
+            width: "100vw",
+            height: "100vh",
             backgroundColor: "rgba(0, 0, 0, 0.5)",
             top: 0,
             left: 0,
             display: "flex",
             alignItems: "center",
             justifyContent: "center"
-        }
-        let divStyle = {
-            height: "100%",
-            width: "100%",
-            textAlign: "center"
-        }
-        let contentDivStyle = {
-            width: "90%",
-            margin: "auto",
-        }
-        let headerStyle = {
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: "30px"
-        }
-        let titleStyle = {
-            margin : "20px",
-            width: "50%",
-            fontFamily: "brandFont",
-            position:"relative",
-            textAlign: "center",
-            justifyContent:"center"
-        }
-
-        let infoStyle = {
-            fontStyle: 'italic',
-            fontSize: '25px'
         }
 
         var sessions = []

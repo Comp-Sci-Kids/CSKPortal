@@ -47,14 +47,15 @@ var IconButton = /*#__PURE__*/function (_React$Component) {
         boxSizing: "border-box",
         borderRadius: this.props.small ? "4px" : "10px",
         display: "inline-block",
-        marginLeft: this.props.small ? "2px" : "5px",
+        marginLeft: this.props.small ? "0.2vw" : "0.5vw",
         cursor: "pointer"
       }, _defineProperty(_imageButtonStyle, "width", this.props.menu == "menu" ? "75px" : "40px"), _defineProperty(_imageButtonStyle, "height", this.props.menu == "menu" ? "75px" : "40px"), _imageButtonStyle);
       var imageStyle = {
         maxWidth: "100%",
         userSelect: "none",
-        width: this.props.menu == "menu" ? "75px" : "40px",
-        height: this.props.menu == "menu" ? "75px" : "40px"
+        width: this.props.menu == "menu" ? "4vw" : "40px",
+        height: this.props.menu == "menu" ? "4vw" : "40px",
+        margin: "0.2vw"
       };
       return /*#__PURE__*/React.createElement("div", {
         style: imageButtonStyle,
