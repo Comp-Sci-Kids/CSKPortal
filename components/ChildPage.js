@@ -50,7 +50,7 @@ class ChildPage extends React.Component {
             width: "100%"
         }
         let contentDivStyle = {
-            width: "90%",
+            width: "90vw", // Changed to vw
             margin: "auto",
     
         }
@@ -58,16 +58,23 @@ class ChildPage extends React.Component {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            marginTop: "30px",
+            marginTop: "3vw", // Changed to vw
         }
 
         let titleStyle = {
-            margin : "10px",
+            margin : "1vw", // Changed to vw
             fontFamily: "brandFont",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            marginTop: "30px"
+            marginTop: "3vw", // Changed to vw
+            fontSize: "2.5vw"
+        }
+
+        let infoStyle = {
+            fontStyle: 'italic',
+            fontSize: '2.5vw', // Changed to vw
+            fontFamily: "brandFont"
         }
 
         let popup = null
@@ -90,14 +97,7 @@ class ChildPage extends React.Component {
                 sampleKid = this.state.kids[this.state.kids.length - 1]
             }
 
-            popup = <AddChildPopup sampleKid = {sampleKid} closeCallback={this.closePopup}/>
-        }
-
-        let infoStyle = {
-            fontStyle: 'italic',
-            fontSize: '25px',
-            fontFamily: "brandFont"
-
+            popup = <AddChildPopup sampleKid={sampleKid} closeCallback={this.closePopup}/>
         }
 
         return (
@@ -113,7 +113,7 @@ class ChildPage extends React.Component {
                         ?
                         <ChildTable kids={this.state.kids} refreshCallback={this.refreshPage}/>
                         :
-                        <p style = {infoStyle}>Please click the button in the top right of the screen to add a child.</p>
+                        <p style={infoStyle}>Please click the button in the top right of the screen to add a child.</p>
                     }
                     
                 </div>                

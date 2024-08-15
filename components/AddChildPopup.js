@@ -187,7 +187,7 @@ class AddChildPopup extends React.Component {
              buttonDivStyle = {
                 width: "100%",
                 display: "flex",
-                justifyContent: "flex-end",
+                justifyContent: "space-between",
                 alignItems: "center",
                 boxSizing: "border-box",
                 paddingBottom: "10px",

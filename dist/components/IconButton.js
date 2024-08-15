@@ -41,21 +41,19 @@ var IconButton = /*#__PURE__*/function (_React$Component) {
       var _imageButtonStyle;
 
       var imageButtonStyle = (_imageButtonStyle = {
-        width: this.props.small ? "40px" : "40px",
-        height: this.props.small ? "40px" : "40px",
-        padding: this.props.small ? "0px" : "0px",
+        width: this.props.small ? "4vw" : "4vw",
+        height: this.props.small ? "4vw" : "4vw",
         boxSizing: "border-box",
-        borderRadius: this.props.small ? "4px" : "10px",
+        borderRadius: this.props.small ? "0.5vw" : "1vw",
         display: "inline-block",
         marginLeft: this.props.small ? "0.2vw" : "0.5vw",
         cursor: "pointer"
-      }, _defineProperty(_imageButtonStyle, "width", this.props.menu == "menu" ? "75px" : "40px"), _defineProperty(_imageButtonStyle, "height", this.props.menu == "menu" ? "75px" : "40px"), _imageButtonStyle);
+      }, _defineProperty(_imageButtonStyle, "width", this.props.menu == "menu" ? "6vw" : "2vw"), _defineProperty(_imageButtonStyle, "height", this.props.menu == "menu" ? "6vw" : "2vw"), _defineProperty(_imageButtonStyle, "marginLeft", "0.1vw"), _imageButtonStyle);
       var imageStyle = {
         maxWidth: "100%",
         userSelect: "none",
-        width: this.props.menu == "menu" ? "4vw" : "40px",
-        height: this.props.menu == "menu" ? "4vw" : "40px",
-        margin: "0.2vw"
+        width: this.props.menu == "menu" ? "6vw" : "40px",
+        height: this.props.menu == "menu" ? "6vw" : "40px"
       };
       return /*#__PURE__*/React.createElement("div", {
         style: imageButtonStyle,

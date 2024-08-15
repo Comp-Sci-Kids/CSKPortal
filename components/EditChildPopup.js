@@ -219,12 +219,12 @@ class EditChildPopup extends React.Component {
             //    overflowY: 'scroll',
            }
             contentDiv = {
-               width: "95vw"
+               width: "100vw"
            }
             buttonDivStyle = {
                width: "100%",
                display: "flex",
-               justifyContent: "flex-end",
+               justifyContent: "space-between",
                alignItems: "center",
                boxSizing: "border-box",
                paddingBottom: "10px",

@@ -95,22 +95,33 @@ var ChildPage = /*#__PURE__*/function (_React$Component) {
         width: "100%"
       };
       var contentDivStyle = {
-        width: "90%",
+        width: "90vw",
+        // Changed to vw
         margin: "auto"
       };
       var headerStyle = {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        marginTop: "30px"
+        marginTop: "3vw" // Changed to vw
+
       };
       var titleStyle = {
-        margin: "10px",
+        margin: "1vw",
+        // Changed to vw
         fontFamily: "brandFont",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: "30px"
+        marginTop: "3vw",
+        // Changed to vw
+        fontSize: "2.5vw"
+      };
+      var infoStyle = {
+        fontStyle: 'italic',
+        fontSize: '2.5vw',
+        // Changed to vw
+        fontFamily: "brandFont"
       };
       var popup = null;
 
@@ -138,11 +149,6 @@ var ChildPage = /*#__PURE__*/function (_React$Component) {
         });
       }
 
-      var infoStyle = {
-        fontStyle: 'italic',
-        fontSize: '25px',
-        fontFamily: "brandFont"
-      };
       return /*#__PURE__*/React.createElement("div", {
         style: divStyle
       }, /*#__PURE__*/React.createElement("div", {

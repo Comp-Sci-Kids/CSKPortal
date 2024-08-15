@@ -52,7 +52,7 @@ class TabBar extends React.Component {
           ? slideClass = 'slideInLeft slide-menu'
           : slideClass = 'slideInRight';
 
-        let tabNames = ["Register!", "Children!", "Account"]
+        let tabNames = ["Register", "Children", "Account"]
         let tabs = []
         for (let i = 0; i < tabNames.length; i++) {
             tabs.push(<Tab key={i} class="active" index={i} title={tabNames[i]} selected={i == this.state.selectedTab} callback={this.changeTab} left={i == 0} right={i == tabNames.length - 1} />)
@@ -62,7 +62,7 @@ class TabBar extends React.Component {
             borderLeft: "solid 1px",    
             width: "100%",
             // paddingTop: "50px",
-            paddingLeft: "50px",
+            paddingLeft: "3vw",
             boxSizing: "border-box",
         }
 
@@ -78,7 +78,7 @@ class TabBar extends React.Component {
         return( 
 
         <div style={barStyle}>
-                 <IconButton style ={buttonStyleMenu2} src="images/menu2.png" onClick={this.handleClick} menu = "menu"/>  
+                 <IconButton src="images/menu2.png" onClick={this.handleClick} menu = "menu"/>  
 
             {/* <button type="button" onClick={this.handleClick}>
           <span className="glyphicon glyphicon-menu-hamburger"></span>

@@ -16,19 +16,19 @@ class Tab extends React.Component {
             // borderRadius: "15px 15px 0px 0px"
         }
 
-        if(window.screen.width < mobileThreshold) {
-            tabStyle = {
-                width: "25vw",
-                height: "30px",
-                fontSize: "12px",
-                outline: "none",
-                borderStyle: "solid",
-                borderWidth: "1px 1px 0 1px",
-                borderColor: "black",
-                color: "black",
-                borderRadius: "15px 15px 0px 0px"
-            }
-        }
+        // if(window.screen.width < mobileThreshold) {
+        //     tabStyle = {
+        //         width: "25vw",
+        //         height: "30px",
+        //         fontSize: "12px",
+        //         outline: "none",
+        //         borderStyle: "solid",
+        //         borderWidth: "1px 1px 0 1px",
+        //         borderColor: "black",
+        //         color: "black",
+        //         borderRadius: "15px 15px 0px 0px"
+        //     }
+        // }
 
         if (this.props.selected) {
             tabStyle.backgroundColor = "#ff0000";          // Set background color to #ff0000 (red)

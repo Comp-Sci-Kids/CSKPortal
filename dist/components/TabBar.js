@@ -102,7 +102,7 @@ var TabBar = /*#__PURE__*/function (_React$Component2) {
     value: function render() {
       var slideClass;
       this.state.toggleMenu ? slideClass = 'slideInLeft slide-menu' : slideClass = 'slideInRight';
-      var tabNames = ["Register!", "Children!", "Account"];
+      var tabNames = ["Register", "Children", "Account"];
       var tabs = [];
 
       for (var i = 0; i < tabNames.length; i++) {
@@ -123,7 +123,7 @@ var TabBar = /*#__PURE__*/function (_React$Component2) {
         borderLeft: "solid 1px",
         width: "100%",
         // paddingTop: "50px",
-        paddingLeft: "50px",
+        paddingLeft: "3vw",
         boxSizing: "border-box"
       };
       var buttonStyleMenu2 = {
@@ -139,7 +139,6 @@ var TabBar = /*#__PURE__*/function (_React$Component2) {
       return /*#__PURE__*/React.createElement("div", {
         style: barStyle
       }, /*#__PURE__*/React.createElement(IconButton, {
-        style: buttonStyleMenu2,
         src: "images/menu2.png",
         onClick: this.handleClick,
         menu: "menu"
