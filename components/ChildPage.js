@@ -50,13 +50,12 @@ class ChildPage extends React.Component {
             width: "100%"
         }
         let contentDivStyle = {
-            width: "90vw", // Changed to vw
-            margin: "auto",
-    
+            width: "96vw", // Changed to vw
+            margin: "auto"
         }
         let headerStyle = {
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: "flex",
             alignItems: "center",
             marginTop: "3vw", // Changed to vw
         }
